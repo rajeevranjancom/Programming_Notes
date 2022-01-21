@@ -1,0 +1,993 @@
+Example of Pic Puzzle Game:-
+
+Picture Puzzle game in swing:-
+
+import java.awt.event.*;  
+import java.awt.*;  
+import javax.swing.*;  
+class picpuzzle2 extends JFrame implements ActionListener{  
+JButton b1,b2,b3,b4,b5,b6,b7,b8,b9,sample,starB;  
+Icon star;  
+Icon ic0=new ImageIcon("pic/starB0.jpg");  
+Icon ic10=new ImageIcon("pic/starB10.jpg");  
+Icon ic20=new ImageIcon("pic/starB20.jpg");  
+Icon samicon1=new ImageIcon("pic/main.jpg");  
+Icon samicon2=new ImageIcon("pic/main2.jpg");  
+Icon samicon3=new ImageIcon("pic/main3.jpg");  
+Icon ic1=new ImageIcon("pic/1.jpg");  
+Icon ic2=new ImageIcon("pic/5.jpg");  
+Icon ic3=new ImageIcon("pic/2.jpg");  
+Icon ic4=new ImageIcon("pic/7.jpg");  
+Icon ic5=new ImageIcon("pic/4.jpg");  
+Icon ic6=new ImageIcon("pic/6.jpg");  
+Icon ic7=new ImageIcon("pic/8.jpg");  
+Icon ic8=new ImageIcon("pic/9.jpg");  
+Icon ic9=new ImageIcon("pic/3.jpg");  
+  
+Icon ic11=new ImageIcon("pic/12.jpg");  
+Icon ic12=new ImageIcon("pic/13.jpg");  
+Icon ic13=new ImageIcon("pic/16.jpg");  
+Icon ic14=new ImageIcon("pic/11.jpg");  
+Icon ic15=new ImageIcon("pic/14.jpg");  
+Icon ic16=new ImageIcon("pic/19.jpg");  
+Icon ic17=new ImageIcon("pic/17.jpg");  
+Icon ic18=new ImageIcon("pic/15.jpg");  
+Icon ic19=new ImageIcon("pic/18.jpg");  
+  
+Icon ic21=new ImageIcon("pic/24.jpg");  
+Icon ic22=new ImageIcon("pic/25.jpg");  
+Icon ic23=new ImageIcon("pic/21.jpg");  
+Icon ic24=new ImageIcon("pic/27.jpg");  
+Icon ic25=new ImageIcon("pic/23.jpg");  
+Icon ic26=new ImageIcon("pic/29.jpg");  
+Icon ic27=new ImageIcon("pic/28.jpg");  
+Icon ic28=new ImageIcon("pic/22.jpg");  
+Icon ic29=new ImageIcon("pic/26.jpg");  
+  
+picpuzzle2(){  
+  
+super("pic puzzle");  
+  
+b1=new JButton(ic1);  
+b1.setBounds(10,80,100,100);  
+b2=new JButton(ic2);  
+b2.setBounds(110,80,100,100);  
+b3=new JButton(ic3);  
+b3.setBounds(210,80,100,100);  
+b4=new JButton(ic4);  
+b4.setBounds(10,180,100,100);  
+b5=new JButton(ic5);  
+b5.setBounds(110,180,100,100);  
+b6=new JButton(ic6);  
+b6.setBounds(210,180,100,100);  
+b7=new JButton(ic7);  
+b7.setBounds(10,280,100,100);  
+b8=new JButton(ic8);  
+b8.setBounds(110,280,100,100);  
+b9=new JButton(ic9);  
+b9.setBounds(210,280,100,100);  
+sample=new JButton(samicon1);  
+sample.setBounds(380,100,200,200);  
+  
+JLabel l1=new JLabel("Sample:");  
+l1.setBounds(330,200,70,20);  
+JLabel l2=new JLabel("NOTE:icon has power to swap with neighbour icon=");  
+l2.setBounds(5,15,500,20);  
+JLabel l3=new JLabel("click sample picture to next puzzle");  
+l3.setBounds(380,320,200,20);  
+l3.setForeground(Color.red);  
+  
+starB=new JButton(ic0);  
+starB.setBounds(330,5,50,50);  
+star=b9.getIcon();  
+  
+add(b1);add(b2);add(b3);add(b4);add(b5);add(b6);add(b7);add(b8);  
+add(b9);add(sample);add(l1);add(l2);add(starB);add(l3);  
+b1.addActionListener(this); b2.addActionListener(this);  
+ b3.addActionListener(this); b4.addActionListener(this);   
+b5.addActionListener(this); b6.addActionListener(this);  
+ b7.addActionListener(this); b8.addActionListener(this);  
+ b9.addActionListener(this);   
+  
+sample.addActionListener(this);  
+setLayout(null);  
+setSize(600,500);  
+setVisible(true);  
+setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  
+}  
+  
+public void actionPerformed(ActionEvent e){  
+if(e.getSource()==b1){  
+    Icon s1=b1.getIcon();  
+      if(b2.getIcon()==star){  
+        b2.setIcon(s1);  
+        b1.setIcon(star);  
+      } else if(b4.getIcon()==star){  
+                    b4.setIcon(s1);  
+                    b1.setIcon(star);  
+                   }  
+  }//end of if  
+  
+if(e.getSource()==b2){  
+    Icon s1=b2.getIcon();  
+      if(b1.getIcon()==star){  
+        b1.setIcon(s1);  
+        b2.setIcon(star);  
+      } else if(b5.getIcon()==star){  
+                    b5.setIcon(s1);  
+                    b2.setIcon(star);  
+                   }  
+         else if(b3.getIcon()==star){  
+                    b3.setIcon(s1);  
+                    b2.setIcon(star);  
+                   }  
+  }//end of if  
+  
+if(e.getSource()==b3){  
+    Icon s1=b3.getIcon();  
+      if(b2.getIcon()==star){  
+        b2.setIcon(s1);  
+        b3.setIcon(star);  
+      } else if(b6.getIcon()==star){  
+                    b6.setIcon(s1);  
+                    b3.setIcon(star);  
+                   }  
+  }//end of if  
+  
+if(e.getSource()==b4){  
+    Icon s1=b4.getIcon();  
+      if(b1.getIcon()==star){  
+        b1.setIcon(s1);  
+        b4.setIcon(star);  
+      } else if(b5.getIcon()==star){  
+                    b5.setIcon(s1);  
+                    b4.setIcon(star);  
+                   }  
+         else if(b7.getIcon()==star){  
+                    b7.setIcon(s1);  
+                    b4.setIcon(star);  
+                   }  
+  }//end of if  
+  
+if(e.getSource()==b5){  
+    Icon s1=b5.getIcon();  
+      if(b2.getIcon()==star){  
+        b2.setIcon(s1);  
+        b5.setIcon(star);  
+      } else if(b4.getIcon()==star){  
+                    b4.setIcon(s1);  
+                    b5.setIcon(star);  
+                   }  
+         else if(b6.getIcon()==star){  
+                    b6.setIcon(s1);  
+                    b5.setIcon(star);  
+                   }  
+          else if(b8.getIcon()==star){  
+                    b8.setIcon(s1);  
+                    b5.setIcon(star);  
+                   }  
+  }//end of if  
+  
+if(e.getSource()==b6){  
+    Icon s1=b6.getIcon();  
+      if(b3.getIcon()==star){  
+        b3.setIcon(s1);  
+        b6.setIcon(star);  
+      } else if(b5.getIcon()==star){  
+                    b5.setIcon(s1);  
+                    b6.setIcon(star);  
+                   }  
+         else if(b9.getIcon()==star){  
+                    b9.setIcon(s1);  
+                    b6.setIcon(star);  
+                   }  
+}//end of if  
+  
+if(e.getSource()==b7){  
+    Icon s1=b7.getIcon();  
+      if(b4.getIcon()==star){  
+        b4.setIcon(s1);  
+        b7.setIcon(star);  
+      } else if(b8.getIcon()==star){  
+                    b8.setIcon(s1);  
+                    b7.setIcon(star);  
+                   }  
+ }//end of if  
+  
+   if(e.getSource()==b8){  
+    Icon s1=b8.getIcon();  
+      if(b7.getIcon()==star){  
+        b7.setIcon(s1);  
+        b8.setIcon(star);  
+      } else if(b5.getIcon()==star){  
+                    b5.setIcon(s1);  
+                    b8.setIcon(star);  
+                   }  
+         else if(b9.getIcon()==star){  
+                    b9.setIcon(s1);  
+                    b8.setIcon(star);  
+                   }  
+  
+  }//end of if  
+  
+ if(e.getSource()==b9){  
+    Icon s1=b9.getIcon();  
+      if(b8.getIcon()==star){  
+        b8.setIcon(s1);  
+        b9.setIcon(star);  
+      } else if(b6.getIcon()==star){  
+                    b6.setIcon(s1);  
+                    b9.setIcon(star);  
+                   }  
+  }//end of if  
+  
+if(e.getSource()==sample){  
+Icon s1=sample.getIcon();  
+ if(s1==samicon3){  
+sample.setIcon(samicon1);  
+b1.setIcon(ic1);  
+b2.setIcon(ic2);  
+b3.setIcon(ic3);  
+b4.setIcon(ic4);  
+b5.setIcon(ic5);  
+b6.setIcon(ic6);  
+b7.setIcon(ic7);  
+b8.setIcon(ic8);  
+b9.setIcon(ic9);  
+star=b9.getIcon();  
+starB.setIcon(ic0);  
+}//eof if  
+else if(s1==samicon1){  
+sample.setIcon(samicon2);  
+b1.setIcon(ic11);  
+b2.setIcon(ic12);  
+b3.setIcon(ic13);  
+b4.setIcon(ic14);  
+b5.setIcon(ic15);  
+b6.setIcon(ic16);  
+b7.setIcon(ic17);  
+b8.setIcon(ic18);  
+b9.setIcon(ic19);  
+star=b6.getIcon();  
+starB.setIcon(ic10);  
+}//eof else  
+else{  
+sample.setIcon(samicon3);  
+b1.setIcon(ic21);  
+b2.setIcon(ic22);  
+b3.setIcon(ic23);  
+b4.setIcon(ic24);  
+b5.setIcon(ic25);  
+b6.setIcon(ic26);  
+b7.setIcon(ic27);  
+b8.setIcon(ic28);  
+b9.setIcon(ic29);  
+star=b6.getIcon();  
+starB.setIcon(ic20);  
+}//eof else  
+  
+}  
+}//end of actionPerformed  
+  
+public static void main(String args[]){  
+new picpuzzle2();  
+}//end of main  
+}//end of class  
+
+
+
+
+
+Example of Tic Tac Toe Game in Swing:-
+>In this example, we are going to see the example of tic tac toe game (also known as 0 and x (cross)).
+>It can be developed only through AWT api, but we are using here swing framework.
+
+import java.awt.*;  
+import java.awt.event.*;  
+import javax.swing.*;  
+class TTT1 extends JFrame implements ItemListener, ActionListener{  
+int i,j,ii,jj,x,y,yesnull;   
+int a[][]={{10,1,2,3,11},{10,1,4,7,11},{10,1,5,9,11},{10,2,5,8,11},  
+                {10,3,5,7,11},{10,3,6,9,11},{10,4,5,6,11},  
+        {10,7,8,9,11} };  
+int a1[][]={{10,1,2,3,11},{10,1,4,7,11},{10,1,5,9,11},{10,2,5,8,11},  
+                {10,3,5,7,11},{10,3,6,9,11},{10,4,5,6,11},{10,7,8,9,11} };  
+                  
+boolean state,type,set;  
+  
+Icon ic1,ic2,icon,ic11,ic22;  
+Checkbox c1,c2;  
+JLabel l1,l2;  
+JButton b[]=new JButton[9];  
+JButton reset;  
+  
+public void showButton(){  
+  
+x=10; y=10;j=0;  
+for(i=0;i<=8;i++,x+=100,j++){  
+ b[i]=new JButton();  
+if(j==3)  
+{j=0; y+=100; x=10;}  
+ b[i].setBounds(x,y,100,100);  
+add(b[i]);  
+b[i].addActionListener(this);  
+}//eof for  
+  
+reset=new JButton("RESET");  
+reset.setBounds(100,350,100,50);  
+add(reset);  
+reset.addActionListener(this);  
+  
+}//eof showButton  
+  
+/*********************************************************/  
+public  void check(int num1){  
+for(ii=0;ii<=7;ii++){  
+   for(jj=1;jj<=3;jj++){  
+        if(a[ii][jj]==num1){ a[ii][4]=11;  }  
+  
+   }//eof for jj  
+  
+}//eof for ii  
+}//eof check  
+/**********************************************************/  
+  
+/*********************************************************/  
+  
+public void complogic(int num){  
+  
+ for(i=0;i<=7;i++){  
+   for(j=1;j<=3;j++){  
+      if(a[i][j]==num){  a[i][0]=11; a[i][4]=10;    }  
+      }  
+  }  
+   for(i=0;i<=7;i++){              // for 1  
+     set=true;               
+   if(a[i][4]==10){               //if 1   
+       int count=0;  
+       for(j=1;j<=3;j++){         //for 2   
+           if(b[(a[i][j]-1)].getIcon()!=null){ //if 2  
+             count++;  
+               }                        //eof if 2  
+            else{ yesnull=a[i][j]; }  
+        }                               //eof for 2  
+      if(count==2){                     //if 2  
+         b[yesnull-1].setIcon(ic2);   
+         this.check(yesnull); set=false;break;  
+         }                                  //eof if 2  
+      }                                     //eof if 1  
+      else  
+      if(a[i][0]==10){  
+                for(j=1;j<=3;j++){         //for2  
+                    if(b[(a[i][j]-1)].getIcon()==null){ //if 1  
+                      b[(a[i][j]-1)].setIcon(ic2);  
+                        this.check(a[i][j]);  
+                         set=false;  
+                         break;  
+                    }                         //eof if1  
+                }                             //eof for 2  
+                if(set==false)  
+                      break;                                                         
+            }//eof elseif  
+  
+    if(set==false)  
+         break;      
+ }//eof for 1  
+  
+  
+}//eof complogic  
+  
+  
+/*********************************************************/  
+  
+TTT1(){  
+super("tic tac toe by ashwani");  
+  
+CheckboxGroup cbg=new CheckboxGroup();  
+c1=new Checkbox("vs computer",cbg,false);  
+c2=new Checkbox("vs friend",cbg,false);  
+c1.setBounds(120,80,100,40);  
+c2.setBounds(120,150,100,40);  
+add(c1); add(c2);  
+c1.addItemListener(this);  
+c2.addItemListener(this);  
+  
+  
+state=true;type=true;set=true;  
+ic1=new ImageIcon("ic1.jpg");  
+ic2=new ImageIcon("ic2.jpg");  
+ic11=new ImageIcon("ic11.jpg");  
+ic22=new ImageIcon("ic22.jpg");  
+  
+setLayout(null);  
+setSize(330,450);  
+setVisible(true);  
+setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);  
+}//eof constructor  
+  
+/*************************************************************/  
+public void itemStateChanged(ItemEvent e){  
+ if(c1.getState())  
+  {   
+ type=false;  
+ }  
+  
+ else if(c2.getState())  
+  { type=true;  
+  }  
+remove(c1);remove(c2);  
+ repaint(0,0,330,450);  
+ showButton();  
+}//eof itemstate  
+/************************************************************/  
+  
+public void actionPerformed(ActionEvent e){  
+/********************************/  
+if(type==true)//logicfriend  
+{  
+if(e.getSource()==reset){  
+ for(i=0;i<=8;i++){  
+   b[i].setIcon(null);  
+  }//eof for    
+}  
+else{   
+  for(i=0;i<=8;i++){  
+      if(e.getSource()==b[i]){  
+         
+           if(b[i].getIcon()==null){  
+              if(state==true){ icon=ic2;           
+               state=false;} else{ icon=ic1; state=true; }  
+            b[i].setIcon(icon);  
+            }  
+       }   
+  }//eof for  
+}//eof else  
+}//eof logicfriend  
+else if(type==false){                           //  complogic  
+      if(e.getSource()==reset){  
+          for(i=0;i<=8;i++){  
+            b[i].setIcon(null);  
+          }//eof for   
+       for(i=0;i<=7;i++)  
+        for(j=0;j<=4;j++)  
+        a[i][j]=a1[i][j];   //again initialsing array  
+        }  
+        else{  //complogic  
+            for(i=0;i<=8;i++){  
+               if(e.getSource()==b[i]){  
+                  if(b[i].getIcon()==null){   
+                           b[i].setIcon(ic1);    
+                            if(b[4].getIcon()==null){  
+                              b[4].setIcon(ic2);  
+                              this.check(5);  
+                              } else{  
+                                 this.complogic(i);  
+                                 }  
+                    }  
+                 }  
+             }//eof for  
+        }  
+    }//eof complogic  
+  
+for(i=0;i<=7;i++){  
+    
+  Icon icon1=b[(a[i][1]-1)].getIcon();  
+  Icon icon2=b[(a[i][2]-1)].getIcon();  
+  Icon icon3=b[(a[i][3]-1)].getIcon();  
+     if((icon1==icon2)&&(icon2==icon3)&&(icon1!=null)){  
+               if(icon1==ic1){   
+                 b[(a[i][1]-1)].setIcon(ic11);  
+                 b[(a[i][2]-1)].setIcon(ic11);   
+                 b[(a[i][3]-1)].setIcon(ic11);  
+    JOptionPane.showMessageDialog(TTT1.this,"!!!YOU won!!! click reset");     
+         break;  
+                   }  
+             else if(icon1==ic2){   
+             b[(a[i][1]-1)].setIcon(ic22);  
+             b[(a[i][2]-1)].setIcon(ic22);  
+             b[(a[i][3]-1)].setIcon(ic22);   
+               JOptionPane.showMessageDialog(TTT1.this,"won! click reset");  
+                break;             
+               }  
+         }  
+    }    
+  
+  
+}//eof actionperformed  
+/************************************************************/  
+  
+public static void main(String []args){  
+new TTT1();  
+}//eof main  
+}//eof class  
+
+
+
+
+
+Online Exam Project in Java Swing without database:-
+>In this project, there are given 10 questions to play. User can bookmark any question for the reconsideration while going to result.
+>We are using here java array to store the questions, options and answers not database. You can use collection framework or database in place of array.
+
+/*Online Java Paper Test*/  
+  
+import java.awt.*;  
+import java.awt.event.*;  
+import javax.swing.*;  
+  
+class OnlineTest extends JFrame implements ActionListener  
+{  
+    JLabel l;  
+    JRadioButton jb[]=new JRadioButton[5];  
+    JButton b1,b2;  
+    ButtonGroup bg;  
+    int count=0,current=0,x=1,y=1,now=0;  
+    int m[]=new int[10];      
+    OnlineTest(String s)  
+    {  
+        super(s);  
+        l=new JLabel();  
+        add(l);  
+        bg=new ButtonGroup();  
+        for(int i=0;i<5;i++)  
+        {  
+            jb[i]=new JRadioButton();     
+            add(jb[i]);  
+            bg.add(jb[i]);  
+        }  
+        b1=new JButton("Next");  
+        b2=new JButton("Bookmark");  
+        b1.addActionListener(this);  
+        b2.addActionListener(this);  
+        add(b1);add(b2);  
+        set();  
+        l.setBounds(30,40,450,20);  
+        jb[0].setBounds(50,80,100,20);  
+        jb[1].setBounds(50,110,100,20);  
+        jb[2].setBounds(50,140,100,20);  
+        jb[3].setBounds(50,170,100,20);  
+        b1.setBounds(100,240,100,30);  
+        b2.setBounds(270,240,100,30);  
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  
+        setLayout(null);  
+        setLocation(250,100);  
+        setVisible(true);  
+        setSize(600,350);  
+    }  
+    public void actionPerformed(ActionEvent e)  
+    {  
+        if(e.getSource()==b1)  
+        {  
+            if(check())  
+                count=count+1;  
+            current++;  
+            set();    
+            if(current==9)  
+            {  
+                b1.setEnabled(false);  
+                b2.setText("Result");  
+            }  
+        }  
+        if(e.getActionCommand().equals("Bookmark"))  
+        {  
+            JButton bk=new JButton("Bookmark"+x);  
+            bk.setBounds(480,20+30*x,100,30);  
+            add(bk);  
+            bk.addActionListener(this);  
+            m[x]=current;  
+            x++;  
+            current++;  
+            set();    
+            if(current==9)  
+                b2.setText("Result");  
+            setVisible(false);  
+            setVisible(true);  
+        }  
+        for(int i=0,y=1;i<x;i++,y++)  
+        {  
+        if(e.getActionCommand().equals("Bookmark"+y))  
+        {  
+            if(check())  
+                count=count+1;  
+            now=current;  
+            current=m[y];  
+            set();  
+            ((JButton)e.getSource()).setEnabled(false);  
+            current=now;  
+        }  
+        }  
+      
+        if(e.getActionCommand().equals("Result"))  
+        {  
+            if(check())  
+                count=count+1;  
+            current++;  
+            //System.out.println("correct ans="+count);  
+            JOptionPane.showMessageDialog(this,"correct ans="+count);  
+            System.exit(0);  
+        }  
+    }  
+    void set()  
+    {  
+        jb[4].setSelected(true);  
+        if(current==0)  
+        {  
+            l.setText("Que1: Which one among these is not a primitive datatype?");  
+            jb[0].setText("int");jb[1].setText("Float");jb[2].setText("boolean");jb[3].setText("char");   
+        }  
+        if(current==1)  
+        {  
+            l.setText("Que2: Which class is available to all the class automatically?");  
+            jb[0].setText("Swing");jb[1].setText("Applet");jb[2].setText("Object");jb[3].setText("ActionEvent");  
+        }  
+        if(current==2)  
+        {  
+            l.setText("Que3: Which package is directly available to our class without importing it?");  
+            jb[0].setText("swing");jb[1].setText("applet");jb[2].setText("net");jb[3].setText("lang");  
+        }  
+        if(current==3)  
+        {  
+            l.setText("Que4: String class is defined in which package?");  
+            jb[0].setText("lang");jb[1].setText("Swing");jb[2].setText("Applet");jb[3].setText("awt");  
+        }  
+        if(current==4)  
+        {  
+            l.setText("Que5: Which institute is best for java coaching?");  
+            jb[0].setText("Utek");jb[1].setText("Aptech");jb[2].setText("SSS IT");jb[3].setText("jtek");  
+        }  
+        if(current==5)  
+        {  
+            l.setText("Que6: Which one among these is not a keyword?");  
+            jb[0].setText("class");jb[1].setText("int");jb[2].setText("get");jb[3].setText("if");  
+        }  
+        if(current==6)  
+        {  
+            l.setText("Que7: Which one among these is not a class? ");  
+            jb[0].setText("Swing");jb[1].setText("Actionperformed");jb[2].setText("ActionEvent");  
+                        jb[3].setText("Button");  
+        }  
+        if(current==7)  
+        {  
+            l.setText("Que8: which one among these is not a function of Object class?");  
+            jb[0].setText("toString");jb[1].setText("finalize");jb[2].setText("equals");  
+                        jb[3].setText("getDocumentBase");         
+        }  
+        if(current==8)  
+        {  
+            l.setText("Que9: which function is not present in Applet class?");  
+            jb[0].setText("init");jb[1].setText("main");jb[2].setText("start");jb[3].setText("destroy");  
+        }  
+        if(current==9)  
+        {  
+            l.setText("Que10: Which one among these is not a valid component?");  
+            jb[0].setText("JButton");jb[1].setText("JList");jb[2].setText("JButtonGroup");  
+                        jb[3].setText("JTextArea");  
+        }  
+        l.setBounds(30,40,450,20);  
+        for(int i=0,j=0;i<=90;i+=30,j++)  
+            jb[j].setBounds(50,80+i,200,20);  
+    }  
+    boolean check()  
+    {  
+        if(current==0)  
+            return(jb[1].isSelected());  
+        if(current==1)  
+            return(jb[2].isSelected());  
+        if(current==2)  
+            return(jb[3].isSelected());  
+        if(current==3)  
+            return(jb[0].isSelected());  
+        if(current==4)  
+            return(jb[2].isSelected());  
+        if(current==5)  
+            return(jb[2].isSelected());  
+        if(current==6)  
+            return(jb[1].isSelected());  
+        if(current==7)  
+            return(jb[3].isSelected());  
+        if(current==8)  
+            return(jb[1].isSelected());  
+        if(current==9)  
+            return(jb[2].isSelected());  
+        return false;  
+    }  
+    public static void main(String s[])  
+    {  
+        new OnlineTest("Online Test Of Java");  
+    }  
+}  
+
+
+
+BorderLayout (LayoutManagers):-
+>Java LayoutManagers:-
+
+>The LayoutManagers are used to arrange components in a particular manner. LayoutManager is an interface that is implemented by all the classes of layout managers. There are following classes that represents the layout managers:
+
+>java.awt.BorderLayout
+>java.awt.FlowLayout
+>java.awt.GridLayout
+>java.awt.CardLayout
+>java.awt.GridBagLayout
+>javax.swing.BoxLayout
+>javax.swing.GroupLayout
+>javax.swing.ScrollPaneLayout
+>javax.swing.SpringLayout etc.
+>Java BorderLayout
+
+>The BorderLayout is used to arrange the components in five regions: north, south, east, west and center. Each region (area) may contain one component only. It is the default layout of frame or window. The BorderLayout provides five constants for each region:
+
+>public static final int NORTH
+>public static final int SOUTH
+>public static final int EAST
+>public static final int WEST
+>public static final int CENTER
+
+Constructors of BorderLayout class:-
+
+>BorderLayout(): creates a border layout but with no gaps between the components.
+>JBorderLayout(int hgap, int vgap): creates a border layout with the given horizontal and vertical gaps between the components.
+
+ 
+Example of BorderLayout class:-
+
+BorderLayout class
+import java.awt.*;  
+import javax.swing.*;  
+  
+public class Border {  
+JFrame f;  
+Border(){  
+    f=new JFrame();  
+      
+    JButton b1=new JButton("NORTH");;  
+    JButton b2=new JButton("SOUTH");;  
+    JButton b3=new JButton("EAST");;  
+    JButton b4=new JButton("WEST");;  
+    JButton b5=new JButton("CENTER");;  
+      
+    f.add(b1,BorderLayout.NORTH);  
+    f.add(b2,BorderLayout.SOUTH);  
+    f.add(b3,BorderLayout.EAST);  
+    f.add(b4,BorderLayout.WEST);  
+    f.add(b5,BorderLayout.CENTER);  
+      
+    f.setSize(300,300);  
+    f.setVisible(true);  
+}  
+public static void main(String[] args) {  
+    new Border();  
+}  
+}
+
+
+
+Java GridLayout:-
+>The GridLayout is used to arrange the components in rectangular grid. One component is displayed in each rectangle.
+
+Constructors of GridLayout class:-
+
+>GridLayout(): creates a grid layout with one column per component in a row.
+>GridLayout(int rows, int columns): creates a grid layout with the given rows and columns but no gaps between the components.
+>GridLayout(int rows, int columns, int hgap, int vgap): creates a grid layout with the given rows and columns alongwith given horizontal and vertical gaps.
+
+Example of GridLayout class:-
+
+GridLayout class
+import java.awt.*;  
+import javax.swing.*;  
+  
+public class MyGridLayout{  
+JFrame f;  
+MyGridLayout(){  
+    f=new JFrame();  
+      
+    JButton b1=new JButton("1");  
+    JButton b2=new JButton("2");  
+    JButton b3=new JButton("3");  
+    JButton b4=new JButton("4");  
+    JButton b5=new JButton("5");  
+        JButton b6=new JButton("6");  
+        JButton b7=new JButton("7");  
+    JButton b8=new JButton("8");  
+        JButton b9=new JButton("9");  
+          
+    f.add(b1);f.add(b2);f.add(b3);f.add(b4);f.add(b5);  
+    f.add(b6);f.add(b7);f.add(b8);f.add(b9);  
+  
+    f.setLayout(new GridLayout(3,3));  
+    //setting grid layout of 3 rows and 3 columns  
+  
+    f.setSize(300,300);  
+    f.setVisible(true);  
+}  
+public static void main(String[] args) {  
+    new MyGridLayout();  
+}  
+}  
+
+
+Java FlowLayout:-
+>The FlowLayout is used to arrange the components in a line, one after another (in a flow). It is the default layout of applet or panel.
+
+Fields of FlowLayout class:-
+
+>public static final int LEFT
+>public static final int RIGHT
+>public static final int CENTER
+>public static final int LEADING
+>public static final int TRAILING
+
+Constructors of FlowLayout class:-
+
+>FlowLayout(): creates a flow layout with centered alignment and a default 5 unit horizontal and vertical gap.
+>FlowLayout(int align): creates a flow layout with the given alignment and a default 5 unit horizontal and vertical gap.
+>FlowLayout(int align, int hgap, int vgap): creates a flow layout with the given alignment and the given horizontal and vertical gap.
+
+Example of FlowLayout class:-
+
+FlowLayout class
+import java.awt.*;  
+import javax.swing.*;  
+  
+public class MyFlowLayout{  
+JFrame f;  
+MyFlowLayout(){  
+    f=new JFrame();  
+      
+    JButton b1=new JButton("1");  
+    JButton b2=new JButton("2");  
+    JButton b3=new JButton("3");  
+    JButton b4=new JButton("4");  
+    JButton b5=new JButton("5");  
+              
+    f.add(b1);f.add(b2);f.add(b3);f.add(b4);f.add(b5);  
+      
+    f.setLayout(new FlowLayout(FlowLayout.RIGHT));  
+    //setting flow layout of right alignment  
+  
+    f.setSize(300,300);  
+    f.setVisible(true);  
+}  
+public static void main(String[] args) {  
+    new MyFlowLayout();  
+}  
+}  
+
+
+
+
+Java BoxLayout:-
+>The BoxLayout is used to arrange the components either vertically or horizontally. For this purpose, BoxLayout provides four constants. They are as follows:
+
+Note: BoxLayout class is found in javax.swing package.
+
+Fields of BoxLayout class:-
+
+public static final int X_AXIS
+public static final int Y_AXIS
+public static final int LINE_AXIS
+public static final int PAGE_AXIS
+Constructor of BoxLayout class
+
+BoxLayout(Container c, int axis): creates a box layout that arranges the components with the given axis.
+Example of BoxLayout class with Y-AXIS:
+
+BoxLayout class
+import java.awt.*;  
+import javax.swing.*;  
+  
+public class BoxLayoutExample1 extends Frame {  
+ Button buttons[];  
+  
+ public BoxLayoutExample1 () {  
+   buttons = new Button [5];  
+    
+   for (int i = 0;i<5;i++) {  
+      buttons[i] = new Button ("Button " + (i + 1));  
+      add (buttons[i]);  
+    }  
+  
+setLayout (new BoxLayout (this, BoxLayout.Y_AXIS));  
+setSize(400,400);  
+setVisible(true);  
+}  
+  
+public static void main(String args[]){  
+BoxLayoutExample1 b=new BoxLayoutExample1();  
+}  
+}  
+
+
+ 
+Example of BoxLayout class with X-AXIS:-
+
+BoxLayout class example
+import java.awt.*;  
+import javax.swing.*;  
+  
+public class BoxLayoutExample2 extends Frame {  
+ Button buttons[];  
+  
+ public BoxLayoutExample2() {  
+   buttons = new Button [5];  
+    
+   for (int i = 0;i<5;i++) {  
+      buttons[i] = new Button ("Button " + (i + 1));  
+      add (buttons[i]);  
+    }  
+  
+setLayout (new BoxLayout(this, BoxLayout.X_AXIS));  
+setSize(400,400);  
+setVisible(true);  
+}  
+  
+public static void main(String args[]){  
+BoxLayoutExample2 b=new BoxLayoutExample2();  
+}  
+}  
+
+
+
+
+Java CardLayout:
+
+>The CardLayout class manages the components in such a manner that only one component is visible at a time. It treats each component as a card that is why it is known as CardLayout.
+
+Constructors of CardLayout class:-
+
+>CardLayout(): creates a card layout with zero horizontal and vertical gap.
+>CardLayout(int hgap, int vgap): creates a card layout with the given horizontal and vertical gap.
+
+Commonly used methods of CardLayout class:-
+
+public void next(Container parent): is used to flip to the next card of the given container.
+public void previous(Container parent): is used to flip to the previous card of the given container.
+public void first(Container parent): is used to flip to the first card of the given container.
+public void last(Container parent): is used to flip to the last card of the given container.
+public void show(Container parent, String name): is used to flip to the specified card with the given name.
+
+Example of CardLayout class:-
+
+CardLayout class
+import java.awt.*;  
+import java.awt.event.*;  
+  
+import javax.swing.*;  
+  
+public class CardLayoutExample extends JFrame implements ActionListener{  
+CardLayout card;  
+JButton b1,b2,b3;  
+Container c;  
+    CardLayoutExample(){  
+          
+        c=getContentPane();  
+        card=new CardLayout(40,30);  
+//create CardLayout object with 40 hor space and 30 ver space  
+        c.setLayout(card);  
+          
+        b1=new JButton("Apple");  
+        b2=new JButton("Boy");  
+        b3=new JButton("Cat");  
+        b1.addActionListener(this);  
+        b2.addActionListener(this);  
+        b3.addActionListener(this);  
+              
+        c.add("a",b1);c.add("b",b2);c.add("c",b3);  
+                          
+    }  
+    public void actionPerformed(ActionEvent e) {  
+    card.next(c);  
+    }  
+  
+    public static void main(String[] args) {  
+        CardLayoutExample cl=new CardLayoutExample();  
+        cl.setSize(400,400);  
+        cl.setVisible(true);  
+        cl.setDefaultCloseOperation(EXIT_ON_CLOSE);  
+    }  
+}  
+
+
+
+  

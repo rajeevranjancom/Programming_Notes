@@ -1,0 +1,557 @@
+Java If-else Statement:-
+>The Java if statement is used to test the condition. It checks boolean condition: true or false. There are various types of if statement in java.
+
+1)if statement
+2)if-else statement
+3)nested if statement
+4)if-else-if ladder
+5)Java IF Statement
+
+The Java if statement tests the condition. It executes the if block if condition is true:-
+
+Syntax:
+
+if(condition){  
+//code to be executed  
+}  
+
+Example:
+
+public class IfExample {  
+public static void main(String[] args) {  
+    int age=20;  
+    if(age>18){  
+        System.out.print("Age is greater than 18");  
+    }  
+}  
+}  
+Output:
+Age is greater than 18
+
+Java IF-else Statement:-
+>The Java if-else statement also tests the condition. It executes the if block if condition is true otherwise else block is executed.
+
+Syntax:
+
+if(condition){  
+//code if condition is true  
+}else{  
+//code if condition is false  
+}  
+
+Example:
+
+public class IfElseExample {  
+public static void main(String[] args) {  
+    int number=13;  
+    if(number%2==0){  
+        System.out.println("even number");  
+    }else{  
+        System.out.println("odd number");  
+    }  
+}  
+}  
+
+Output:
+odd number
+
+Java IF-else-if ladder Statement:-
+>The if-else-if ladder statement executes one condition from multiple statements.
+
+Syntax:
+
+if(condition1){  
+//code to be executed if condition1 is true  
+}else if(condition2){  
+//code to be executed if condition2 is true  
+}  
+else if(condition3){  
+//code to be executed if condition3 is true  
+}  
+...  
+else{  
+//code to be executed if all the conditions are false  
+}  
+
+Example:
+
+public class IfElseIfExample {  
+public static void main(String[] args) {  
+    int marks=65;  
+      
+    if(marks<50){  
+        System.out.println("fail");  
+    }  
+    else if(marks>=50 && marks<60){  
+        System.out.println("D grade");  
+    }  
+    else if(marks>=60 && marks<70){  
+        System.out.println("C grade");  
+    }  
+    else if(marks>=70 && marks<80){  
+        System.out.println("B grade");  
+    }  
+    else if(marks>=80 && marks<90){  
+        System.out.println("A grade");  
+    }else if(marks>=90 && marks<100){  
+        System.out.println("A+ grade");  
+    }else{  
+        System.out.println("Invalid!");  
+    }  
+}  
+}  
+
+Output:
+C grade
+
+Java Switch Statement:-
+>The Java switch statement executes one statement from multiple conditions. It is like if-else-if ladder statement.
+
+Syntax:
+
+switch(expression){    
+case value1:    
+ //code to be executed;    
+ break;  //optional  
+case value2:    
+ //code to be executed;    
+ break;  //optional  
+......    
+    
+default:     
+ code to be executed if all cases are not matched;    
+}    
+
+Example:
+
+public class SwitchExample {  
+public static void main(String[] args) {  
+    int number=20;  
+    switch(number){  
+    case 10: System.out.println("10");break;  
+    case 20: System.out.println("20");break;  
+    case 30: System.out.println("30");break;  
+    default:System.out.println("Not in 10, 20 or 30");  
+    }  
+}  
+}  
+
+Output:
+20
+
+Java Switch Statement is fall-through:-
+>The java switch statement is fall-through. It means it executes all statement after first match if break statement is not used with switch cases.
+
+Example:
+
+public class SwitchExample2 {  
+public static void main(String[] args) {  
+    int number=20;  
+    switch(number){  
+    case 10: System.out.println("10");  
+    case 20: System.out.println("20");  
+    case 30: System.out.println("30");  
+    default:System.out.println("Not in 10, 20 or 30");  
+    }  
+}  
+}  
+Output:
+20
+30
+Not in 10, 20 or 30
+
+Java For Loop:-
+>The Java for loop is used to iterate a part of the program several times. If the number of iteration is fixed, it is recommended to use for loop.
+
+There are three types of for loop in java:-
+
+1)Simple For Loop
+2)For-each or Enhanced For Loop
+3)Labeled For Loop
+
+Java Simple For Loop:-
+>The simple for loop is same as C/C++. We can initialize variable, check condition and increment/decrement value.
+
+Syntax:
+
+for(initialization;condition;incr/decr){  
+//code to be executed  
+}  
+
+Example:
+
+public class ForExample {  
+public static void main(String[] args) {  
+    for(int i=1;i<=10;i++){  
+        System.out.println(i);  
+    }  
+}  
+}  
+Output:
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+
+Java For-each Loop:-
+>The for-each loop is used to traverse array or collection in java. It is easier to use than simple for loop because we don't need to increment value and use subscript notation.
+>It works on elements basis not index. It returns element one by one in the defined variable.
+
+Syntax:
+
+for(Type var:array){  
+//code to be executed  
+}  
+Example:
+
+public class ForEachExample {  
+public static void main(String[] args) {  
+    int arr[]={12,23,44,56,78};  
+    for(int i:arr){  
+        System.out.println(i);  
+    }  
+}  
+}  
+Output:
+12
+23
+44
+56
+78
+
+Java Labeled For Loop:-
+>We can have name of each for loop. To do so, we use label before the for loop. It is useful if we have nested for loop so that we can break/continue specific for loop.
+>Normally, break and continue keywords breaks/continues the inner most for loop only.
+
+Syntax:
+
+labelname:  
+for(initialization;condition;incr/decr){  
+//code to be executed  
+}
+  
+Example:
+
+public class LabeledForExample {  
+public static void main(String[] args) {  
+    aa:  
+        for(int i=1;i<=3;i++){  
+            bb:  
+                for(int j=1;j<=3;j++){  
+                    if(i==2&&j==2){  
+                        break aa;  
+                    }  
+                    System.out.println(i+" "+j);  
+                }  
+        }  
+}  
+}  
+
+Output:
+1 1
+1 2
+1 3
+2 1
+
+>If you use break bb;, it will break inner loop only which is the default behavior of any loop.
+
+public class LabeledForExample {  
+public static void main(String[] args) {  
+    aa:  
+        for(int i=1;i<=3;i++){  
+            bb:  
+                for(int j=1;j<=3;j++){  
+                    if(i==2&&j==2){  
+                        break bb;  
+                    }  
+                    System.out.println(i+" "+j);  
+                }  
+        }  
+}  
+}  
+
+Output:
+1 1
+1 2
+1 3
+2 1
+3 1
+3 2
+3 3
+Java Infinitive For Loop:-
+>If you use two semicolons ;; in the for loop, it will be infinitive for loop.
+
+Syntax:
+
+for(;;){  
+//code to be executed  
+}  
+Example:
+
+public class ForExample {  
+public static void main(String[] args) {  
+    for(;;){  
+        System.out.println("infinitive loop");  
+    }  
+}  
+}  
+
+Output:
+infinitive loop
+infinitive loop
+infinitive loop
+infinitive loop
+infinitive loop
+
+Java While Loop:-
+>The Java while loop is used to iterate a part of the program several times. If the number of iteration is not fixed, it is recommended to use while loop.
+
+Syntax:
+
+while(condition){  
+//code to be executed  
+}  
+
+Example:
+
+public class WhileExample {  
+public static void main(String[] args) {  
+    int i=1;  
+    while(i<=10){  
+        System.out.println(i);  
+    i++;  
+    }  
+}  
+}  
+Output:
+
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+
+Java Infinitive While Loop:-
+>If you pass true in the while loop, it will be infinitive while loop.
+
+Syntax:
+
+while(true){  
+//code to be executed  
+}  
+Example:
+
+public class WhileExample2 {  
+public static void main(String[] args) {  
+    while(true){  
+        System.out.println("infinitive while loop");  
+    }  
+}  
+}  
+Output:
+infinitive while loop
+infinitive while loop
+infinitive while loop
+infinitive while loop
+infinitive while loop
+ctrl+c
+
+Java do-while Loop:-
+>The Java do-while loop is used to iterate a part of the program several times. If the number of iteration is not fixed and you must have to execute the loop at least once, it is recommended to use do-while loop.
+
+>The Java do-while loop is executed at least once because condition is checked after loop body.
+
+Syntax:
+
+do{  
+//code to be executed  
+}while(condition);  
+flowchart of do while loop in java
+
+Example:
+
+public class DoWhileExample {  
+public static void main(String[] args) {  
+    int i=1;  
+    do{  
+        System.out.println(i);  
+    i++;  
+    }while(i<=10);  
+}  
+}  
+
+Output:
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+
+ 
+Java Infinitive do-while Loop:-
+>If you pass true in the do-while loop, it will be infinitive do-while loop.
+
+Syntax:
+
+do{  
+//code to be executed  
+}while(true);  
+Example:
+
+public class DoWhileExample2 {  
+public static void main(String[] args) {  
+    do{  
+        System.out.println("infinitive do while loop");  
+    }while(true);  
+}  
+}  
+
+Output:
+infinitive do while loop
+infinitive do while loop
+infinitive do while loop
+ctrl+c
+Now, you need to press ctrl+c to exit from the program.
+
+Java Break Statement:-
+>The Java break is used to break loop or switch statement. It breaks the current flow of the program at specified condition. In case of inner loop, it breaks only inner loop.
+
+Syntax:
+
+jump-statement;    
+break;   
+java break statement flowchart
+Java Break Statement with Loop
+
+Example:
+
+public class BreakExample {  
+public static void main(String[] args) {  
+    for(int i=1;i<=10;i++){  
+        if(i==5){  
+            break;  
+        }  
+        System.out.println(i);  
+    }  
+}  
+}  
+
+Output:
+1
+2
+3
+4
+
+ 
+Java Break Statement with Inner Loop:-
+>It breaks inner loop only if you use break statement inside the inner loop.
+
+Example:
+
+public class BreakExample2 {  
+public static void main(String[] args) {  
+            for(int i=1;i<=3;i++){    
+                    for(int j=1;j<=3;j++){    
+                        if(i==2&&j==2){    
+                            break;    
+                        }    
+                        System.out.println(i+" "+j);    
+                    }    
+            }    
+}  
+}  
+
+Output:
+1 1
+1 2
+1 3
+2 1
+3 1
+3 2
+3 3
+
+Java Break Statement with Switch:-
+>To understand the example of break with switch statement, please visit here: Java Switch Statement.
+
+Java Continue Statement:-
+>The Java continue statement is used to continue loop. It continues the current flow of the program and skips the remaining code at specified condition. In case of inner loop, it continues only inner loop.
+
+Syntax:
+
+jump-statement;    
+continue;   
+Java Continue Statement Example
+
+Example:
+
+public class ContinueExample {  
+public static void main(String[] args) {  
+    for(int i=1;i<=10;i++){  
+        if(i==5){  
+            continue;  
+        }  
+        System.out.println(i);  
+    }  
+}  
+}  
+
+Output:
+1
+2
+3
+4
+6
+7
+8
+9
+10
+
+ 
+Java Continue Statement with Inner Loop:-
+>It continues inner loop only if you use continue statement inside the inner loop.
+
+Example:
+
+public class ContinueExample2 {  
+public static void main(String[] args) {  
+            for(int i=1;i<=3;i++){    
+                    for(int j=1;j<=3;j++){    
+                        if(i==2&&j==2){    
+                            continue;    
+                        }    
+                        System.out.println(i+" "+j);    
+                    }    
+            }    
+}  
+}  
+Output:
+1 1
+1 2
+1 3
+2 1
+2 3
+3 1
+3 2
+3 3
+
+
+
+
+
+

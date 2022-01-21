@@ -1,0 +1,604 @@
+Java Applet:-
+>Applet is a special type of program that is embedded in the webpage to generate the dynamic content. It runs inside the browser and works at client side.
+
+Advantage of Applet:-
+>There are many advantages of applet. They are as follows:
+
+>It works at client side so less response time.
+
+Secured:-
+>It can be executed by browsers running under many plateforms, including Linux, Windows, Mac Os etc.
+
+Drawback of Applet:-
+>Plugin is required at client browser to execute applet.
+
+
+Lifecycle of Java Applet:-
+
+Applet is initialized.
+Applet is started.
+Applet is painted.
+Applet is stopped.
+Applet is destroyed.
+Lifecycle methods for Applet:
+
+>The java.applet.Applet class 4 life cycle methods and java.awt.Component class provides 1 life cycle methods for an applet.
+
+java.applet.Applet class:-
+
+>For creating any applet java.applet.Applet class must be inherited. It provides 4 life cycle methods of applet.
+
+public void init(): is used to initialized the Applet. It is invoked only once.
+public void start(): is invoked after the init() method or browser is maximized. It is used to start the Applet.
+public void stop(): is used to stop the Applet. It is invoked when Applet is stop or browser is minimized.
+public void destroy(): is used to destroy the Applet. It is invoked only once.
+java.awt.Component class
+
+The Component class provides 1 life cycle method of applet:-
+
+>public void paint(Graphics g): is used to paint the Applet. It provides Graphics class object that can be used for drawing oval, rectangle, arc etc.
+
+Who is responsible to manage the life cycle of an applet:-
+>Java Plug-in software.
+
+How to run an Applet?
+>There are two ways to run an applet
+
+>By html file.
+>By appletViewer tool (for testing purpose).
+
+Simple example of Applet by html file::-
+
+To execute the applet by html file, create an applet and compile it. After that create an html file and place the applet code in html file. Now click the html file.
+
+//First.java  
+import java.applet.Applet;  
+import java.awt.Graphics;  
+public class First extends Applet{  
+  
+public void paint(Graphics g){  
+g.drawString("welcome",150,150);  
+}  
+  
+}  
+
+Note: class must be public because its object is created by Java Plugin software that resides on the browser.
+
+myapplet.html
+
+<html>  
+<body>  
+<applet code="First.class" width="300" height="300">  
+</applet>  
+</body>  
+</html>  
+Simple example of Applet by appletviewer tool:
+
+To execute the applet by appletviewer tool, create an applet that contains applet tag in comment and compile it. After that run it by: appletviewer First.java. Now Html file is not required but it is for testing purpose only.
+
+//First.java  
+import java.applet.Applet;  
+import java.awt.Graphics;  
+public class First extends Applet{  
+  
+public void paint(Graphics g){  
+g.drawString("welcome to applet",150,150);  
+}  
+  
+}  
+/* 
+<applet code="First.class" width="300" height="300"> 
+</applet> 
+*/  
+To execute the applet by appletviewer tool, write in command prompt:
+
+c:\>javac First.java
+c:\>appletviewer First.java
+
+
+
+Displaying Graphics in Applet:-
+>java.awt.Graphics class provides many methods for graphics programming.
+
+Commonly used methods of Graphics class:
+
+>public abstract void drawString(String str, int x, int y): is used to draw the specified string.
+>public void drawRect(int x, int y, int width, int height): draws a rectangle with the specified width and height.
+>public abstract void fillRect(int x, int y, int width, int height): is used to fill rectangle with the default color and specified width and height.
+>public abstract void drawOval(int x, int y, int width, int height): is used to draw oval with the specified width and height.
+>public abstract void fillOval(int x, int y, int width, int height): is used to fill oval with the default color and specified width and height.
+>public abstract void drawLine(int x1, int y1, int x2, int y2): is used to draw line between the points(x1, y1) and (x2, y2).
+>public abstract boolean drawImage(Image img, int x, int y, ImageObserver observer): is used draw the specified image.
+>public abstract void drawArc(int x, int y, int width, int height, int startAngle, int arcAngle): is used draw a circular or elliptical arc.
+>public abstract void fillArc(int x, int y, int width, int height, int startAngle, int arcAngle): is used to fill a circular or elliptical arc.
+>public abstract void setColor(Color c): is used to set the graphics current color to the specified color.
+>public abstract void setFont(Font font): is used to set the graphics current font to the specified font.
+
+Example of Graphics in applet:
+
+import java.applet.Applet;  
+import java.awt.*;  
+  
+public class GraphicsDemo extends Applet{  
+  
+public void paint(Graphics g){  
+g.setColor(Color.red);  
+g.drawString("Welcome",50, 50);  
+g.drawLine(20,30,20,300);  
+g.drawRect(70,100,30,30);  
+g.fillRect(170,100,30,30);  
+g.drawOval(70,200,30,30);  
+  
+g.setColor(Color.pink);  
+g.fillOval(170,200,30,30);  
+g.drawArc(90,150,30,30,30,270);  
+g.fillArc(270,150,30,30,0,180);  
+  
+}  
+}  
+myapplet.html
+
+<html>  
+<body>  
+<applet code="GraphicsDemo.class" width="300" height="300">  
+</applet>  
+</body>  
+</html>
+
+
+Displaying Image in Applet:-
+>Applet is mostly used in games and animation. For this purpose image is required to be displayed. The java.awt.Graphics class provide a method drawImage() to display the image.
+
+Syntax of drawImage() method:
+
+>public abstract boolean drawImage(Image img, int x, int y, ImageObserver observer): is used draw the specified image.
+
+How to get the object of Image:
+
+>The java.applet.Applet class provides getImage() method that returns the object of Image. Syntax:
+>public Image getImage(URL u, String image){}  
+
+Other required methods of Applet class to display image:
+
+>public URL getDocumentBase(): is used to return the URL of the document in which applet is embedded.
+>public URL getCodeBase(): is used to return the base URL.
+
+Example of displaying image in applet:-
+
+import java.awt.*;  
+import java.applet.*;  
+  
+  
+public class DisplayImage extends Applet {  
+  
+  Image picture;  
+  
+  public void init() {  
+    picture = getImage(getDocumentBase(),"sonoo.jpg");  
+  }  
+    
+  public void paint(Graphics g) {  
+    g.drawImage(picture, 30,30, this);  
+  }  
+      
+  }  
+
+>In the above example, drawImage() method of Graphics class is used to display the image. The 4th argument of drawImage() method of is ImageObserver object. The Component class implements ImageObserver interface. So current class object would also be treated as ImageObserver because Applet class indirectly extends the Component class.
+myapplet.html
+
+<html>  
+<body>  
+<applet code="DisplayImage.class" width="300" height="300">  
+</applet>  
+</body>  
+</html>
+
+
+Animation in Applet:-
+
+Applet is mostly used in games and animation. For this purpose image is required to be moved.
+Example of animation in applet:
+
+import java.awt.*;  
+import java.applet.*;  
+public class AnimationExample extends Applet {  
+  
+  Image picture;  
+  
+  public void init() {  
+    picture =getImage(getDocumentBase(),"bike_1.gif");  
+  }  
+    
+  public void paint(Graphics g) {  
+    for(int i=0;i<500;i++){  
+      g.drawImage(picture, i,30, this);  
+  
+      try{Thread.sleep(100);}catch(Exception e){}  
+    }  
+  }  
+}  
+
+>In the above example, drawImage() method of Graphics class is used to display the image. The 4th argument of drawImage() method of is ImageObserver object. The Component class implements ImageObserver interface. So current class object would also be treated as ImageObserver because Applet class indirectly extends the Component class.
+
+myapplet.html
+
+<html>  
+<body>  
+<applet code="DisplayImage.class" width="300" height="300">  
+</applet>  
+</body>  
+</html>
+
+
+EventHandling in Applet;-
+
+>As we perform event handling in AWT or Swing, we can perform it in applet also. Let's see the simple example of event handling in applet that prints a message by click on the button.
+
+Example of EventHandling in applet:
+
+import java.applet.*;  
+import java.awt.*;  
+import java.awt.event.*;  
+public class EventApplet extends Applet implements ActionListener{  
+Button b;  
+TextField tf;  
+  
+public void init(){  
+tf=new TextField();  
+tf.setBounds(30,40,150,20);  
+  
+b=new Button("Click");  
+b.setBounds(80,150,60,50);  
+  
+add(b);add(tf);  
+b.addActionListener(this);  
+  
+setLayout(null);  
+}  
+  
+ public void actionPerformed(ActionEvent e){  
+  tf.setText("Welcome");  
+ }   
+}  
+In the above example, we have created all the controls in init() method because it is invoked only once.
+myapplet.html
+
+<html>  
+<body>  
+<applet code="EventApplet.class" width="300" height="300">  
+</applet>  
+</body>  
+</html>
+
+
+JApplet class in Applet:-
+>As we prefer Swing to AWT. Now we can use JApplet that can have all the controls of swing. The JApplet class extends the Applet class.
+
+Example of EventHandling in JApplet:
+
+import java.applet.*;  
+import javax.swing.*;  
+import java.awt.event.*;  
+public class EventJApplet extends JApplet implements ActionListener{  
+JButton b;  
+JTextField tf;  
+public void init(){  
+  
+tf=new JTextField();  
+tf.setBounds(30,40,150,20);  
+  
+b=new JButton("Click");  
+b.setBounds(80,150,70,40);  
+  
+add(b);add(tf);  
+b.addActionListener(this);  
+  
+setLayout(null);  
+}  
+  
+public void actionPerformed(ActionEvent e){  
+tf.setText("Welcome");  
+}  
+}  
+In the above example, we have created all the controls in init() method because it is invoked only once.
+myapplet.html
+
+<html>  
+<body>  
+<applet code="EventJApplet.class" width="300" height="300">  
+</applet>  
+</body>  
+</html>
+
+
+
+Painting in Applet:-
+>We can perform painting operation in applet by the mouseDragged() method of MouseMotionListener.
+
+Example of Painting in Applet:
+
+import java.awt.*;  
+import java.awt.event.*;  
+import java.applet.*;  
+public class MouseDrag extends Applet implements MouseMotionListener{  
+  
+public void init(){  
+addMouseMotionListener(this);  
+setBackground(Color.red);  
+}  
+  
+public void mouseDragged(MouseEvent me){  
+Graphics g=getGraphics();  
+g.setColor(Color.white);  
+g.fillOval(me.getX(),me.getY(),5,5);  
+}  
+public void mouseMoved(MouseEvent me){}  
+  
+}  
+
+In the above example, getX() and getY() method of MouseEvent is used to get the current x-axis and y-axis. The getGraphics() method of Component class returns the object of Graphics.
+myapplet.html
+
+<html>  
+<body>  
+<applet code="MouseDrag.class" width="300" height="300">  
+</applet>  
+</body>  
+</html>   
+
+
+
+Digital clock in Applet:-
+>Digital clock can be created by using the Calendar and SimpleDateFormat class. Let's see the simple example:
+
+Example of Digital clock in Applet:
+
+import java.applet.*;  
+import java.awt.*;  
+import java.util.*;  
+import java.text.*;  
+  
+public class DigitalClock extends Applet implements Runnable {  
+  
+   Thread t = null;  
+   int hours=0, minutes=0, seconds=0;  
+   String timeString = "";  
+  
+   public void init() {  
+      setBackground( Color.green);  
+   }  
+  
+   public void start() {  
+        t = new Thread( this );  
+        t.start();  
+   }  
+  
+    
+   public void run() {  
+      try {  
+         while (true) {  
+  
+            Calendar cal = Calendar.getInstance();  
+            hours = cal.get( Calendar.HOUR_OF_DAY );  
+            if ( hours > 12 ) hours -= 12;  
+            minutes = cal.get( Calendar.MINUTE );  
+            seconds = cal.get( Calendar.SECOND );  
+  
+            SimpleDateFormat formatter = new SimpleDateFormat("hh:mm:ss");  
+            Date date = cal.getTime();  
+            timeString = formatter.format( date );  
+  
+            repaint();  
+            t.sleep( 1000 );  // interval given in milliseconds  
+         }  
+      }  
+      catch (Exception e) { }  
+   }  
+  
+    
+  public void paint( Graphics g ) {  
+      g.setColor( Color.blue );  
+      g.drawString( timeString, 50, 50 );  
+   }  
+}  
+
+In the above example, getX() and getY() method of MouseEvent is used to get the current x-axis and y-axis. The getGraphics() method of Component class returns the object of Graphics.
+
+myapplet.html
+
+<html>  
+<body>  
+<applet code="DigitalClock.class" width="300" height="300">  
+</applet>  
+</body>  
+</html>
+
+
+Analog clock in Applet:-
+>Analog clock can be created by using the Math class. Let's see the simple example:
+
+Example of Analog clock in Applet:
+
+import java.applet.*;  
+import java.awt.*;  
+import java.util.*;  
+import java.text.*;  
+  
+public class MyClock extends Applet implements Runnable {  
+  
+   int width, height;  
+   Thread t = null;  
+   boolean threadSuspended;  
+   int hours=0, minutes=0, seconds=0;  
+   String timeString = "";  
+  
+   public void init() {  
+      width = getSize().width;  
+      height = getSize().height;  
+      setBackground( Color.black );  
+   }  
+  
+   public void start() {  
+      if ( t == null ) {  
+         t = new Thread( this );  
+         t.setPriority( Thread.MIN_PRIORITY );  
+         threadSuspended = false;  
+         t.start();  
+      }  
+      else {  
+         if ( threadSuspended ) {  
+            threadSuspended = false;  
+            synchronized( this ) {  
+               notify();  
+            }  
+         }  
+      }  
+   }  
+  
+   public void stop() {  
+      threadSuspended = true;  
+   }  
+  
+   public void run() {  
+      try {  
+         while (true) {  
+  
+            Calendar cal = Calendar.getInstance();  
+            hours = cal.get( Calendar.HOUR_OF_DAY );  
+            if ( hours > 12 ) hours -= 12;  
+            minutes = cal.get( Calendar.MINUTE );  
+            seconds = cal.get( Calendar.SECOND );  
+  
+            SimpleDateFormat formatter  
+               = new SimpleDateFormat( "hh:mm:ss", Locale.getDefault() );  
+            Date date = cal.getTime();  
+            timeString = formatter.format( date );  
+  
+            // Now the thread checks to see if it should suspend itself  
+            if ( threadSuspended ) {  
+               synchronized( this ) {  
+                  while ( threadSuspended ) {  
+                     wait();  
+                  }  
+               }  
+            }  
+            repaint();  
+            t.sleep( 1000 );  // interval specified in milliseconds  
+         }  
+      }  
+      catch (Exception e) { }  
+   }  
+  
+   void drawHand( double angle, int radius, Graphics g ) {  
+      angle -= 0.5 * Math.PI;  
+      int x = (int)( radius*Math.cos(angle) );  
+      int y = (int)( radius*Math.sin(angle) );  
+      g.drawLine( width/2, height/2, width/2 + x, height/2 + y );  
+   }  
+  
+   void drawWedge( double angle, int radius, Graphics g ) {  
+      angle -= 0.5 * Math.PI;  
+      int x = (int)( radius*Math.cos(angle) );  
+      int y = (int)( radius*Math.sin(angle) );  
+      angle += 2*Math.PI/3;  
+      int x2 = (int)( 5*Math.cos(angle) );  
+      int y2 = (int)( 5*Math.sin(angle) );  
+      angle += 2*Math.PI/3;  
+      int x3 = (int)( 5*Math.cos(angle) );  
+      int y3 = (int)( 5*Math.sin(angle) );  
+      g.drawLine( width/2+x2, height/2+y2, width/2 + x, height/2 + y );  
+      g.drawLine( width/2+x3, height/2+y3, width/2 + x, height/2 + y );  
+      g.drawLine( width/2+x2, height/2+y2, width/2 + x3, height/2 + y3 );  
+   }  
+  
+   public void paint( Graphics g ) {  
+      g.setColor( Color.gray );  
+      drawWedge( 2*Math.PI * hours / 12, width/5, g );  
+      drawWedge( 2*Math.PI * minutes / 60, width/3, g );  
+      drawHand( 2*Math.PI * seconds / 60, width/2, g );  
+      g.setColor( Color.white );  
+      g.drawString( timeString, 10, height-10 );  
+   }  
+}  
+myapplet.html
+
+<html>  
+<body>  
+<applet code="MyClock.class" width="300" height="300">  
+</applet>  
+</body>  
+</html>   
+
+
+Parameter in Applet:-
+>We can get any information from the HTML file as a parameter. For this purpose, Applet class provides a method named getParameter(). Syntax:
+
+public String getParameter(String parameterName)  
+Example of using parameter in Applet:
+
+import java.applet.Applet;  
+import java.awt.Graphics;  
+  
+public class UseParam extends Applet{  
+  
+public void paint(Graphics g){  
+String str=getParameter("msg");  
+g.drawString(str,50, 50);  
+}  
+  
+}
+  
+myapplet.html
+
+<html>  
+<body>  
+<applet code="UseParam.class" width="300" height="300">  
+<param name="msg" value="Welcome to applet">  
+</applet>  
+</body>  
+</html>
+
+
+Applet Communication:-
+>java.applet.AppletContext class provides the facility of communication between applets. We provide the name of applet through the HTML file. It provides getApplet() method that returns the object of Applet. Syntax:
+
+public Applet getApplet(String name){}  
+
+Example of Applet Communication
+
+import java.applet.*;  
+import java.awt.*;  
+import java.awt.event.*;  
+public class ContextApplet extends Applet implements ActionListener{  
+Button b;  
+  
+public void init(){  
+b=new Button("Click");  
+b.setBounds(50,50,60,50);  
+  
+add(b);  
+b.addActionListener(this);  
+}  
+  
+public void actionPerformed(ActionEvent e){  
+  
+AppletContext ctx=getAppletContext();  
+Applet a=ctx.getApplet("app2");  
+a.setBackground(Color.yellow);  
+}  
+}  
+myapplet.html
+
+<html>  
+<body>  
+<applet code="ContextApplet.class" width="150" height="150" name="app1">  
+</applet>  
+  
+<applet code="First.class" width="150" height="150" name="app2">  
+</applet>  
+</body>  
+</html>     
+
+
+
+         

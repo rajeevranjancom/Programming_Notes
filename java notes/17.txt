@@ -1,0 +1,705 @@
+Java JSpinner:-
+>The object of JSpinner class is a single line input field that allows the user to select a number or an object value from an ordered sequence.
+
+JSpinner class declaration:-
+>Let's see the declaration for javax.swing.JSpinner class.
+
+>public class JSpinner extends JComponent implements Accessible  
+
+Commonly used Contructors:
+
+Constructor:						Description:
+JSpinner()						It is used to construct a spinner with an Integer SpinnerNumberModel with initial value 0 and no minimum or 							maximum limits.
+JSpinner(SpinnerModel model)				It is used to construct a spinner for a given model.
+
+Commonly used Methods:
+
+Method							Description
+void addChangeListener(ChangeListener listener)		It is used to add a listener to the list that is notified each time a change to the model occurs.
+Object getValue()						It is used to return the current value of the model.
+
+Java JSpinner Example:-
+
+import javax.swing.*;    
+public class SpinnerExample {  
+    public static void main(String[] args) {    
+    JFrame f=new JFrame("Spinner Example");    
+    SpinnerModel value =  
+             new SpinnerNumberModel(5, //initial value  
+                0, //minimum value  
+                10, //maximum value  
+                1); //step  
+    JSpinner spinner = new JSpinner(value);   
+            spinner.setBounds(100,100,50,30);    
+            f.add(spinner);    
+            f.setSize(300,300);    
+            f.setLayout(null);    
+            f.setVisible(true);     
+}  
+}  
+
+
+ 
+Java JSpinner Example with ChangeListener:-
+
+imp
+ort javax.swing.*;    
+import javax.swing.event.*;  
+public class SpinnerExample {  
+    public static void main(String[] args) {    
+    JFrame f=new JFrame("Spinner Example");    
+    final JLabel label = new JLabel();            
+             label.setHorizontalAlignment(JLabel.CENTER);    
+             label.setSize(250,100);    
+    SpinnerModel value =  
+             new SpinnerNumberModel(5, //initial value  
+                0, //minimum value  
+                10, //maximum value  
+                1); //step  
+    JSpinner spinner = new JSpinner(value);   
+            spinner.setBounds(100,100,50,30);    
+            f.add(spinner);  f.add(label);  
+           f.setSize(300,300);    
+           f.setLayout(null);    
+           f.setVisible(true);     
+           spinner.addChangeListener(new ChangeListener() {  
+        public void stateChanged(ChangeEvent e) {  
+         label.setText("Value : " + ((JSpinner)e.getSource()).getValue());  
+        }  
+     });  
+}  
+}  
+
+
+
+Java JDialog:-
+>The JDialog control represents a top level window with a border and a title used to take some form of input from the user. It inherits the Dialog class.
+>Unlike JFrame, it doesn't have maximize and minimize buttons.
+
+JDialog class declaration:-
+>Let's see the declaration for javax.swing.JDialog class.
+
+public class JDialog extends Dialog implements WindowConstants, Accessible, RootPaneContainer  
+
+Commonly used Constructors:
+
+Constructor							Description
+JDialog()								It is used to create a modeless dialog without a title and without a specified Frame owner.
+JDialog(Frame owner)						It is used to create a modeless dialog with specified Frame as its owner and an empty title.
+JDialog(Frame owner, String title, boolean modal)			It is used to create a dialog with the specified title, owner Frame and modality.
+
+ 
+Java JDialog Example:-
+
+import javax.swing.*;  
+import java.awt.*;  
+import java.awt.event.*;  
+public class DialogExample {  
+    private static JDialog d;  
+    DialogExample() {  
+        JFrame f= new JFrame();  
+        d = new JDialog(f , "Dialog Example", true);  
+        d.setLayout( new FlowLayout() );  
+        JButton b = new JButton ("OK");  
+        b.addActionListener ( new ActionListener()  
+        {  
+            public void actionPerformed( ActionEvent e )  
+            {  
+                DialogExample.d.setVisible(false);  
+            }  
+        });  
+        d.add( new JLabel ("Click button to continue."));  
+        d.add(b);   
+        d.setSize(300,300);    
+        d.setVisible(true);  
+    }  
+    public static void main(String args[])  
+    {  
+        new DialogExample();  
+    }  
+}  
+
+
+Java JPanel:-
+>The JPanel is a simplest container class. It provides space in which an application can attach any other component. It inherits the JComponents class.
+>It doesn't have title bar.
+
+JPanel class declaration:-
+
+>public class JPanel extends JComponent implements Accessible  
+
+Commonly used Constructors:
+
+Constructor:-						Description:-
+JPanel()							It is used to create a new JPanel with a double buffer and a flow layout.
+JPanel(boolean isDoubleBuffered)				It is used to create a new JPanel with FlowLayout and the specified buffering strategy.
+JPanel(LayoutManager layout)				It is used to create a new JPanel with the specified layout manager.
+
+Java JPanel Example:-
+
+import java.awt.*;  
+import javax.swing.*;  
+public class PanelExample {  
+     PanelExample()  
+        {  
+        JFrame f= new JFrame("Panel Example");    
+        JPanel panel=new JPanel();  
+        panel.setBounds(40,80,200,200);    
+        panel.setBackground(Color.gray);  
+        JButton b1=new JButton("Button 1");     
+        b1.setBounds(50,100,80,30);    
+        b1.setBackground(Color.yellow);   
+        JButton b2=new JButton("Button 2");   
+        b2.setBounds(100,100,80,30);    
+        b2.setBackground(Color.green);   
+        panel.add(b1); panel.add(b2);  
+        f.add(panel);  
+                f.setSize(400,400);    
+                f.setLayout(null);    
+                f.setVisible(true);    
+        }  
+        public static void main(String args[])  
+        {  
+        new PanelExample();  
+        }  
+    }  
+
+
+
+Java JFileChooser:-
+>The object of JFileChooser class represents a dialog window from which the user can select file. It inherits JComponent class.
+
+JFileChooser class declaration:-
+>Let's see the declaration for javax.swing.JFileChooser class.
+
+public class JFileChooser extends JComponent implements Accessible  
+
+Commonly used Constructors:
+
+Constructor:					Description:
+JFileChooser()					Constructs a JFileChooser pointing to the user's default directory.
+JFileChooser(File currentDirectory)			Constructs a JFileChooser using the given File as the path.
+JFileChooser(String currentDirectoryPath)		Constructs a JFileChooser using the given path.
+
+ 
+Java JFileChooser Example:-
+
+import javax.swing.*;    
+import java.awt.event.*;    
+import java.io.*;    
+public class FileChooserExample extends JFrame implements ActionListener{    
+JMenuBar mb;    
+JMenu file;    
+JMenuItem open;    
+JTextArea ta;    
+FileChooserExample(){    
+open=new JMenuItem("Open File");    
+open.addActionListener(this);            
+file=new JMenu("File");    
+file.add(open);             
+mb=new JMenuBar();    
+mb.setBounds(0,0,800,20);    
+mb.add(file);              
+ta=new JTextArea(800,800);    
+ta.setBounds(0,20,800,800);              
+add(mb);    
+add(ta);              
+}    
+public void actionPerformed(ActionEvent e) {    
+if(e.getSource()==open){    
+    JFileChooser fc=new JFileChooser();    
+    int i=fc.showOpenDialog(this);    
+    if(i==JFileChooser.APPROVE_OPTION){    
+        File f=fc.getSelectedFile();    
+        String filepath=f.getPath();    
+        try{  
+        BufferedReader br=new BufferedReader(new FileReader(filepath));    
+        String s1="",s2="";                         
+        while((s1=br.readLine())!=null){    
+        s2+=s1+"\n";    
+        }    
+        ta.setText(s2);    
+        br.close();    
+        }catch (Exception ex) {ex.printStackTrace();  }                 
+    }    
+}    
+}          
+public static void main(String[] args) {    
+    FileChooserExample om=new FileChooserExample();    
+             om.setSize(500,500);    
+             om.setLayout(null);    
+             om.setVisible(true);    
+             om.setDefaultCloseOperation(EXIT_ON_CLOSE);    
+}    
+}  
+
+
+
+
+Java JLayeredPane:-
+>The JLayeredPane class is used to add depth to swing container. It is used to provide a third dimension for positioning component and divide the depth-range into several different layers.
+
+JLayeredPane class declaration:-
+
+public class JLayeredPane extends JComponent implements Accessible  
+
+Commonly used Constructors:-
+
+Constructor:					Description:
+JLayeredPane					It is used to create a new JLayeredPane
+
+Commonly used Methods:-
+
+Method:						Description:
+int getIndexOf(Component c)			It is used to return the index of the specified Component.
+int getLayer(Component c)				It is used to return the layer attribute for the specified Component.
+int getPosition(Component c)			It is used to return the relative position of the component within its layer.
+
+ 
+Java JLayeredPane Example:-
+
+import javax.swing.*;  
+import java.awt.*;  
+public class LayeredPaneExample extends JFrame {  
+  public LayeredPaneExample() {  
+    super("LayeredPane Example");  
+    setSize(200, 200);  
+    JLayeredPane pane = getLayeredPane();  
+    //creating buttons  
+    JButton top = new JButton();  
+    top.setBackground(Color.white);  
+    top.setBounds(20, 20, 50, 50);  
+    JButton middle = new JButton();  
+    middle.setBackground(Color.red);  
+    middle.setBounds(40, 40, 50, 50);  
+    JButton bottom = new JButton();  
+    bottom.setBackground(Color.cyan);  
+    bottom.setBounds(60, 60, 50, 50);  
+    //adding buttons on pane  
+    pane.add(bottom, new Integer(1));  
+    pane.add(middle, new Integer(2));  
+    pane.add(top, new Integer(3));  
+  }  
+  public static void main(String[] args) {  
+      LayeredPaneExample panel = new  LayeredPaneExample();  
+      panel.setVisible(true);  
+  }  
+}  
+
+
+
+How to use ToolTip in Java Swing:-
+>You can create a tool tip for any JComponent with setToolTipText() method. This method is used to set up a tool tip for the component.
+
+>For example, to add tool tip to PasswordField, you need to add only one line of code:
+
+field.setToolTipText("Enter your Password");  
+
+Simple ToolTip Example:-
+
+import javax.swing.*;    
+public class ToolTipExample {  
+    public static void main(String[] args) {    
+     JFrame f=new JFrame("Password Field Example");    
+     //Creating PasswordField and label  
+     JPasswordField value = new JPasswordField();   
+     value.setBounds(100,100,100,30);    
+     value.setToolTipText("Enter your Password");  
+     JLabel l1=new JLabel("Password:");    
+     l1.setBounds(20,100, 80,30);    
+     //Adding components to frame  
+     f.add(value);  f.add(l1);  
+     f.setSize(300,300);    
+     f.setLayout(null);    
+     f.setVisible(true);      
+}  
+}  
+
+
+How to change TitleBar icon in Java AWT and Swing:-
+>The setIconImage() method of Frame class is used to change the icon of Frame or Window. It changes the icon which is displayed at the left side of Frame or Window.
+
+>The Toolkit class is used to get instance of Image class in AWT and Swing.
+
+>Toolkit class is the abstract super class of every implementation in the Abstract Window Toolkit(AWT). Subclasses of Toolkit are used to bind various components. It inherits Object class.
+
+Example to change TitleBar icon in Java AWT:-
+
+import java.awt.*;     
+class IconExample {     
+IconExample(){     
+Frame f=new Frame();     
+Image icon = Toolkit.getDefaultToolkit().getImage("D:\\icon.png");    
+f.setIconImage(icon);    
+f.setLayout(null);     
+f.setSize(400,400);     
+f.setVisible(true);     
+}     
+public static void main(String args[]){     
+new IconExample();     
+}     
+}    
+
+
+ 
+Example to change TitleBar icon in Java Swing:-
+
+import javax.swing.*;  
+import java.awt.*;  
+class IconExample {   
+IconExample(){   
+JFrame f=new JFrame();   
+Image icon = Toolkit.getDefaultToolkit().getImage("D:\\icon.png");  
+f.setIconImage(icon);  
+f.setLayout(null);   
+f.setSize(200,200);   
+f.setVisible(true);   
+}   
+public static void main(String args[]){   
+new ToolkitExample();   
+}   
+}  
+
+
+
+How to make an executable jar file in Java:-
+>The jar (Java Archive) tool of JDK provides the facility to create the executable jar file. An executable jar file calls the main method of the class if you double click it.
+>To create the executable jar file, you need to create .mf file, also known as manifest file.
+
+
+Creating manifest file:-
+>To create manifest file, you need to write Main-Class, then colon, then space, then classname then enter. For example:
+
+myfile.mf
+Main-Class: First  
+
+>As you can see, the mf file starts with Main-Class colon space class name. Here, class name is First.
+
+>In mf file, new line is must after the class name.
+
+
+ 
+>Creating executable jar file using jar tool
+
+>The jar tool provides many switches, some of them are as follows:
+
+-c creates new archive file
+-v generates verbose output. It displays the included or extracted resource on the standard output.
+-m includes manifest information from the given mf file.
+-f specifies the archive file name
+-x extracts files from the archive file
+Now, let's write the code to generated the executable jar using mf file.
+
+>You need to write jar then swiches then mf_file then jar_file then .classfile as given below:
+
+jar -cvmf myfile.mf myjar.jar First.class  
+It is shown in the image given below:
+
+creating executable jar:-
+
+>Now it will create the executable jar file. If you double click on it, it will call the main method of the First class.
+>We are assuming that you have created any window based application using AWT or SWING. If you don't, you can use the code given below:
+
+First.java
+
+import javax.swing.*;    
+public class First{    
+First(){    
+JFrame f=new JFrame();    
+                    
+JButton b=new JButton("click");    
+b.setBounds(130,100,100, 40);    
+        
+f.add(b);    
+            
+f.setSize(300,400);    
+f.setLayout(null);    
+f.setVisible(true);    
+            
+f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);    
+}    
+public static void main(String[] args) {    
+    new First();    
+}    
+}    
+
+Another ex:-
+
+import javax.swing.*;  
+import java.awt.*;  
+import java.text.*;  
+import java.util.*;  
+public class DigitalWatch implements Runnable{  
+JFrame f;  
+Thread t=null;  
+int hours=0, minutes=0, seconds=0;  
+String timeString = "";  
+JButton b;  
+  
+DigitalWatch(){  
+    f=new JFrame();  
+      
+    t = new Thread(this);  
+        t.start();  
+      
+    b=new JButton();  
+        b.setBounds(100,100,100,50);  
+      
+    f.add(b);  
+    f.setSize(300,400);  
+    f.setLayout(null);  
+    f.setVisible(true);  
+}  
+  
+ public void run() {  
+      try {  
+         while (true) {  
+  
+            Calendar cal = Calendar.getInstance();  
+            hours = cal.get( Calendar.HOUR_OF_DAY );  
+            if ( hours > 12 ) hours -= 12;  
+            minutes = cal.get( Calendar.MINUTE );  
+            seconds = cal.get( Calendar.SECOND );  
+  
+            SimpleDateFormat formatter = new SimpleDateFormat("hh:mm:ss");  
+            Date date = cal.getTime();  
+            timeString = formatter.format( date );  
+  
+            printTime();  
+  
+            t.sleep( 1000 );  // interval given in milliseconds  
+         }  
+      }  
+      catch (Exception e) { }  
+ }  
+  
+public void printTime(){  
+b.setText(timeString);  
+}  
+  
+public static void main(String[] args) {  
+    new DigitalWatch();  
+          
+  
+}  
+}  
+
+
+
+
+Displaying graphics in swing:-
+>java.awt.Graphics class provides many methods for graphics programming.
+
+Commonly used methods of Graphics class:
+
+>public abstract void drawString(String str, int x, int y): is used to draw the specified string.
+>public void drawRect(int x, int y, int width, int height): draws a rectangle with the specified width and height.
+>public abstract void fillRect(int x, int y, int width, int height): is used to fill rectangle with the default color and specified width and height.
+>public abstract void drawOval(int x, int y, int width, int height): is used to draw oval with the specified width and height.
+>public abstract void fillOval(int x, int y, int width, int height): is used to fill oval with the default color and specified width and height.
+>public abstract void drawLine(int x1, int y1, int x2, int y2): is used to draw line between the points(x1, y1) and (x2, y2).
+>public abstract boolean drawImage(Image img, int x, int y, ImageObserver observer): is used draw the specified image.
+>public abstract void drawArc(int x, int y, int width, int height, int startAngle, int arcAngle): is used draw a circular or elliptical arc.
+>public abstract void fillArc(int x, int y, int width, int height, int startAngle, int arcAngle): is used to fill a circular or elliptical arc.
+>public abstract void setColor(Color c): is used to set the graphics current color to the specified color.
+>public abstract void setFont(Font font): is used to set the graphics current font to the specified font.
+
+Example of displaying graphics in swing:-
+
+
+import java.awt.*;  
+import javax.swing.JFrame;  
+  
+public class DisplayGraphics extends Canvas{  
+      
+    public void paint(Graphics g) {  
+        g.drawString("Hello",40,40);  
+        setBackground(Color.WHITE);  
+        g.fillRect(130, 30,100, 80);  
+        g.drawOval(30,130,50, 60);  
+        setForeground(Color.RED);  
+        g.fillOval(130,130,50, 60);  
+        g.drawArc(30, 200, 40,50,90,60);  
+        g.fillArc(30, 130, 40,50,180,40);  
+          
+    }  
+        public static void main(String[] args) {  
+        DisplayGraphics m=new DisplayGraphics();  
+        JFrame f=new JFrame();  
+        f.add(m);  
+        f.setSize(400,400);  
+        //f.setLayout(null);  
+        f.setVisible(true);  
+    }  
+  
+}
+
+
+Displaying image in swing:-
+>For displaying image, we can use the method drawImage() of Graphics class.
+
+Syntax of drawImage() method:
+
+>public abstract boolean drawImage(Image img, int x, int y, ImageObserver observer): is used draw the specified image.
+
+import java.awt.*;  
+import javax.swing.JFrame;  
+  
+public class MyCanvas extends Canvas{  
+      
+    public void paint(Graphics g) {  
+  
+        Toolkit t=Toolkit.getDefaultToolkit();  
+        Image i=t.getImage("p3.gif");  
+        g.drawImage(i, 120,100,this);  
+          
+    }  
+        public static void main(String[] args) {  
+        MyCanvas m=new MyCanvas();  
+        JFrame f=new JFrame();  
+        f.add(m);  
+        f.setSize(400,400);  
+        f.setVisible(true);  
+    }  
+  
+}
+
+
+Example of creating Edit menu for Notepad:-
+
+import javax.swing.*;  
+import java.awt.event.*;  
+  
+public class Notepad implements ActionListener{  
+JFrame f;  
+JMenuBar mb;  
+JMenu file,edit,help;  
+JMenuItem cut,copy,paste,selectAll;  
+JTextArea ta;  
+      
+Notepad(){  
+f=new JFrame();  
+  
+cut=new JMenuItem("cut");  
+copy=new JMenuItem("copy");  
+paste=new JMenuItem("paste");  
+selectAll=new JMenuItem("selectAll");  
+  
+cut.addActionListener(this);  
+copy.addActionListener(this);  
+paste.addActionListener(this);  
+selectAll.addActionListener(this);  
+  
+mb=new JMenuBar();  
+mb.setBounds(5,5,400,40);  
+  
+file=new JMenu("File");  
+edit=new JMenu("Edit");  
+help=new JMenu("Help");  
+  
+edit.add(cut);edit.add(copy);edit.add(paste);edit.add(selectAll);  
+  
+  
+mb.add(file);mb.add(edit);mb.add(help);  
+  
+ta=new JTextArea();  
+ta.setBounds(5,30,460,460);  
+  
+f.add(mb);f.add(ta);  
+  
+f.setLayout(null);  
+f.setSize(500,500);  
+f.setVisible(true);  
+}  
+  
+public void actionPerformed(ActionEvent e) {  
+if(e.getSource()==cut)  
+ta.cut();  
+if(e.getSource()==paste)  
+ta.paste();  
+if(e.getSource()==copy)  
+ta.copy();  
+if(e.getSource()==selectAll)  
+ta.selectAll();  
+}  
+  
+public static void main(String[] args) {  
+    new Notepad();  
+}  
+}
+
+
+Example of open dialog box:
+
+import java.awt.*;  
+import javax.swing.*;  
+import java.awt.event.*;  
+import java.io.*;  
+  
+public class OpenMenu extends JFrame implements ActionListener{  
+JMenuBar mb;  
+JMenu file;  
+JMenuItem open;  
+JTextArea ta;  
+OpenMenu(){  
+open=new JMenuItem("Open File");  
+open.addActionListener(this);  
+          
+file=new JMenu("File");  
+file.add(open);  
+          
+mb=new JMenuBar();  
+mb.setBounds(0,0,800,20);  
+mb.add(file);  
+          
+ta=new JTextArea(800,800);  
+ta.setBounds(0,20,800,800);  
+          
+add(mb);  
+add(ta);  
+          
+}  
+public void actionPerformed(ActionEvent e) {  
+if(e.getSource()==open){  
+openFile();  
+}  
+}  
+      
+void openFile(){  
+JFileChooser fc=new JFileChooser();  
+int i=fc.showOpenDialog(this);  
+          
+if(i==JFileChooser.APPROVE_OPTION){  
+File f=fc.getSelectedFile();  
+String filepath=f.getPath();  
+              
+displayContent(filepath);  
+              
+}  
+          
+}  
+  
+void displayContent(String fpath){  
+try{  
+BufferedReader br=new BufferedReader(new FileReader(fpath));  
+String s1="",s2="";  
+              
+while((s1=br.readLine())!=null){  
+s2+=s1+"\n";  
+}  
+ta.setText(s2);  
+br.close();  
+}catch (Exception e) {e.printStackTrace();  }  
+}  
+  
+public static void main(String[] args) {  
+    OpenMenu om=new OpenMenu();  
+    om.setSize(800,800);  
+    om.setLayout(null);  
+    om.setVisible(true);  
+    om.setDefaultCloseOperation(EXIT_ON_CLOSE);  
+}  
+}
+
+
+        

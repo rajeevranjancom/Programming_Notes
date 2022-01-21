@@ -1,0 +1,450 @@
+Java JPopupMenu:-
+>PopupMenu can be dynamically popped up at specific position within a component. It inherits the JComponent class.
+
+JPopupMenu class declaration:-
+>Let's see the declaration for javax.swing.JPopupMenu class.
+
+public class JPopupMenu extends JComponent implements Accessible, MenuElement  
+
+Commonly used Constructors:
+
+Constructor				Description
+JPopupMenu()				Constructs a JPopupMenu without an "invoker".
+JPopupMenu(String label)			Constructs a JPopupMenu with the specified title.
+
+Java JPopupMenu Example:-
+
+import javax.swing.*;  
+import java.awt.event.*;  
+class PopupMenuExample  
+{  
+     PopupMenuExample(){  
+         final JFrame f= new JFrame("PopupMenu Example");  
+         final JPopupMenu popupmenu = new JPopupMenu("Edit");   
+         JMenuItem cut = new JMenuItem("Cut");  
+         JMenuItem copy = new JMenuItem("Copy");  
+         JMenuItem paste = new JMenuItem("Paste");  
+         popupmenu.add(cut); popupmenu.add(copy); popupmenu.add(paste);        
+         f.addMouseListener(new MouseAdapter() {  
+            public void mouseClicked(MouseEvent e) {              
+                popupmenu.show(f , e.getX(), e.getY());  
+            }                 
+         });  
+         f.add(popupmenu);   
+         f.setSize(300,300);  
+         f.setLayout(null);  
+         f.setVisible(true);  
+     }  
+public static void main(String args[])  
+{  
+        new PopupMenuExample();  
+}}  
+
+
+ 
+Java JPopupMenu Example with MouseListener and ActionListener:-
+
+import javax.swing.*;  
+import java.awt.event.*;  
+class PopupMenuExample   
+{  
+     PopupMenuExample(){  
+         final JFrame f= new JFrame("PopupMenu Example");  
+         final JLabel label = new JLabel();          
+         label.setHorizontalAlignment(JLabel.CENTER);  
+         label.setSize(400,100);  
+         final JPopupMenu popupmenu = new JPopupMenu("Edit");   
+         JMenuItem cut = new JMenuItem("Cut");  
+         JMenuItem copy = new JMenuItem("Copy");  
+         JMenuItem paste = new JMenuItem("Paste");  
+         popupmenu.add(cut); popupmenu.add(copy); popupmenu.add(paste);        
+         f.addMouseListener(new MouseAdapter() {  
+            public void mouseClicked(MouseEvent e) {              
+                popupmenu.show(f , e.getX(), e.getY());  
+            }                 
+         });  
+        cut.addActionListener(new ActionListener(){  
+         public void actionPerformed(ActionEvent e) {              
+             label.setText("cut MenuItem clicked.");  
+         }  
+        });  
+        copy.addActionListener(new ActionListener(){  
+            public void actionPerformed(ActionEvent e) {              
+                label.setText("copy MenuItem clicked.");  
+            }  
+           });  
+        paste.addActionListener(new ActionListener(){  
+            public void actionPerformed(ActionEvent e) {              
+                label.setText("paste MenuItem clicked.");  
+            }  
+           });  
+         f.add(label); f.add(popupmenu);   
+         f.setSize(400,400);  
+         f.setLayout(null);  
+         f.setVisible(true);  
+     }  
+public static void main(String args[])  
+{  
+        new PopupMenuExample();  
+}  
+}  
+
+
+Java JSeparator:-
+>The object of JSeparator class is used to provide a general purpose component for implementing divider lines. It is used to draw a line to separate widgets in a Layout. It inherits JComponent class.
+
+JSeparator class declaration:-
+
+public class JSeparator extends JComponent implements SwingConstants, Accessible  
+
+>Commonly used Constructors of JSeparator:-
+
+Constructor						Description
+JSeparator()						Creates a new horizontal separator.
+JSeparator(int orientation)					Creates a new separator with the specified horizontal or vertical orientation.
+
+Commonly used Methods of JSeparator:-
+
+Method							Description
+void setOrientation(int orientation)				It is used to set the orientation of the separator.
+int getOrientation()					It is used to return the orientation of the separator.
+
+Java JSeparator Example 1:-
+
+import javax.swing.*;    
+class SeparatorExample    
+{    
+          JMenu menu, submenu;    
+          JMenuItem i1, i2, i3, i4, i5;    
+          SeparatorExample()  {    
+          JFrame f= new JFrame("Separator Example");    
+          JMenuBar mb=new JMenuBar();    
+          menu=new JMenu("Menu");    
+          i1=new JMenuItem("Item 1");    
+          i2=new JMenuItem("Item 2");       
+          menu.add(i1);  
+          menu.addSeparator();  
+          menu.add(i2);  
+          mb.add(menu);    
+          f.setJMenuBar(mb);    
+          f.setSize(400,400);    
+          f.setLayout(null);    
+          f.setVisible(true);    
+}    
+public static void main(String args[])    
+{    
+new SeparatorExample();    
+}}    
+
+
+ 
+Java JSeparator Example 2:-
+
+import javax.swing.*;    
+import java.awt.*;  
+public class SeparatorExample    
+{    
+    public static void main(String args[]) {  
+        JFrame f = new JFrame("Separator Example");      
+        f.setLayout(new GridLayout(0, 1));  
+        JLabel l1 = new JLabel("Above Separator");  
+        f.add(l1);  
+        JSeparator sep = new JSeparator();  
+        f.add(sep);  
+        JLabel l2 = new JLabel("Below Separator");  
+        f.add(l2);  
+        f.setSize(400, 100);  
+        f.setVisible(true);  
+      }  
+    }    
+
+
+
+Java JProgressBar:-
+>The JProgressBar class is used to display the progress of the task. It inherits JComponent class.
+
+JProgressBar class declaration:-
+>Let's see the declaration for javax.swing.JProgressBar class.
+>public class JProgressBar extends JComponent implements SwingConstants, Accessible  
+
+Commonly used Constructors:
+
+Constructor						Description
+JProgressBar()						It is used to create a horizontal progress bar but no string text.
+JProgressBar(int min, int max)				It is used to create a horizontal progress bar with the specified minimum and maximum value.
+JProgressBar(int orient)					It is used to create a progress bar with the specified orientation, it can be either Vertical or Horizontal by using 							SwingConstants.VERTICAL and SwingConstants.HORIZONTAL constants.
+JProgressBar(int orient, int min, int max)			It is used to create a progress bar with the specified orientation, minimum and maximum value.
+
+Commonly used Methods:-
+
+Method:							Description:
+void setStringPainted(boolean b)				It is used to determine whether string should be displayed.
+void setString(String s)					It is used to set value to the progress string.
+void setOrientation(int orientation)				It is used to set the orientation, it may be either vertical or horizontal by using SwingConstants.VERTICAL and 							SwingConstants.HORIZONTAL constants.
+void setValue(int value)					It is used to set the current value on the progress bar.
+
+ 
+Java JProgressBar Example:-
+
+import javax.swing.*;    
+public class ProgressBarExample extends JFrame{    
+JProgressBar jb;    
+int i=0,num=0;     
+ProgressBarExample(){    
+jb=new JProgressBar(0,2000);    
+jb.setBounds(40,40,160,30);         
+jb.setValue(0);    
+jb.setStringPainted(true);    
+add(jb);    
+setSize(250,150);    
+setLayout(null);    
+}    
+public void iterate(){    
+while(i<=2000){    
+  jb.setValue(i);    
+  i=i+20;    
+  try{Thread.sleep(150);}catch(Exception e){}    
+}    
+}    
+public static void main(String[] args) {    
+    ProgressBarExample m=new ProgressBarExample();    
+    m.setVisible(true);    
+    m.iterate();    
+}    
+}    
+
+
+Java JTree:-
+>The JTree class is used to display the tree structured data or hierarchical data. JTree is a complex component. It has a 'root node' at the top most which is a parent for all nodes in the tree. It inherits JComponent class.
+
+JTree class declaration:-
+>Let's see the declaration for javax.swing.JTree class.
+
+>public class JTree extends JComponent implements Scrollable, Accessible  
+
+Commonly used Constructors:
+
+Constructor:					Description:
+JTree()						Creates a JTree with a sample model.
+JTree(Object[] value)				Creates a JTree with every element of the specified array as the child of a new root node.
+JTree(TreeNode root)				Creates a JTree with the specified TreeNode as its root, which displays the root node.
+
+Java JTree Example:-
+
+import javax.swing.*;  
+import javax.swing.tree.DefaultMutableTreeNode;  
+public class TreeExample {  
+JFrame f;  
+TreeExample(){  
+    f=new JFrame();   
+    DefaultMutableTreeNode style=new DefaultMutableTreeNode("Style");  
+    DefaultMutableTreeNode color=new DefaultMutableTreeNode("color");  
+    DefaultMutableTreeNode font=new DefaultMutableTreeNode("font");  
+    style.add(color);  
+    style.add(font);  
+    DefaultMutableTreeNode red=new DefaultMutableTreeNode("red");  
+    DefaultMutableTreeNode blue=new DefaultMutableTreeNode("blue");  
+    DefaultMutableTreeNode black=new DefaultMutableTreeNode("black");  
+    DefaultMutableTreeNode green=new DefaultMutableTreeNode("green");  
+    color.add(red); color.add(blue); color.add(black); color.add(green);      
+    JTree jt=new JTree(style);  
+    f.add(jt);  
+    f.setSize(200,200);  
+    f.setVisible(true);  
+}  
+public static void main(String[] args) {  
+    new TreeExample();  
+}}  
+
+
+
+Java JColorChooser:-
+>The JColorChooser class is used to create a color chooser dialog box so that user can select any color. It inherits JComponent class.
+
+JColorChooser class declaration:-
+>Let's see the declaration for javax.swing.JColorChooser class.
+
+public class JColorChooser extends JComponent implements Accessible  
+
+Commonly used Constructors:-
+
+Constructor:					Description:
+JColorChooser()					It is used to create a color chooser panel with white color initially.
+JColorChooser(color initialcolor)			It is used to create a color chooser panel with the specified color initially.
+
+Commonly used Methods:-
+
+Method:								Description:
+void addChooserPanel(AbstractColorChooserPanel panel)		It is used to add a color chooser panel to the color chooser.
+static Color showDialog(Component c, String title, Color initialColor)	It is used to show the color chooser dialog box.
+
+ 
+Java JColorChooser Example:
+
+import java.awt.event.*;    
+import java.awt.*;    
+import javax.swing.*;     
+public class ColorChooserExample extends JFrame implements ActionListener {    
+JButton b;    
+Container c;    
+ColorChooserExample(){    
+    c=getContentPane();    
+    c.setLayout(new FlowLayout());         
+    b=new JButton("color");    
+    b.addActionListener(this);         
+    c.add(b);    
+}    
+public void actionPerformed(ActionEvent e) {    
+Color initialcolor=Color.RED;    
+Color color=JColorChooser.showDialog(this,"Select a color",initialcolor);    
+c.setBackground(color);    
+}    
+    
+public static void main(String[] args) {    
+    ColorChooserExample ch=new ColorChooserExample();    
+    ch.setSize(400,400);    
+    ch.setVisible(true);    
+    ch.setDefaultCloseOperation(EXIT_ON_CLOSE);    
+}    
+}    
+
+
+
+Java JColorChooser Example with ActionListener:-
+
+import javax.swing.*;  
+import java.awt.*;  
+import java.awt.event.*;  
+public class ColorChooserExample extends JFrame implements ActionListener{  
+JFrame f;  
+JButton b;  
+JTextArea ta;  
+ColorChooserExample(){  
+    f=new JFrame("Color Chooser Example.");  
+    b=new JButton("Pad Color");  
+    b.setBounds(200,250,100,30);  
+    ta=new JTextArea();  
+    ta.setBounds(10,10,300,200);  
+    b.addActionListener(this);  
+    f.add(b);f.add(ta);  
+    f.setLayout(null);  
+    f.setSize(400,400);  
+    f.setVisible(true);  
+}  
+public void actionPerformed(ActionEvent e){  
+    Color c=JColorChooser.showDialog(this,"Choose",Color.CYAN);  
+    ta.setBackground(c);  
+}  
+public static void main(String[] args) {  
+    new ColorChooserExample();  
+}  
+}
+
+
+
+Java JTabbedPane:-
+>The JTabbedPane class is used to switch between a group of components by clicking on a tab with a given title or icon. It inherits JComponent class.
+
+JTabbedPane class declaration:-
+>Let's see the declaration for javax.swing.JTabbedPane class.
+
+>public class JTabbedPane extends JComponent implements Serializable, Accessible, SwingConstants  
+
+Commonly used Constructors:
+
+Constructor:						Description:
+JTabbedPane()						Creates an empty TabbedPane with a default tab placement of JTabbedPane.Top.
+JTabbedPane(int tabPlacement)				Creates an empty TabbedPane with a specified tab placement.
+JTabbedPane(int tabPlacement, int tabLayoutPolicy)		Creates an empty TabbedPane with a specified tab placement and tab layout policy.
+
+Java JTabbedPane Example:-
+
+import javax.swing.*;  
+public class TabbedPaneExample {  
+JFrame f;  
+TabbedPaneExample(){  
+    f=new JFrame();  
+    JTextArea ta=new JTextArea(200,200);  
+    JPanel p1=new JPanel();  
+    p1.add(ta);  
+    JPanel p2=new JPanel();  
+    JPanel p3=new JPanel();  
+    JTabbedPane tp=new JTabbedPane();  
+    tp.setBounds(50,50,200,200);  
+    tp.add("main",p1);  
+    tp.add("visit",p2);  
+    tp.add("help",p3);    
+    f.add(tp);  
+    f.setSize(400,400);  
+    f.setLayout(null);  
+    f.setVisible(true);  
+}  
+public static void main(String[] args) {  
+    new TabbedPaneExample();  
+}} 
+
+
+
+Java JSlider:-
+>The Java JSlider class is used to create the slider. By using JSlider, a user can select a value from a specific range.
+
+Commonly used Constructors of JSlider class:-
+
+Constructor						Description
+JSlider()							creates a slider with the initial value of 50 and range of 0 to 100.
+			JSlider(int orientation)					creates a slider with the specified orientation set by either JSlider.HORIZONTAL or JSlider.VERTICAL with the range 0 to 100 and initial value 50.
+JSlider(int min, int max)	creates a horizontal slider using the given min and max.
+JSlider(int min, int max, int value)	creates a horizontal slider using the given min, max and value.
+JSlider(int orientation, int min, int max, int value)	creates a slider using the given orientation, min, max and value.
+Commonly used Methods of JSlider class
+
+Method	Description
+public void setMinorTickSpacing(int n)	is used to set the minor tick spacing to the slider.
+public void setMajorTickSpacing(int n)	is used to set the major tick spacing to the slider.
+public void setPaintTicks(boolean b)	is used to determine whether tick marks are painted.
+public void setPaintLabels(boolean b)	is used to determine whether labels are painted.
+public void setPaintTracks(boolean b)	is used to determine whether track is painted.
+Java JSlider Example
+
+import javax.swing.*;  
+public class SliderExample1 extends JFrame{  
+public SliderExample1() {  
+JSlider slider = new JSlider(JSlider.HORIZONTAL, 0, 50, 25);  
+JPanel panel=new JPanel();  
+panel.add(slider);  
+add(panel);  
+}  
+  
+public static void main(String s[]) {  
+SliderExample1 frame=new SliderExample1();  
+frame.pack();  
+frame.setVisible(true);  
+}  
+}  
+Output:
+
+example of JSlider class
+Java JSlider Example: painting ticks
+
+import javax.swing.*;  
+public class SliderExample extends JFrame{  
+public SliderExample() {  
+JSlider slider = new JSlider(JSlider.HORIZONTAL, 0, 50, 25);  
+slider.setMinorTickSpacing(2);  
+slider.setMajorTickSpacing(10);  
+slider.setPaintTicks(true);  
+slider.setPaintLabels(true);  
+  
+JPanel panel=new JPanel();  
+panel.add(slider);  
+add(panel);  
+}  
+public static void main(String s[]) {  
+SliderExample frame=new SliderExample();  
+frame.pack();  
+frame.setVisible(true);  
+}  
+}  
+Output:
+
+example of JSlider class      

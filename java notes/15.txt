@@ -1,0 +1,1274 @@
+Java Swing Tutorial:-
+>Java Swing tutorial is a part of Java Foundation Classes (JFC) that is used to create window-based applications. It is built on the top of AWT (Abstract Windowing Toolkit) API and entirely written in java.
+
+>Unlike AWT, Java Swing provides platform-independent and lightweight components.
+>The javax.swing package provides classes for java swing API such as JButton, JTextField, JTextArea, JRadioButton, JCheckbox, JMenu, JColorChooser etc.
+
+Difference between AWT and Swing:-
+>There are many differences between java awt and swing that are given below.
+
+No.	Java AWT					Java Swing
+1)	AWT components are platform-dependent.		Java swing components are platform-independent.
+2)	AWT components are heavyweight.			Swing components are lightweight.
+3)	AWT doesn't support pluggable look and feel.		Swing supports pluggable look and feel.
+4)	AWT provides less components than Swing.		Swing provides more powerful components such as tables, lists, scrollpanes, colorchooser, tabbedpane etc.
+5)	AWT doesn't follows MVC(Model View Controller) 	where model represents data, view represents presentation and controller acts as an interface between 									model and view.	
+What is JFC:-
+>The Java Foundation Classes (JFC) are a set of GUI components which simplify the development of desktop applications
+
+
+Java Swing Examples:-
+>There are two ways to create a frame:
+
+>By creating the object of Frame class (association)
+>By extending Frame class (inheritance)
+
+We can write the code of swing inside the main(), constructor or any other method:-
+
+Simple Java Swing Example:-
+
+Let's see a simple swing example where we are creating one button and adding it on the JFrame object inside the main() method.
+
+File: FirstSwingExample.java
+
+import javax.swing.*;  
+public class FirstSwingExample {  
+public static void main(String[] args) {  
+JFrame f=new JFrame();//creating instance of JFrame  
+          
+JButton b=new JButton("click");//creating instance of JButton  
+b.setBounds(130,100,100, 40);//x axis, y axis, width, height  
+          
+f.add(b);//adding button in JFrame  
+          
+f.setSize(400,500);//400 width and 500 height  
+f.setLayout(null);//using no layout managers  
+f.setVisible(true);//making the frame visible  
+}  
+}  
+simple example of java swing
+Example of Swing by Association inside constructor
+
+We can also write all the codes of creating JFrame, JButton and method call inside the java constructor.
+
+File: Simple.java
+
+import javax.swing.*;  
+public class Simple {  
+JFrame f;  
+Simple(){  
+f=new JFrame();//creating instance of JFrame  
+          
+JButton b=new JButton("click");//creating instance of JButton  
+b.setBounds(130,100,100, 40);  
+          
+f.add(b);//adding button in JFrame  
+          
+f.setSize(400,500);//400 width and 500 height  
+f.setLayout(null);//using no layout managers  
+f.setVisible(true);//making the frame visible  
+}  
+  
+public static void main(String[] args) {  
+new Simple();  
+}  
+}  
+The setBounds(int xaxis, int yaxis, int width, int height)is used in the above example that sets the position of the button.
+
+Simple example of Swing by inheritance
+
+We can also inherit the JFrame class, so there is no need to create the instance of JFrame class explicitly.
+
+File: Simple2.java
+
+import javax.swing.*;  
+public class Simple2 extends JFrame{//inheriting JFrame  
+JFrame f;  
+Simple2(){  
+JButton b=new JButton("click");//create button  
+b.setBounds(130,100,100, 40);  
+          
+add(b);//adding button on frame  
+setSize(400,500);  
+setLayout(null);  
+setVisible(true);  
+}  
+public static void main(String[] args) {  
+new Simple2();  
+}}  
+
+
+Java JButton:-
+>The JButton class is used to create a labeled button that has platform independent implementation. The application result in some action when the button is pushed. It inherits AbstractButton class.
+
+JButton class declaration:-
+>Let's see the declaration for javax.swing.JButton class.
+
+public class JButton extends AbstractButton implements Accessible  
+
+Commonly used Constructors:-
+
+Constructor					Description
+JButton()						It creates a button with no text and icon.
+JButton(String s)					It creates a button with the specified text.
+JButton(Icon i)					It creates a button with the specified icon object.
+
+Commonly used Methods of AbstractButton class:-
+
+Methods	:					Description:
+void setText(String s)				It is used to set specified text on button
+String getText()					It is used to return the text of the button.
+void setEnabled(boolean b)				It is used to enable or disable the button.
+void setIcon(Icon b)				It is used to set the specified Icon on the button.
+Icon getIcon()					It is used to get the Icon of the button.
+void setMnemonic(int a)				It is used to set the mnemonic on the button.
+void addActionListener(ActionListener a)		It is used to add the action listener to this object.
+
+ 
+Java JButton Example:-
+
+import javax.swing.*;    
+public class ButtonExample {  
+public static void main(String[] args) {  
+    JFrame f=new JFrame("Button Example");  
+    JButton b=new JButton("Click Here");  
+    b.setBounds(50,100,95,30);  
+    f.add(b);  
+    f.setSize(400,400);  
+    f.setLayout(null);  
+    f.setVisible(true);   
+}  
+}  
+
+Output:
+JAVA Jbutton 1
+
+Java JButton Example with ActionListener:-
+
+import java.awt.event.*;  
+import javax.swing.*;    
+public class ButtonExample {  
+public static void main(String[] args) {  
+    JFrame f=new JFrame("Button Example");  
+    final JTextField tf=new JTextField();  
+    tf.setBounds(50,50, 150,20);  
+    JButton b=new JButton("Click Here");  
+    b.setBounds(50,100,95,30);  
+    b.addActionListener(new ActionListener(){  
+public void actionPerformed(ActionEvent e){  
+            tf.setText("Welcome to Javatpoint.");  
+        }  
+    });  
+    f.add(b);f.add(tf);  
+    f.setSize(400,400);  
+    f.setLayout(null);  
+    f.setVisible(true);   
+}  
+}
+  
+Output:
+JAVA Jbutton 2
+
+Example of displaying image on the button:-
+
+import javax.swing.*;      
+public class ButtonExample{    
+ButtonExample(){    
+JFrame f=new JFrame("Button Example");            
+JButton b=new JButton(new ImageIcon("D:\\icon.png"));    
+b.setBounds(100,100,100, 40);    
+f.add(b);    
+f.setSize(300,400);    
+f.setLayout(null);    
+f.setVisible(true);    
+f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);    
+    }         
+public static void main(String[] args) {    
+    new ButtonExample();    
+}    
+}
+
+
+Java JLabel:-
+>The object of JLabel class is a component for placing text in a container. It is used to display a single line of read only text. The text can be changed by an application but a user cannot edit it directly. It inherits JComponent class.
+
+JLabel class declaration:-
+>Let's see the declaration for javax.swing.JLabel class.
+
+public class JLabel extends JComponent implements SwingConstants, Accessible  
+
+Commonly used Constructors:-
+
+Constructor						Description
+JLabel()							Creates a JLabel instance with no image and with an empty string for the title.
+JLabel(String s)						Creates a JLabel instance with the specified text.
+JLabel(Icon i)						Creates a JLabel instance with the specified image.
+JLabel(String s, Icon i, int horizontalAlignment)			Creates a JLabel instance with the specified text, image, and horizontal alignment.
+
+Commonly used Methods:-
+
+Methods							Description
+String getText()						it returns the text string that a label displays.
+void setText(String text)					It defines the single line of text this component will display.
+void setHorizontalAlignment(int alignment)			It sets the alignment of the label's contents along the X axis.
+Icon getIcon()						It returns the graphic image that the label displays.
+int getHorizontalAlignment()				It returns the alignment of the label's contents along the X axis.
+
+ 
+Java JLabel Example:-
+
+import javax.swing.*;  
+class LabelExample  
+{  
+public static void main(String args[])  
+    {  
+    JFrame f= new JFrame("Label Example");  
+    JLabel l1,l2;  
+    l1=new JLabel("First Label.");  
+    l1.setBounds(50,50, 100,30);  
+    l2=new JLabel("Second Label.");  
+    l2.setBounds(50,100, 100,30);  
+    f.add(l1); f.add(l2);  
+    f.setSize(300,300);  
+    f.setLayout(null);  
+    f.setVisible(true);  
+    }  
+    }  
+
+Output:
+JAVA Jlabel 1
+
+Java JLabel Example with ActionListener:-
+
+import javax.swing.*;  
+import java.awt.*;  
+import java.awt.event.*;  
+public class LabelExample extends Frame implements ActionListener{  
+    JTextField tf; JLabel l; JButton b;  
+    LabelExample(){  
+        tf=new JTextField();  
+        tf.setBounds(50,50, 150,20);  
+        l=new JLabel();  
+        l.setBounds(50,100, 250,20);      
+        b=new JButton("Find IP");  
+        b.setBounds(50,150,95,30);  
+        b.addActionListener(this);    
+        add(b);add(tf);add(l);    
+        setSize(400,400);  
+        setLayout(null);  
+        setVisible(true);  
+    }  
+    public void actionPerformed(ActionEvent e) {  
+        try{  
+        String host=tf.getText();  
+        String ip=java.net.InetAddress.getByName(host).getHostAddress();  
+        l.setText("IP of "+host+" is: "+ip);  
+        }catch(Exception ex){System.out.println(ex);}  
+    }  
+    public static void main(String[] args) {  
+        new LabelExample();  
+    } 
+}
+
+
+Java JTextField:-
+>The object of a JTextField class is a text component that allows the editing of a single line text. It inherits JTextComponent class.
+
+JTextField class declaration:-
+
+>Let's see the declaration for javax.swing.JTextField class.
+
+public class JTextField extends JTextComponent implements SwingConstants  
+
+Commonly used Constructors:-
+
+Constructor						Description
+JTextField()						Creates a new TextField
+JTextField(String text)					Creates a new TextField initialized with the specified text.
+JTextField(String text, int columns)				Creates a new TextField initialized with the specified text and columns.
+JTextField(int columns)					Creates a new empty TextField with the specified number of columns.
+
+Commonly used Methods:-
+
+Methods	:							Description:
+void addActionListener(ActionListener l)				It is used to add the specified action listener to receive action events from this textfield.
+Action getAction()							It returns the currently set Action for this ActionEvent source, or null if no Action is set.
+void setFont(Font f)						It is used to set the current font.
+void removeActionListener(ActionListener l)				It is used to remove the specified action listener so that it no longer receives action events from this 								textfield.
+
+ 
+Java JTextField Example:-
+
+import javax.swing.*;  
+class TextFieldExample  
+{  
+public static void main(String args[])  
+    {  
+    JFrame f= new JFrame("TextField Example");  
+    JTextField t1,t2;  
+    t1=new JTextField("Welcome to Javatpoint.");  
+    t1.setBounds(50,100, 200,30);  
+    t2=new JTextField("AWT Tutorial");  
+    t2.setBounds(50,150, 200,30);  
+    f.add(t1); f.add(t2);  
+    f.setSize(400,400);  
+    f.setLayout(null);  
+    f.setVisible(true);  
+    }  
+    }  
+
+
+Java JTextField Example with ActionListener:-
+
+import javax.swing.*;  
+import java.awt.event.*;  
+public class TextFieldExample implements ActionListener{  
+    JTextField tf1,tf2,tf3;  
+    JButton b1,b2;  
+    TextFieldExample(){  
+        JFrame f= new JFrame();  
+        tf1=new JTextField();  
+        tf1.setBounds(50,50,150,20);  
+        tf2=new JTextField();  
+        tf2.setBounds(50,100,150,20);  
+        tf3=new JTextField();  
+        tf3.setBounds(50,150,150,20);  
+        tf3.setEditable(false);   
+        b1=new JButton("+");  
+        b1.setBounds(50,200,50,50);  
+        b2=new JButton("-");  
+        b2.setBounds(120,200,50,50);  
+        b1.addActionListener(this);  
+        b2.addActionListener(this);  
+        f.add(tf1);f.add(tf2);f.add(tf3);f.add(b1);f.add(b2);  
+        f.setSize(300,300);  
+        f.setLayout(null);  
+        f.setVisible(true);  
+    }         
+    public void actionPerformed(ActionEvent e) {  
+        String s1=tf1.getText();  
+        String s2=tf2.getText();  
+        int a=Integer.parseInt(s1);  
+        int b=Integer.parseInt(s2);  
+        int c=0;  
+        if(e.getSource()==b1){  
+            c=a+b;  
+        }else if(e.getSource()==b2){  
+            c=a-b;  
+        }  
+        String result=String.valueOf(c);  
+        tf3.setText(result);  
+    }  
+public static void main(String[] args) {  
+    new TextFieldExample();  
+} }  
+
+
+Java JTextArea:-
+>The object of a JTextArea class is a multi line region that displays text. It allows the editing of multiple line text. It inherits JTextComponent class
+
+JTextArea class declaration:-
+>Let's see the declaration for javax.swing.JTextArea class.
+
+public class JTextArea extends JTextComponent  
+
+Commonly used Constructors:-
+
+Constructor						Description
+JTextArea()						Creates a text area that displays no text initially.
+JTextArea(String s)						Creates a text area that displays specified text initially.
+JTextArea(int row, int column)				Creates a text area with the specified number of rows and columns that displays no text initially.
+JTextArea(String s, int row, int column)			Creates a text area with the specified number of rows and columns that displays specified text.
+
+Commonly used Methods:-
+
+Methods							Description
+void setRows(int rows)					It is used to set specified number of rows.
+void setColumns(int cols)					It is used to set specified number of columns.
+void setFont(Font f)					It is used to set the specified font.
+void insert(String s, int position)				It is used to insert the specified text on the specified position.
+void append(String s)					It is used to append the given text to the end of the document.
+
+ 
+Java JTextArea Example:-
+
+import javax.swing.*;  
+public class TextAreaExample  
+{  
+     TextAreaExample(){  
+        JFrame f= new JFrame();  
+        JTextArea area=new JTextArea("Welcome to javatpoint");  
+        area.setBounds(10,30, 200,200);  
+        f.add(area);  
+        f.setSize(300,300);  
+        f.setLayout(null);  
+        f.setVisible(true);  
+     }  
+public static void main(String args[])  
+    {  
+   new TextAreaExample();  
+    }}  
+
+
+Java JTextArea Example with ActionListener:-
+
+import javax.swing.*;  
+import java.awt.event.*;  
+public class TextAreaExample implements ActionListener{  
+JLabel l1,l2;  
+JTextArea area;  
+JButton b;  
+TextAreaExample() {  
+    JFrame f= new JFrame();  
+    l1=new JLabel();  
+    l1.setBounds(50,25,100,30);  
+    l2=new JLabel();  
+    l2.setBounds(160,25,100,30);  
+    area=new JTextArea();  
+    area.setBounds(20,75,250,200);  
+    b=new JButton("Count Words");  
+    b.setBounds(100,300,120,30);  
+    b.addActionListener(this);  
+    f.add(l1);f.add(l2);f.add(area);f.add(b);  
+    f.setSize(450,450);  
+    f.setLayout(null);  
+    f.setVisible(true);  
+}  
+public void actionPerformed(ActionEvent e){  
+    String text=area.getText();  
+    String words[]=text.split("\\s");  
+    l1.setText("Words: "+words.length);  
+    l2.setText("Characters: "+text.length());  
+}  
+public static void main(String[] args) {  
+    new TextAreaExample();  
+}  
+}
+
+
+
+Java JPasswordField:-
+>The object of a JPasswordField class is a text component specialized for password entry. It allows the editing of a single line of text. It inherits JTextField class.
+
+JPasswordField class declaration:-
+>Let's see the declaration for javax.swing.JPasswordField class.
+
+public class JPasswordField extends JTextField  
+Commonly used Constructors:
+
+Constructor						Description
+JPasswordField()						Constructs a new JPasswordField, with a default document, null starting text string, and 0 column width.
+JPasswordField(int columns)					Constructs a new empty JPasswordField with the specified number of columns.
+JPasswordField(String text)					Constructs a new JPasswordField initialized with the specified text.
+JPasswordField(String text, int columns)			Construct a new JPasswordField initialized with the specified text and columns.
+
+Java JPasswordField Example:-
+
+import javax.swing.*;    
+public class PasswordFieldExample {  
+    public static void main(String[] args) {    
+    JFrame f=new JFrame("Password Field Example");    
+     JPasswordField value = new JPasswordField();   
+     JLabel l1=new JLabel("Password:");    
+        l1.setBounds(20,100, 80,30);    
+         value.setBounds(100,100,100,30);    
+            f.add(value);  f.add(l1);  
+            f.setSize(300,300);    
+            f.setLayout(null);    
+            f.setVisible(true);     
+}  
+}  
+
+
+
+ 
+Java JPasswordField Example with ActionListener:-
+
+import javax.swing.*;    
+import java.awt.event.*;  
+public class PasswordFieldExample {  
+    public static void main(String[] args) {    
+    JFrame f=new JFrame("Password Field Example");    
+     final JLabel label = new JLabel();            
+     label.setBounds(20,150, 200,50);  
+     final JPasswordField value = new JPasswordField();   
+     value.setBounds(100,75,100,30);   
+     JLabel l1=new JLabel("Username:");    
+        l1.setBounds(20,20, 80,30);    
+        JLabel l2=new JLabel("Password:");    
+        l2.setBounds(20,75, 80,30);    
+        JButton b = new JButton("Login");  
+        b.setBounds(100,120, 80,30);    
+        final JTextField text = new JTextField();  
+        text.setBounds(100,20, 100,30);    
+                f.add(value); f.add(l1); f.add(label); f.add(l2); f.add(b); f.add(text);  
+                f.setSize(300,300);    
+                f.setLayout(null);    
+                f.setVisible(true);     
+                b.addActionListener(new ActionListener() {  
+                public void actionPerformed(ActionEvent e) {       
+                   String data = "Username " + text.getText();  
+                   data += ", Password: "   
+                   + new String(value.getPassword());   
+                   label.setText(data);          
+                }  
+             });   
+}  
+}  
+
+
+Java JCheckBox:-
+>The JCheckBox class is used to create a checkbox. It is used to turn an option on (true) or off (false). Clicking on a CheckBox changes its state from "on" to "off" or from "off" to "on ".It inherits JToggleButton class.
+
+JCheckBox class declaration:-
+>Let's see the declaration for javax.swing.JCheckBox class.
+
+public class JCheckBox extends JToggleButton implements Accessible  
+
+Commonly used Constructors:
+
+Constructor						Description
+JJCheckBox()						Creates an initially unselected check box button with no text, no icon.
+JChechBox(String s)					Creates an initially unselected check box with text.
+JCheckBox(String text, boolean selected)			Creates a check box with text and specifies whether or not it is initially selected.
+JCheckBox(Action a)					Creates a check box where properties are taken from the Action supplied.
+
+ 
+Commonly used Methods:-
+
+Methods							Description
+AccessibleContext getAccessibleContext()			It is used to get the AccessibleContext associated with this JCheckBox.
+protected String paramString()				It returns a string representation of this JCheckBox.
+
+Java JCheckBox Example:-
+
+import javax.swing.*;  
+public class CheckBoxExample  
+{  
+     CheckBoxExample(){  
+        JFrame f= new JFrame("CheckBox Example");  
+        JCheckBox checkBox1 = new JCheckBox("C++");  
+        checkBox1.setBounds(100,100, 50,50);  
+        JCheckBox checkBox2 = new JCheckBox("Java", true);  
+        checkBox2.setBounds(100,150, 50,50);  
+        f.add(checkBox1);  
+        f.add(checkBox2);  
+        f.setSize(400,400);  
+        f.setLayout(null);  
+        f.setVisible(true);  
+     }  
+public static void main(String args[])  
+    {  
+    new CheckBoxExample();  
+    }}  
+
+
+Java JCheckBox Example with ItemListener:-
+
+import javax.swing.*;  
+import java.awt.event.*;    
+public class CheckBoxExample    
+{    
+     CheckBoxExample(){    
+        JFrame f= new JFrame("CheckBox Example");    
+        final JLabel label = new JLabel();            
+        label.setHorizontalAlignment(JLabel.CENTER);    
+        label.setSize(400,100);    
+        JCheckBox checkbox1 = new JCheckBox("C++");    
+        checkbox1.setBounds(150,100, 50,50);    
+        JCheckBox checkbox2 = new JCheckBox("Java");    
+        checkbox2.setBounds(150,150, 50,50);    
+        f.add(checkbox1); f.add(checkbox2); f.add(label);    
+        checkbox1.addItemListener(new ItemListener() {    
+             public void itemStateChanged(ItemEvent e) {                 
+                label.setText("C++ Checkbox: "     
+                + (e.getStateChange()==1?"checked":"unchecked"));    
+             }    
+          });    
+        checkbox2.addItemListener(new ItemListener() {    
+             public void itemStateChanged(ItemEvent e) {                 
+                label.setText("Java Checkbox: "     
+                + (e.getStateChange()==1?"checked":"unchecked"));    
+             }    
+          });    
+        f.setSize(400,400);    
+        f.setLayout(null);    
+        f.setVisible(true);    
+     }    
+public static void main(String args[])    
+{    
+    new CheckBoxExample();    
+}    
+}    
+
+
+
+Java JCheckBox Example: Food Order:-
+
+import javax.swing.*;  
+import java.awt.event.*;  
+public class CheckBoxExample extends JFrame implements ActionListener{  
+    JLabel l;  
+    JCheckBox cb1,cb2,cb3;  
+    JButton b;  
+    CheckBoxExample(){  
+        l=new JLabel("Food Ordering System");  
+        l.setBounds(50,50,300,20);  
+        cb1=new JCheckBox("Pizza @ 100");  
+        cb1.setBounds(100,100,150,20);  
+        cb2=new JCheckBox("Burger @ 30");  
+        cb2.setBounds(100,150,150,20);  
+        cb3=new JCheckBox("Tea @ 10");  
+        cb3.setBounds(100,200,150,20);  
+        b=new JButton("Order");  
+        b.setBounds(100,250,80,30);  
+        b.addActionListener(this);  
+        add(l);add(cb1);add(cb2);add(cb3);add(b);  
+        setSize(400,400);  
+        setLayout(null);  
+        setVisible(true);  
+        setDefaultCloseOperation(EXIT_ON_CLOSE);  
+    }  
+    public void actionPerformed(ActionEvent e){  
+        float amount=0;  
+        String msg="";  
+        if(cb1.isSelected()){  
+            amount+=100;  
+            msg="Pizza: 100\n";  
+        }  
+        if(cb2.isSelected()){  
+            amount+=30;  
+            msg+="Burger: 30\n";  
+        }  
+        if(cb3.isSelected()){  
+            amount+=10;  
+            msg+="Tea: 10\n";  
+        }  
+        msg+="-----------------\n";  
+        JOptionPane.showMessageDialog(this,msg+"Total: "+amount);  
+    }  
+    public static void main(String[] args) {  
+        new CheckBoxExample();  
+    }  
+}
+
+
+Java JRadioButton:-
+>The JRadioButton class is used to create a radio button. It is used to choose one option from multiple options. It is widely used in exam systems or quiz.
+>It should be added in ButtonGroup to select one radio button only.
+
+JRadioButton class declaration:-
+
+Let's see the declaration for javax.swing.JRadioButton class:-
+
+>public class JRadioButton extends JToggleButton implements Accessible  
+
+Commonly used Constructors:
+
+Constructor:						Description:
+JRadioButton()						Creates an unselected radio button with no text.
+JRadioButton(String s)					Creates an unselected radio button with specified text.
+JRadioButton(String s, boolean selected)			Creates a radio button with the specified text and selected status.
+
+Commonly used Methods:-
+
+Methods:							Description:
+void setText(String s)					It is used to set specified text on button.
+String getText()						It is used to return the text of the button.
+void setEnabled(boolean b)					It is used to enable or disable the button.
+void setIcon(Icon b)					It is used to set the specified Icon on the button.
+Icon getIcon()						It is used to get the Icon of the button.
+void setMnemonic(int a)					It is used to set the mnemonic on the button.
+void addActionListener(ActionListener a)			It is used to add the action listener to this object.
+
+ 
+Java JRadioButton Example:-
+
+import javax.swing.*;    
+public class RadioButtonExample {    
+JFrame f;    
+RadioButtonExample(){    
+f=new JFrame();     
+JRadioButton r1=new JRadioButton("A) Male");    
+JRadioButton r2=new JRadioButton("B) Female");    
+r1.setBounds(75,50,100,30);    
+r2.setBounds(75,100,100,30);    
+ButtonGroup bg=new ButtonGroup();    
+bg.add(r1);bg.add(r2);    
+f.add(r1);f.add(r2);      
+f.setSize(300,300);    
+f.setLayout(null);    
+f.setVisible(true);    
+}    
+public static void main(String[] args) {    
+    new RadioButtonExample();    
+}    
+}    
+
+
+Java JRadioButton Example with ActionListener:-
+
+import javax.swing.*;    
+import java.awt.event.*;    
+class RadioButtonExample extends JFrame implements ActionListener{    
+JRadioButton rb1,rb2;    
+JButton b;    
+RadioButtonExample(){      
+rb1=new JRadioButton("Male");    
+rb1.setBounds(100,50,100,30);      
+rb2=new JRadioButton("Female");    
+rb2.setBounds(100,100,100,30);    
+ButtonGroup bg=new ButtonGroup();    
+bg.add(rb1);bg.add(rb2);    
+b=new JButton("click");    
+b.setBounds(100,150,80,30);    
+b.addActionListener(this);    
+add(rb1);add(rb2);add(b);    
+setSize(300,300);    
+setLayout(null);    
+setVisible(true);    
+}    
+public void actionPerformed(ActionEvent e){    
+if(rb1.isSelected()){    
+JOptionPane.showMessageDialog(this,"You are Male.");    
+}    
+if(rb2.isSelected()){    
+JOptionPane.showMessageDialog(this,"You are Female.");    
+}    
+}    
+public static void main(String args[]){    
+new RadioButtonExample();    
+}}
+
+
+Java JComboBox:-
+>The object of Choice class is used to show popup menu of choices. Choice selected by user is shown on the top of a menu. It inherits JComponent class.
+
+JComboBox class declaration:-
+
+>Let's see the declaration for javax.swing.JComboBox class.
+
+public class JComboBox extends JComponent implements ItemSelectable, ListDataListener, ActionListener, Accessible  
+
+Commonly used Constructors:-
+
+Constructor					Description
+JComboBox()					Creates a JComboBox with a default data model.
+JComboBox(Object[] items)				Creates a JComboBox that contains the elements in the specified array.
+JComboBox(Vector<?> items)			Creates a JComboBox that contains the elements in the specified Vector.
+
+Commonly used Methods:-
+
+Methods						Description
+void addItem(Object anObject)			It is used to add an item to the item list.
+void removeItem(Object anObject)			It is used to delete an item to the item list.
+void removeAllItems()				It is used to remove all the items from the list.
+void setEditable(boolean b)				It is used to determine whether the JComboBox is editable.
+void addActionListener(ActionListener a)		It is used to add the ActionListener.
+void addItemListener(ItemListener i)			It is used to add the ItemListener.
+
+ 
+Java JComboBox Example:-
+
+import javax.swing.*;    
+public class ComboBoxExample {    
+JFrame f;    
+ComboBoxExample(){    
+    f=new JFrame("ComboBox Example");    
+    String country[]={"India","Aus","U.S.A","England","Newzealand"};        
+    JComboBox cb=new JComboBox(country);    
+    cb.setBounds(50, 50,90,20);    
+    f.add(cb);        
+    f.setLayout(null);    
+    f.setSize(400,500);    
+    f.setVisible(true);         
+}    
+public static void main(String[] args) {    
+    new ComboBoxExample();         
+}    
+}   
+
+
+Java JComboBox Example with ActionListener:-
+
+import javax.swing.*;    
+import java.awt.event.*;    
+public class ComboBoxExample {    
+JFrame f;    
+ComboBoxExample(){    
+    f=new JFrame("ComboBox Example");   
+    final JLabel label = new JLabel();          
+    label.setHorizontalAlignment(JLabel.CENTER);  
+    label.setSize(400,100);  
+    JButton b=new JButton("Show");  
+    b.setBounds(200,100,75,20);  
+    String languages[]={"C","C++","C#","Java","PHP"};        
+    final JComboBox cb=new JComboBox(languages);    
+    cb.setBounds(50, 100,90,20);    
+    f.add(cb); f.add(label); f.add(b);    
+    f.setLayout(null);    
+    f.setSize(350,350);    
+    f.setVisible(true);       
+    b.addActionListener(new ActionListener() {  
+        public void actionPerformed(ActionEvent e) {       
+String data = "Programming language Selected: "   
+   + cb.getItemAt(cb.getSelectedIndex());  
+label.setText(data);  
+}  
+});           
+}    
+public static void main(String[] args) {    
+    new ComboBoxExample();         
+}    
+}    
+
+
+
+Java JTable:-
+>The JTable class is used to display data in tabular form. It is composed of rows and columns.
+
+JTable class declaration:-
+>Let's see the declaration for javax.swing.JTable class.
+
+Commonly used Constructors:-
+
+Constructor					Description
+JTable()						Creates a table with empty cells.
+JTable(Object[][] rows, Object[] columns)		Creates a table with the specified data.
+
+Java JTable Example:-
+
+import javax.swing.*;    
+public class TableExample {    
+    JFrame f;    
+    TableExample(){    
+    f=new JFrame();    
+    String data[][]={ {"101","Amit","670000"},    
+                          {"102","Jai","780000"},    
+                          {"101","Sachin","700000"}};    
+    String column[]={"ID","NAME","SALARY"};         
+    JTable jt=new JTable(data,column);    
+    jt.setBounds(30,40,200,300);          
+    JScrollPane sp=new JScrollPane(jt);    
+    f.add(sp);          
+    f.setSize(300,400);    
+    f.setVisible(true);    
+}     
+public static void main(String[] args) {    
+    new TableExample();    
+}    
+}  
+
+
+
+ 
+Java JTable Example with ListSelectionListener:-
+
+import javax.swing.*;    
+import javax.swing.event.*;  
+public class TableExample {    
+      public static void main(String[] a) {  
+            JFrame f = new JFrame("Table Example");  
+            String data[][]={ {"101","Amit","670000"},    
+                                                                       {"102","Jai","780000"},    
+                                                                       {"101","Sachin","700000"}};    
+                            String column[]={"ID","NAME","SALARY"};         
+                            final JTable jt=new JTable(data,column);    
+            jt.setCellSelectionEnabled(true);  
+            ListSelectionModel select= jt.getSelectionModel();  
+            select.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);  
+            select.addListSelectionListener(new ListSelectionListener() {  
+              public void valueChanged(ListSelectionEvent e) {  
+                String Data = null;  
+                int[] row = jt.getSelectedRows();  
+                int[] columns = jt.getSelectedColumns();  
+                for (int i = 0; i < row.length; i++) {  
+                  for (int j = 0; j < columns.length; j++) {  
+                    Data = (String) jt.getValueAt(row[i], columns[j]);  
+                  } }  
+                System.out.println("Table element selected is: " + Data);    
+              }       
+            });  
+            JScrollPane sp=new JScrollPane(jt);    
+            f.add(sp);  
+            f.setSize(300, 200);  
+            f.setVisible(true);  
+          }  
+        }  
+Output:
+
+JAVA Jtable 2
+
+
+If you select an element in column NAME, name of the element will be displayed on the console:
+
+Table element selected is: Sachin      
+
+
+Java JList:-
+>The object of JList class represents a list of text items. The list of text items can be set up so that the user can choose either one item or multiple items. It inherits JComponent class.
+
+JList class declaration:-
+
+Let's see the declaration for javax.swing.JList class.
+
+public class JList extends JComponent implements Scrollable, Accessible  
+
+Commonly used Constructors:
+
+Constructor						Description
+JList()							Creates a JList with an empty, read-only, model.
+JList(ary[] listData)						Creates a JList that displays the elements in the specified array.
+JList(ListModel<ary> dataModel)				Creates a JList that displays elements from the specified, non-null, model.
+
+Commonly used Methods:-
+
+Methods								Description
+Void addListSelectionListener(ListSelectionListener listener)		It is used to add a listener to the list, to be notified each time a change to the selection occurs.
+int getSelectedIndex()						It is used to return the smallest selected cell index.
+ListModel getModel()						It is used to return the data model that holds a list of items displayed by the JList component.
+void setListData(Object[] listData)					It is used to create a read-only ListModel from an array of objects.
+
+ 
+Java JList Example:-
+
+import javax.swing.*;  
+public class ListExample  
+{  
+     ListExample(){  
+        JFrame f= new JFrame();  
+        DefaultListModel<String> l1 = new DefaultListModel<>();  
+          l1.addElement("Item1");  
+          l1.addElement("Item2");  
+          l1.addElement("Item3");  
+          l1.addElement("Item4");  
+          JList<String> list = new JList<>(l1);  
+          list.setBounds(100,100, 75,75);  
+          f.add(list);  
+          f.setSize(400,400);  
+          f.setLayout(null);  
+          f.setVisible(true);  
+     }  
+public static void main(String args[])  
+    {  
+   new ListExample();  
+    }}  
+
+
+Java JList Example with ActionListener:-
+
+import javax.swing.*;  
+import java.awt.event.*;  
+public class ListExample  
+{  
+     ListExample(){  
+        JFrame f= new JFrame();  
+        final JLabel label = new JLabel();          
+        label.setSize(500,100);  
+        JButton b=new JButton("Show");  
+        b.setBounds(200,150,80,30);  
+        final DefaultListModel<String> l1 = new DefaultListModel<>();  
+          l1.addElement("C");  
+          l1.addElement("C++");  
+          l1.addElement("Java");  
+          l1.addElement("PHP");  
+          final JList<String> list1 = new JList<>(l1);  
+          list1.setBounds(100,100, 75,75);  
+          DefaultListModel<String> l2 = new DefaultListModel<>();  
+          l2.addElement("Turbo C++");  
+          l2.addElement("Struts");  
+          l2.addElement("Spring");  
+          l2.addElement("YII");  
+          final JList<String> list2 = new JList<>(l2);  
+          list2.setBounds(100,200, 75,75);  
+          f.add(list1); f.add(list2); f.add(b); f.add(label);  
+          f.setSize(450,450);  
+          f.setLayout(null);  
+          f.setVisible(true);  
+          b.addActionListener(new ActionListener() {  
+              public void actionPerformed(ActionEvent e) {   
+                 String data = "";  
+                 if (list1.getSelectedIndex() != -1) {                       
+                    data = "Programming language Selected: " + list1.getSelectedValue();   
+                    label.setText(data);  
+                 }  
+                 if(list2.getSelectedIndex() != -1){  
+                    data += ", FrameWork Selected: ";  
+                    for(Object frame :list2.getSelectedValues()){  
+                       data += frame + " ";  
+                    }  
+                 }  
+                 label.setText(data);  
+              }  
+           });   
+     }  
+public static void main(String args[])  
+    {  
+   new ListExample();  
+    }}  
+
+
+Java JOptionPane:-
+>The JOptionPane class is used to provide standard dialog boxes such as message dialog box, confirm dialog box and input dialog box. These dialog boxes are used to display information or get input from the user. The JOptionPane class inherits JComponent class.
+
+JOptionPane class declaration:-
+
+>public class JOptionPane extends JComponent implements Accessible  
+
+Common Constructors of JOptionPane class
+
+Constructor:							Description:
+JOptionPane()							It is used to create a JOptionPane with a test message.
+JOptionPane(Object message)					It is used to create an instance of JOptionPane to display a message.
+JOptionPane(Object message, int messageType)				It is used to create an instance of JOptionPane to display a message with specified message type and 								default options.
+Common Methods of JOptionPane class:-
+
+Methods												Description
+JDialog createDialog(String title)									It is used to create and return a new parentless JDialog with 												the specified title.
+static void showMessageDialog(Component parentComponent, Object message)				It is used to create an information-message dialog titled 												"Message".
+static void showMessageDialog(Component parentComponent, Object message, String title, int messageType)	It is used to create a message dialog with given title and 												messageType.
+static int showConfirmDialog(Component parentComponent, Object message)				It is used to create a dialog with the options Yes, No and 												Cancel; with the title, Select an Option.
+static String showInputDialog(Component parentComponent, Object message)				It is used to show a question-message dialog requesting input 												from the user parented to parentComponent.
+void setInputValue(Object newValue)									It is used to set the input value that was selected or input by 												the user.
+
+ 
+Java JOptionPane Example: showMessageDialog():-
+
+import javax.swing.*;  
+public class OptionPaneExample {  
+JFrame f;  
+OptionPaneExample(){  
+    f=new JFrame();  
+    JOptionPane.showMessageDialog(f,"Hello, Welcome to Javatpoint.");  
+}  
+public static void main(String[] args) {  
+    new OptionPaneExample();  
+}  
+}  
+
+
+
+Java JOptionPane Example: showMessageDialog():-
+
+import javax.swing.*;  
+public class OptionPaneExample {  
+JFrame f;  
+OptionPaneExample(){  
+    f=new JFrame();  
+    JOptionPane.showMessageDialog(f,"Successfully Updated.","Alert",JOptionPane.WARNING_MESSAGE);     
+}  
+public static void main(String[] args) {  
+    new OptionPaneExample();  
+}  
+}  
+
+
+
+Java JOptionPane Example: showInputDialog():-
+
+import javax.swing.*;  
+public class OptionPaneExample {  
+JFrame f;  
+OptionPaneExample(){  
+    f=new JFrame();   
+    String name=JOptionPane.showInputDialog(f,"Enter Name");      
+}  
+public static void main(String[] args) {  
+    new OptionPaneExample();  
+}  
+}  
+
+
+
+Java JOptionPane Example: showConfirmDialog():-
+
+import javax.swing.*;  
+import java.awt.event.*;  
+public class OptionPaneExample extends WindowAdapter{  
+JFrame f;  
+OptionPaneExample(){  
+    f=new JFrame();   
+    f.addWindowListener(this);  
+    f.setSize(300, 300);  
+    f.setLayout(null);  
+    f.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);  
+    f.setVisible(true);  
+}  
+public void windowClosing(WindowEvent e) {  
+    int a=JOptionPane.showConfirmDialog(f,"Are you sure?");  
+if(a==JOptionPane.YES_OPTION){  
+    f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  
+}  
+}  
+public static void main(String[] args) {  
+    new  OptionPaneExample();  
+}     
+}
+
+
+Java JScrollBar:-
+>The object of JScrollbar class is used to add horizontal and vertical scrollbar. It is an implementation of a scrollbar. It inherits JComponent class.
+
+>JScrollBar class declaration
+
+Let's see the declaration for javax.swing.JScrollBar class.
+
+>public class JScrollBar extends JComponent implements Adjustable, Accessible  
+
+Commonly used Constructors:
+
+Constructor						Description
+JScrollBar()						Creates a vertical scrollbar with the initial values.
+JScrollBar(int orientation)					Creates a scrollbar with the specified orientation and the initial values.
+JScrollBar(int orientation, int value, int extent, int min, int max)	Creates a scrollbar with the specified orientation, value, extent, minimum, and maximum.
+
+Java JScrollBar Example:-
+
+import javax.swing.*;  
+class ScrollBarExample  
+{  
+ScrollBarExample(){  
+    JFrame f= new JFrame("Scrollbar Example");  
+ JScrollBar s=new JScrollBar();  
+s.setBounds(100,100, 50,100);  
+f.add(s);  
+f.setSize(400,400);  
+f.setLayout(null);  
+f.setVisible(true);  
+}  
+public static void main(String args[])  
+{  
+new ScrollBarExample();  
+}}  
+
+
+ 
+Java JScrollBar Example with AdjustmentListener
+
+import javax.swing.*;  
+import java.awt.event.*;  
+class ScrollBarExample  
+{  
+ScrollBarExample(){  
+    JFrame f= new JFrame("Scrollbar Example");  
+    final JLabel label = new JLabel();          
+    label.setHorizontalAlignment(JLabel.CENTER);    
+    label.setSize(400,100);  
+    final JScrollBar s=new JScrollBar();  
+    s.setBounds(100,100, 50,100);  
+    f.add(s); f.add(label);  
+    f.setSize(400,400);  
+   f.setLayout(null);  
+   f.setVisible(true);  
+   s.addAdjustmentListener(new AdjustmentListener() {  
+    public void adjustmentValueChanged(AdjustmentEvent e) {  
+       label.setText("Vertical Scrollbar value is:"+ s.getValue());  
+    }  
+ });  
+}  
+public static void main(String args[])  
+{  
+   new ScrollBarExample();  
+}}  
+
+
+
+Java JMenuBar, JMenu and JMenuItem:-
+>The JMenuBar class is used to display menubar on the window or frame. It may have several menus.
+>The object of JMenu class is a pull down menu component which is displayed from the menu bar. It inherits the JMenuItem class.
+>The object of JMenuItem class adds a simple labeled menu item. The items used in a menu must belong to the JMenuItem or any of its subclass.
+
+JMenuBar class declaration:-
+>public class JMenuBar extends JComponent implements MenuElement, Accessible  
+
+JMenu class declaration
+
+>public class JMenu extends JMenuItem implements MenuElement, Accessible  
+JMenuItem class declaration
+
+>public class JMenuItem extends AbstractButton implements Accessible, MenuElement  
+Java JMenuItem and JMenu Example
+
+import javax.swing.*;  
+class MenuExample  
+{  
+          JMenu menu, submenu;  
+          JMenuItem i1, i2, i3, i4, i5;  
+          MenuExample(){  
+          JFrame f= new JFrame("Menu and MenuItem Example");  
+          JMenuBar mb=new JMenuBar();  
+          menu=new JMenu("Menu");  
+          submenu=new JMenu("Sub Menu");  
+          i1=new JMenuItem("Item 1");  
+          i2=new JMenuItem("Item 2");  
+          i3=new JMenuItem("Item 3");  
+          i4=new JMenuItem("Item 4");  
+          i5=new JMenuItem("Item 5");  
+          menu.add(i1); menu.add(i2); menu.add(i3);  
+          submenu.add(i4); submenu.add(i5);  
+          menu.add(submenu);  
+          mb.add(menu);  
+          f.setJMenuBar(mb);  
+          f.setSize(400,400);  
+          f.setLayout(null);  
+          f.setVisible(true);  
+}  
+public static void main(String args[])  
+{  
+new MenuExample();  
+}}  
+
+
+ 
+Example of creating Edit menu for Notepad:-
+
+import javax.swing.*;    
+import java.awt.event.*;    
+public class MenuExample implements ActionListener{    
+JFrame f;    
+JMenuBar mb;    
+JMenu file,edit,help;    
+JMenuItem cut,copy,paste,selectAll;    
+JTextArea ta;    
+MenuExample(){    
+f=new JFrame();    
+cut=new JMenuItem("cut");    
+copy=new JMenuItem("copy");    
+paste=new JMenuItem("paste");    
+selectAll=new JMenuItem("selectAll");    
+cut.addActionListener(this);    
+copy.addActionListener(this);    
+paste.addActionListener(this);    
+selectAll.addActionListener(this);    
+mb=new JMenuBar();    
+file=new JMenu("File");    
+edit=new JMenu("Edit");    
+help=new JMenu("Help");     
+edit.add(cut);edit.add(copy);edit.add(paste);edit.add(selectAll);    
+mb.add(file);mb.add(edit);mb.add(help);    
+ta=new JTextArea();    
+ta.setBounds(5,5,360,320);    
+f.add(mb);f.add(ta);    
+f.setJMenuBar(mb);  
+f.setLayout(null);    
+f.setSize(400,400);    
+f.setVisible(true);    
+}     
+public void actionPerformed(ActionEvent e) {    
+if(e.getSource()==cut)    
+ta.cut();    
+if(e.getSource()==paste)    
+ta.paste();    
+if(e.getSource()==copy)    
+ta.copy();    
+if(e.getSource()==selectAll)    
+ta.selectAll();    
+}     
+public static void main(String[] args) {    
+    new MenuExample();    
+}    
+}
+
+
+
+    

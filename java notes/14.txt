@@ -1,0 +1,653 @@
+Java AWT Toolkit:-
+>Toolkit class is the abstract superclass of every implementation in the Abstract Window Toolkit. Subclasses of Toolkit are used to bind various components. It inherits Object class.
+
+AWT Toolkit class declaration:-
+
+public abstract class Toolkit extends Object  
+Java AWT Toolkit Example
+
+import java.awt.*;  
+public class ToolkitExample {  
+  public static void main(String[] args) {  
+      Toolkit t = Toolkit.getDefaultToolkit();  
+      System.out.println("Screen resolution = " + t.getScreenResolution());  
+      Dimension d = t.getScreenSize();  
+      System.out.println("Screen width = " + d.width);  
+      System.out.println("Screen height = " + d.height);  
+  }  
+}  
+
+Output:
+Screen resolution = 96
+Screen width = 1366
+Screen height = 768
+
+ 
+Java AWT Toolkit Example: beep():-
+
+import java.awt.event.*;  
+public class ToolkitExample {  
+public static void main(String[] args) {  
+    Frame f=new Frame("ToolkitExample");  
+    Button b=new Button("beep");  
+    b.setBounds(50,100,60,30);  
+    f.add(b);     
+    f.setSize(300,300);  
+    f.setLayout(null);  
+    f.setVisible(true);  
+    b.addActionListener(new ActionListener(){  
+        public void actionPerformed(ActionEvent e){  
+            Toolkit.getDefaultToolkit().beep();  
+        }  
+    });       
+}  
+} 
+ 
+Output:
+java awt toolkit example 1
+Java AWT Toolkit Example: Change TitleBar Icon
+
+import java.awt.*;   
+class ToolkitExample {   
+ToolkitExample(){   
+Frame f=new Frame();   
+Image icon = Toolkit.getDefaultToolkit().getImage("D:\\icon.png");  
+f.setIconImage(icon);  
+f.setLayout(null);   
+f.setSize(400,400);   
+f.setVisible(true);   
+}   
+public static void main(String args[]){   
+new ToolkitExample();   
+}   
+}
+
+
+Java ActionListener Interface:-
+>The Java ActionListener is notified whenever you click on the button or menu item. It is notified against ActionEvent. The ActionListener interface is found in java.awt.event package. It has only one method: actionPerformed().
+
+actionPerformed() method:-
+>The actionPerformed() method is invoked automatically whenever you click on the registered component.
+
+>public abstract void actionPerformed(ActionEvent e);  
+
+Java ActionListener Example: On Button click
+
+import java.awt.*;  
+import java.awt.event.*;  
+public class ActionListenerExample {  
+public static void main(String[] args) {  
+    Frame f=new Frame("ActionListener Example");  
+    final TextField tf=new TextField();  
+    tf.setBounds(50,50, 150,20);  
+    Button b=new Button("Click Here");  
+    b.setBounds(50,100,60,30);  
+  
+    b.addActionListener(new ActionListener(){  
+    public void actionPerformed(ActionEvent e){  
+            tf.setText("Welcome to Javatpoint.");  
+    }  
+    });  
+    f.add(b);f.add(tf);  
+    f.setSize(400,400);  
+    f.setLayout(null);  
+    f.setVisible(true);   
+}  
+}
+
+
+
+Java MouseListener Interface:-
+>The Java MouseListener is notified whenever you change the state of mouse. It is notified against MouseEvent. The MouseListener interface is found in java.awt.event package. 
+>It has five methods:-
+
+Methods of MouseListener interface:-
+
+The signature of 5 methods found in MouseListener interface are given below:
+
+public abstract void mouseClicked(MouseEvent e);  
+public abstract void mouseEntered(MouseEvent e);  
+public abstract void mouseExited(MouseEvent e);  
+public abstract void mousePressed(MouseEvent e);  
+public abstract void mouseReleased(MouseEvent e);  
+
+Java MouseListener Example:-
+
+import java.awt.*;  
+import java.awt.event.*;  
+public class MouseListenerExample extends Frame implements MouseListener{  
+    Label l;  
+    MouseListenerExample(){  
+        addMouseListener(this);  
+          
+        l=new Label();  
+        l.setBounds(20,50,100,20);  
+        add(l);  
+        setSize(300,300);  
+        setLayout(null);  
+        setVisible(true);  
+    }  
+    public void mouseClicked(MouseEvent e) {  
+        l.setText("Mouse Clicked");  
+    }  
+    public void mouseEntered(MouseEvent e) {  
+        l.setText("Mouse Entered");  
+    }  
+    public void mouseExited(MouseEvent e) {  
+        l.setText("Mouse Exited");  
+    }  
+    public void mousePressed(MouseEvent e) {  
+        l.setText("Mouse Pressed");  
+    }  
+    public void mouseReleased(MouseEvent e) {  
+        l.setText("Mouse Released");  
+    }  
+public static void main(String[] args) {  
+    new MouseListenerExample();  
+}  
+}  
+
+import java.awt.*;  
+import java.awt.event.*;  
+public class MouseListenerExample2 extends Frame implements MouseListener{  
+    MouseListenerExample2(){  
+        addMouseListener(this);  
+          
+        setSize(300,300);  
+        setLayout(null);  
+        setVisible(true);  
+    }  
+    public void mouseClicked(MouseEvent e) {  
+        Graphics g=getGraphics();  
+        g.setColor(Color.BLUE);  
+        g.fillOval(e.getX(),e.getY(),30,30);  
+    }  
+    public void mouseEntered(MouseEvent e) {}  
+    public void mouseExited(MouseEvent e) {}  
+    public void mousePressed(MouseEvent e) {}  
+    public void mouseReleased(MouseEvent e) {}  
+      
+public static void main(String[] args) {  
+    new MouseListenerExample2();  
+}  
+}    
+
+
+Java MouseMotionListener Interface:-
+>The Java MouseMotionListener is notified whenever you move or drag mouse. It is notified against MouseEvent. The MouseMotionListener interface is found in java.awt.event package. It has two methods.
+
+>Methods of MouseMotionListener interface:-
+
+>The signature of 2 methods found in MouseMotionListener interface are given below:
+
+1)public abstract void mouseDragged(MouseEvent e);  
+2)public abstract void mouseMoved(MouseEvent e);  
+
+Java MouseMotionListener Example:-
+
+import java.awt.*;  
+import java.awt.event.*;  
+public class MouseMotionListenerExample extends Frame implements MouseMotionListener{  
+    MouseMotionListenerExample(){  
+        addMouseMotionListener(this);  
+          
+        setSize(300,300);  
+        setLayout(null);  
+        setVisible(true);  
+    }  
+public void mouseDragged(MouseEvent e) {  
+    Graphics g=getGraphics();  
+    g.setColor(Color.BLUE);  
+    g.fillOval(e.getX(),e.getY(),20,20);  
+}  
+public void mouseMoved(MouseEvent e) {}  
+  
+public static void main(String[] args) {  
+    new MouseMotionListenerExample();  
+}  
+}
+
+
+Java MouseMotionListener Example 2:-
+
+import java.awt.*;  
+import java.awt.event.MouseEvent;  
+import java.awt.event.MouseMotionListener;  
+public class Paint extends Frame implements MouseMotionListener{  
+    Label l;  
+    Color c=Color.BLUE;  
+    Paint(){  
+    l=new Label();  
+    l.setBounds(20,40,100,20);  
+    add(l);  
+      
+    addMouseMotionListener(this);  
+      
+    setSize(400,400);  
+    setLayout(null);  
+    setVisible(true);  
+}  
+public void mouseDragged(MouseEvent e) {  
+    l.setText("X="+e.getX()+", Y="+e.getY());  
+    Graphics g=getGraphics();  
+    g.setColor(Color.RED);  
+    g.fillOval(e.getX(),e.getY(),20,20);  
+}  
+public void mouseMoved(MouseEvent e) {  
+    l.setText("X="+e.getX()+", Y="+e.getY());  
+}  
+public static void main(String[] args) {  
+    new Paint();  
+}  
+}  
+
+
+
+Java ItemListener Interface:-
+>The Java ItemListener is notified whenever you click on the checkbox. It is notified against ItemEvent. The ItemListener interface is found in java.awt.event package. It has only one method: itemStateChanged().
+
+itemStateChanged() method:-
+>The itemStateChanged() method is invoked automatically whenever you click or unclick on the registered checkbox component.
+
+>public abstract void itemStateChanged(ItemEvent e);  
+
+Java ItemListener Example:-
+
+import java.awt.*;    
+import java.awt.event.*;    
+public class ItemListenerExample implements ItemListener{    
+    Checkbox checkBox1,checkBox2;  
+    Label label;  
+    ItemListenerExample(){    
+        Frame f= new Frame("CheckBox Example");    
+        label = new Label();            
+        label.setAlignment(Label.CENTER);    
+        label.setSize(400,100);    
+        checkBox1 = new Checkbox("C++");    
+        checkBox1.setBounds(100,100, 50,50);    
+        checkBox2 = new Checkbox("Java");    
+        checkBox2.setBounds(100,150, 50,50);    
+        f.add(checkBox1); f.add(checkBox2); f.add(label);    
+        checkBox1.addItemListener(this);    
+        checkBox2.addItemListener(this);    
+        f.setSize(400,400);    
+        f.setLayout(null);    
+        f.setVisible(true);    
+     }    
+    public void itemStateChanged(ItemEvent e) {      
+        if(e.getSource()==checkBox1)  
+            label.setText("C++ Checkbox: "     
+            + (e.getStateChange()==1?"checked":"unchecked"));   
+        if(e.getSource()==checkBox2)  
+        label.setText("Java Checkbox: "     
+        + (e.getStateChange()==1?"checked":"unchecked"));    
+     }  
+public static void main(String args[])    
+{    
+    new ItemListenerExample();    
+}    
+}
+
+Java KeyListener Interface:-
+>The Java KeyListener is notified whenever you change the state of key. It is notified against KeyEvent. The KeyListener interface is found in java.awt.event package. It has three methods.
+
+Methods of KeyListener interface:-
+>The signature of 3 methods found in KeyListener interface are given below:
+
+>public abstract void keyPressed(KeyEvent e);  
+>public abstract void keyReleased(KeyEvent e);  
+>public abstract void keyTyped(KeyEvent e);  
+
+Java KeyListener Example:-
+
+import java.awt.*;  
+import java.awt.event.*;  
+public class KeyListenerExample extends Frame implements KeyListener{  
+    Label l;  
+    TextArea area;  
+    KeyListenerExample(){  
+          
+        l=new Label();  
+        l.setBounds(20,50,100,20);  
+        area=new TextArea();  
+        area.setBounds(20,80,300, 300);  
+        area.addKeyListener(this);  
+          
+        add(l);add(area);  
+        setSize(400,400);  
+        setLayout(null);  
+        setVisible(true);  
+    }  
+    public void keyPressed(KeyEvent e) {  
+        l.setText("Key Pressed");  
+    }  
+    public void keyReleased(KeyEvent e) {  
+        l.setText("Key Released");  
+    }  
+    public void keyTyped(KeyEvent e) {  
+        l.setText("Key Typed");  
+    }  
+  
+    public static void main(String[] args) {  
+        new KeyListenerExample();  
+    }  
+}  
+
+ 
+Java KeyListener Example 2: Count Words & Characters:-
+
+import java.awt.*;  
+import java.awt.event.*;  
+public class KeyListenerExample extends Frame implements KeyListener{  
+    Label l;  
+    TextArea area;  
+    KeyListenerExample(){  
+          
+        l=new Label();  
+        l.setBounds(20,50,200,20);  
+        area=new TextArea();  
+        area.setBounds(20,80,300, 300);  
+        area.addKeyListener(this);  
+          
+        add(l);add(area);  
+        setSize(400,400);  
+        setLayout(null);  
+        setVisible(true);  
+    }  
+    public void keyPressed(KeyEvent e) {}  
+    public void keyReleased(KeyEvent e) {  
+        String text=area.getText();  
+        String words[]=text.split("\\s");  
+        l.setText("Words: "+words.length+" Characters:"+text.length());  
+    }  
+    public void keyTyped(KeyEvent e) {}  
+  
+    public static void main(String[] args) {  
+        new KeyListenerExample();  
+    }  
+}  
+
+
+
+Java WindowListener Interface:-
+>The Java WindowListener is notified whenever you change the state of window. It is notified against WindowEvent. The WindowListener interface is found in java.awt.event package. It has three methods.
+
+Methods of WindowListener interface:-
+>The signature of 7 methods found in WindowListener interface are given below:
+
+>public abstract void windowActivated(WindowEvent e);  
+>public abstract void windowClosed(WindowEvent e);  
+>public abstract void windowClosing(WindowEvent e);  
+>public abstract void windowDeactivated(WindowEvent e);  
+>public abstract void windowDeiconified(WindowEvent e);  
+>public abstract void windowIconified(WindowEvent e);  
+>public abstract void windowOpened(WindowEvent e);  
+
+Java WindowListener Example:-
+
+import java.awt.*;  
+import java.awt.event.WindowEvent;  
+import java.awt.event.WindowListener;  
+public class WindowExample extends Frame implements WindowListener{  
+    WindowExample(){  
+        addWindowListener(this);  
+          
+        setSize(400,400);  
+        setLayout(null);  
+        setVisible(true);  
+    }  
+      
+public static void main(String[] args) {  
+    new WindowExample();  
+}  
+public void windowActivated(WindowEvent arg0) {  
+    System.out.println("activated");  
+}  
+public void windowClosed(WindowEvent arg0) {  
+    System.out.println("closed");  
+}  
+public void windowClosing(WindowEvent arg0) {  
+    System.out.println("closing");  
+    dispose();  
+}  
+public void windowDeactivated(WindowEvent arg0) {  
+    System.out.println("deactivated");  
+}  
+public void windowDeiconified(WindowEvent arg0) {  
+    System.out.println("deiconified");  
+}  
+public void windowIconified(WindowEvent arg0) {  
+    System.out.println("iconified");  
+}  
+public void windowOpened(WindowEvent arg0) {  
+    System.out.println("opened");  
+}  
+}
+
+
+
+Java Adapter Classes:-
+>Java adapter classes provide the default implementation of listener interfaces. If you inherit the adapter class, you will not be forced to provide the implementation of all the methods of listener interfaces. So it saves code.
+
+>The adapter classes are found in java.awt.event, java.awt.dnd and javax.swing.event packages. The Adapter classes with their corresponding listener interfaces are given below.
+
+java.awt.event Adapter classes:-
+
+Adapter class:			Listener interface:
+WindowAdapter			WindowListener
+KeyAdapter			KeyListener
+MouseAdapter			MouseListener
+MouseMotionAdapter		MouseMotionListener
+FocusAdapter			FocusListener
+ComponentAdapter		ComponentListener
+ContainerAdapter			ContainerListener
+HierarchyBoundsAdapter		HierarchyBoundsListener
+
+ 
+java.awt.dnd Adapter classes:-
+
+Adapter class			Listener interface
+DragSourceAdapter		DragSourceListener
+DragTargetAdapter		DragTargetListener
+
+javax.swing.event Adapter classes:-
+
+Adapter class				Listener interface
+MouseInputAdapter			MouseInputListener
+InternalFrameAdapter			InternalFrameListener
+
+Java WindowAdapter Example:-
+
+import java.awt.*;  
+import java.awt.event.*;  
+public class AdapterExample{  
+    Frame f;  
+    AdapterExample(){  
+        f=new Frame("Window Adapter");  
+        f.addWindowListener(new WindowAdapter(){  
+            public void windowClosing(WindowEvent e) {  
+                f.dispose();  
+            }  
+        });  
+          
+        f.setSize(400,400);  
+        f.setLayout(null);  
+        f.setVisible(true);  
+    }  
+public static void main(String[] args) {  
+    new AdapterExample();  
+}  
+}  
+
+
+Java MouseAdapter Example:-
+
+import java.awt.*;  
+import java.awt.event.*;  
+public class MouseAdapterExample extends MouseAdapter{  
+    Frame f;  
+    MouseAdapterExample(){  
+        f=new Frame("Mouse Adapter");  
+        f.addMouseListener(this);  
+          
+        f.setSize(300,300);  
+        f.setLayout(null);  
+        f.setVisible(true);  
+    }  
+    public void mouseClicked(MouseEvent e) {  
+        Graphics g=f.getGraphics();  
+        g.setColor(Color.BLUE);  
+        g.fillOval(e.getX(),e.getY(),30,30);  
+    }  
+      
+public static void main(String[] args) {  
+    new MouseAdapterExample();  
+}  
+}  
+
+
+Java MouseMotionAdapter Example:-
+
+import java.awt.*;  
+import java.awt.event.*;  
+public class MouseMotionAdapterExample extends MouseMotionAdapter{  
+    Frame f;  
+    MouseMotionAdapterExample(){  
+        f=new Frame("Mouse Motion Adapter");  
+        f.addMouseMotionListener(this);  
+          
+        f.setSize(300,300);  
+        f.setLayout(null);  
+        f.setVisible(true);  
+    }  
+public void mouseDragged(MouseEvent e) {  
+    Graphics g=f.getGraphics();  
+    g.setColor(Color.ORANGE);  
+    g.fillOval(e.getX(),e.getY(),20,20);  
+}  
+public static void main(String[] args) {  
+    new MouseMotionAdapterExample();  
+}  
+}  
+
+
+Java KeyAdapter Example:-
+
+import java.awt.*;  
+import java.awt.event.*;  
+public class KeyAdapterExample extends KeyAdapter{  
+    Label l;  
+    TextArea area;  
+    Frame f;  
+    KeyAdapterExample(){  
+        f=new Frame("Key Adapter");  
+        l=new Label();  
+        l.setBounds(20,50,200,20);  
+        area=new TextArea();  
+        area.setBounds(20,80,300, 300);  
+        area.addKeyListener(this);  
+          
+        f.add(l);f.add(area);  
+        f.setSize(400,400);  
+        f.setLayout(null);  
+        f.setVisible(true);  
+    }  
+    public void keyReleased(KeyEvent e) {  
+        String text=area.getText();  
+        String words[]=text.split("\\s");  
+        l.setText("Words: "+words.length+" Characters:"+text.length());  
+    }  
+  
+    public static void main(String[] args) {  
+        new KeyAdapterExample();  
+    }  
+}  
+
+
+How to close AWT Window in Java:-
+>We can close the AWT Window or Frame by calling dispose() or System.exit() inside windowClosing() method. The windowClosing() method is found in WindowListener interface and WindowAdapter class.
+
+>The WindowAdapter class implements WindowListener interfaces. It provides the default implementation of all the 7 methods of WindowListener interface. To override the windowClosing() method, you can either use WindowAdapter class or WindowListener interface.
+
+>If you implement the WindowListener interface, you will be forced to override all the 7 methods of WindowListener interface. So it is better to use WindowAdapter class.
+
+# Different ways to override windowClosing() method
+
+There are many ways to override windowClosing() method:-
+
+1)By anonymous class
+2)By inheriting WindowAdapter class
+
+By implementing WindowListener interface
+Close AWT Window Example 1: Anonymous class:-
+
+import java.awt.*;  
+import java.awt.event.WindowEvent;  
+import java.awt.event.WindowListener;  
+public class WindowExample extends Frame{  
+    WindowExample(){  
+        addWindowListener(new WindowAdapter(){  
+            public void windowClosing(WindowEvent e) {  
+                dispose();  
+            }  
+        });  
+        setSize(400,400);  
+        setLayout(null);  
+        setVisible(true);  
+    }  
+public static void main(String[] args) {  
+    new WindowExample();  
+}  
+
+
+ 
+Close AWT Window Example 2: extending WindowAdapter:-
+
+import java.awt.*;  
+import java.awt.event.*;  
+public class AdapterExample extends WindowAdapter{  
+    Frame f;  
+    AdapterExample(){  
+        f=new Frame();  
+        f.addWindowListener(this);  
+          
+        f.setSize(400,400);  
+        f.setLayout(null);  
+        f.setVisible(true);  
+    }  
+public void windowClosing(WindowEvent e) {  
+    f.dispose();  
+}  
+public static void main(String[] args) {  
+    new AdapterExample();  
+}  
+}  
+Close AWT Window Example 3: implementing WindowListener
+
+import java.awt.*;  
+import java.awt.event.WindowEvent;  
+import java.awt.event.WindowListener;  
+public class WindowExample extends Frame implements WindowListener{  
+    WindowExample(){  
+        addWindowListener(this);  
+          
+        setSize(400,400);  
+        setLayout(null);  
+        setVisible(true);  
+    }  
+      
+public static void main(String[] args) {  
+    new WindowExample();  
+}  
+public void windowActivated(WindowEvent e) {}  
+public void windowClosed(WindowEvent e) {}  
+public void windowClosing(WindowEvent e) {  
+    dispose();  
+}  
+public void windowDeactivated(WindowEvent e) {}  
+public void windowDeiconified(WindowEvent e) {}  
+public void windowIconified(WindowEvent e) {}  
+public void windowOpened(WindowEvent arg0) {}  
+}  
+
+

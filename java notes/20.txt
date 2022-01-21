@@ -1,0 +1,768 @@
+IP Finder in Java with Source Code:-
+>IP Finder in Java with Source Code: We can develop IP Finder in java with the help of Networking, AWT/Swing with event handling. Let's see the code of creating IP Finder in java.
+
+String url="www.javatpoint.com";  
+InetAddress ia=InetAddress.getByName(url);  
+String ip=ia.getHostAddress();  
+
+Let's see the Swing code to find IP address.
+
+import javax.swing.*;  
+import java.awt.event.*;  
+import java.net.*;  
+public class IPFinder extends JFrame implements ActionListener{  
+    JLabel l;  
+    JTextField tf;  
+    JButton b;  
+IPFinder(){  
+    super("IP Finder Tool - Javatpoint");  
+    l=new JLabel("Enter URL:");  
+    l.setBounds(50,70,150,20);;  
+    tf=new JTextField();  
+    tf.setBounds(50,100,200,20);  
+      
+    b=new JButton("Find IP");  
+    b.setBounds(50,150,80,30);  
+    b.addActionListener(this);  
+    add(l);  
+    add(tf);  
+    add(b);  
+    setSize(300,300);  
+    setLayout(null);  
+    setVisible(true);  
+}  
+public void actionPerformed(ActionEvent e){  
+    String url=tf.getText();  
+    try {  
+        InetAddress ia=InetAddress.getByName(url);  
+        String ip=ia.getHostAddress();  
+        JOptionPane.showMessageDialog(this,ip);  
+    } catch (UnknownHostException e1) {  
+        JOptionPane.showMessageDialog(this,e1.toString());  
+    }  
+}  
+public static void main(String[] args) {  
+    new IPFinder();  
+}  
+}
+
+Word Character Counter in Java with Source Code:-
+>Word Character Counter in Java with Source Code: We can develop Word Character Counter in java with the help of string, AWT/Swing with event handling. Let's see the code of creating Word Character Counter in java.
+
+String text="hello javatpoint this is wcc tool";  
+String words[]=text.split("\\s");  
+int length=words.length;//returns total number of words  
+int clength=text.length();//returns total number of characters with space  
+
+Let's see the swing code to count word and character.
+
+import java.awt.event.*;  
+import javax.swing.*;  
+public class WCC extends JFrame implements ActionListener{  
+JTextArea ta;  
+JButton b1,b2;  
+WCC(){  
+    super("Word Character Counter - JavaTpoint");  
+    ta=new JTextArea();  
+    ta.setBounds(50,50,300,200);  
+      
+    b1=new JButton("Word");  
+    b1.setBounds(50,300,100,30);  
+      
+    b2=new JButton("Character");  
+    b2.setBounds(180,300,100,30);  
+      
+    b1.addActionListener(this);  
+    b2.addActionListener(this);  
+    add(b1);add(b2);add(ta);  
+    setSize(400,400);  
+    setLayout(null);  
+    setVisible(true);  
+}  
+public void actionPerformed(ActionEvent e){  
+    String text=ta.getText();  
+    if(e.getSource()==b1){  
+        String words[]=text.split("\\s");  
+        JOptionPane.showMessageDialog(this,"Total words: "+words.length);  
+    }  
+    if(e.getSource()==b2){  
+        JOptionPane.showMessageDialog(this,"Total Characters with space: "+text.length());  
+    }  
+}  
+public static void main(String[] args) {  
+    new WCC();  
+}  
+}  
+Word Count Example with Pad and Text Color
+
+import java.awt.*;  
+import javax.swing.*;  
+import java.awt.event.*;  
+public class CharCount extends JFrame implements ActionListener{  
+    JLabel lb1,lb2;  
+    JTextArea ta;  
+    JButton b;  
+    JButton pad,text;  
+    CharCount(){  
+        super("Char Word Count Tool - JTP");  
+        lb1=new JLabel("Characters: ");  
+        lb1.setBounds(50,50,100,20);  
+        lb2=new JLabel("Words: ");  
+        lb2.setBounds(50,80,100,20);  
+          
+        ta=new JTextArea();  
+        ta.setBounds(50,110,300,200);  
+          
+        b=new JButton("click");  
+        b.setBounds(50,320, 80,30);//x,y,w,h  
+        b.addActionListener(this);  
+      
+        pad=new JButton("Pad Color");  
+        pad.setBounds(140,320, 110,30);//x,y,w,h  
+        pad.addActionListener(this);  
+  
+        text=new JButton("Text Color");  
+        text.setBounds(260,320, 110,30);//x,y,w,h  
+        text.addActionListener(this);  
+  
+        add(lb1);add(lb2);add(ta);add(b);add(pad);add(text);  
+          
+        setSize(400,400);  
+        setLayout(null);//using no layout manager  
+        setVisible(true);  
+        setDefaultCloseOperation(EXIT_ON_CLOSE);  
+    }  
+    public void actionPerformed(ActionEvent e){  
+        if(e.getSource()==b){  
+        String text=ta.getText();  
+        lb1.setText("Characters: "+text.length());  
+        String words[]=text.split("\\s");  
+        lb2.setText("Words: "+words.length);  
+        }else if(e.getSource()==pad){  
+            Color c=JColorChooser.showDialog(this,"Choose Color",Color.BLACK);  
+            ta.setBackground(c);  
+        }else if(e.getSource()==text){  
+            Color c=JColorChooser.showDialog(this,"Choose Color",Color.BLACK);  
+            ta.setForeground(c);  
+        }  
+    }  
+public static void main(String[] args) {  
+    new CharCount();  
+}}    
+
+
+URL Source Code Generator in Java with Source Code:-
+>URL Source Code Generator in Java with Source Code: We can develop URL Source Code Generator in java with the help of networking, AWT/Swing with event handling. Let's see the code of creating URL Source Code Generator in java.
+
+URL u=new URL("https://www.facebook.com");//change the URL  
+URLConnection uc=u.openConnection();  
+InputStream is=uc.getInputStream();  
+int i;  
+StringBuilder sb=new StringBuilder();  
+while((i=is.read())!=-1){  
+    sb.append((char)i);  
+}  
+String source=sb.toString();  
+
+Let's see the swing code to generate Source Code of URL.
+
+import java.awt.*;  
+import java.awt.event.*;  
+import java.io.InputStream;  
+import java.net.*;  
+public class SourceGetter extends Frame implements ActionListener{  
+    TextField tf;  
+    TextArea ta;  
+    Button b;  
+    Label l;  
+    SourceGetter(){  
+        super("Source Getter Tool - Javatpoint");  
+        l=new Label("Enter URL:");  
+        l.setBounds(50,50,50,20);  
+          
+        tf=new TextField();  
+        tf.setBounds(120,50,250,20);  
+          
+        b=new Button("Get Source Code");  
+        b.setBounds(120, 100,120,30);  
+        b.addActionListener(this);  
+          
+        ta=new TextArea();  
+        ta.setBounds(120,150,250,150);  
+          
+        add(l);add(tf);add(b);add(ta);  
+        setSize(400,400);  
+        setLayout(null);  
+        setVisible(true);  
+    }  
+    public void actionPerformed(ActionEvent e){  
+        String s=tf.getText();  
+        if(s==null){}  
+        else{  
+            try{  
+            URL u=new URL(s);  
+            URLConnection uc=u.openConnection();  
+          
+            InputStream is=uc.getInputStream();  
+            int i;  
+            StringBuilder sb=new StringBuilder();  
+            while((i=is.read())!=-1){  
+                sb.append((char)i);  
+            }  
+            String source=sb.toString();  
+            ta.setText(source);  
+            }catch(Exception ex){System.out.println(e);}  
+        }  
+    }  
+    public static void main(String[] args) {  
+        new SourceGetter();  
+    }  
+} 
+
+
+Folder Explorer in Java with Source Code:-
+>Folder Explorer in Java with Source Code: We can develop Folder Explorer in java with the help of IO Stream, AWT/Swing with event handling. Let's see the code of creating 
+Folder Explorer in java:-
+
+import java.io.*;  
+import java.awt.*;  
+import java.awt.event.*;  
+import javax.swing.*;  
+import javax.swing.tree.*;  
+/***********************************/  
+class Explorer extends JPanel implements ActionListener  
+{  
+JTextField jtf;  
+JTextArea jta;  
+JTree tree;  
+JButton refresh;  
+JTable jtb;  
+JScrollPane jsp;  
+JScrollPane jspTable;  
+  
+String currDirectory=null;  
+  
+final String[] colHeads={"File Name","SIZE(in Bytes)","Read Only","Hidden"};  
+String[][]data={{"","","","",""}};  
+  
+/////////////////////////////////  
+Explorer(String path)  
+{  
+  
+jtf=new JTextField();  
+jta=new JTextArea(5,30);  
+refresh=new JButton("Refresh");  
+  
+File temp=new File(path);  
+DefaultMutableTreeNode top=createTree(temp);  
+  
+//if(top!=null)  
+  
+tree=new JTree(top);  
+  
+jsp=new JScrollPane(tree);  
+  
+final String[] colHeads={"File Name","SIZE(in Bytes)","Read Only","Hidden"};  
+String[][]data={{"","","","",""}};  
+jtb=new JTable(data, colHeads);  
+jspTable=new JScrollPane(jtb);  
+  
+setLayout(new BorderLayout());  
+add(jtf,BorderLayout.NORTH);  
+add(jsp,BorderLayout.WEST);  
+add(jspTable,BorderLayout.CENTER);  
+add(refresh,BorderLayout.SOUTH);  
+  
+tree.addMouseListener(  
+new MouseAdapter()  
+{  
+public void mouseClicked(MouseEvent me)  
+{  
+doMouseClicked(me);  
+}  
+});  
+jtf.addActionListener(this);  
+refresh.addActionListener(this);  
+}  
+///////////////////////////////  
+public void actionPerformed(ActionEvent ev)  
+{  
+File temp=new File(jtf.getText());  
+DefaultMutableTreeNode newtop=createTree(temp);  
+if(newtop!=null)  
+    tree=new JTree(newtop);  
+remove(jsp);  
+jsp=new JScrollPane(tree);  
+setVisible(false);  
+add(jsp,BorderLayout.WEST);  
+tree.addMouseListener(  
+new MouseAdapter()  
+{  
+public void mouseClicked(MouseEvent me)  
+{  
+doMouseClicked(me);  
+}  
+});  
+  
+setVisible(true);  
+}  
+//////////////////////////////  
+  
+DefaultMutableTreeNode createTree(File temp)  
+{  
+DefaultMutableTreeNode top=new DefaultMutableTreeNode(temp.getPath());  
+if(!(temp.exists() && temp.isDirectory()))  
+    return top;  
+  
+fillTree(top,temp.getPath());  
+  
+return top;  
+}  
+//////////////////////////////  
+void fillTree(DefaultMutableTreeNode root, String filename)  
+{  
+File temp=new File(filename);  
+  
+if(!(temp.exists() && temp.isDirectory()))  
+    return;  
+//System.out.println(filename);  
+File[] filelist=temp.listFiles();  
+  
+for(int i=0; i<filelist.length; i++)  
+{  
+if(!filelist[i].isDirectory())  
+    continue;  
+final DefaultMutableTreeNode tempDmtn=new DefaultMutableTreeNode(filelist[i].getName());  
+root.add(tempDmtn);  
+final String newfilename=new String(filename+"\\"+filelist[i].getName());  
+Thread t=new Thread()  
+{  
+public void run()  
+{  
+fillTree(tempDmtn,newfilename);  
+}//run  
+};//thread  
+if(t==null)   
+    {System.out.println("no more thread allowed "+newfilename);return;}  
+t.start();  
+}//for  
+}//function  
+//////////////////////////////  
+void doMouseClicked(MouseEvent me)  
+{  
+TreePath tp=tree.getPathForLocation(me.getX(),me.getY());  
+if(tp==null) return;  
+//jtf.setText(tp.toString());  
+String s=tp.toString();  
+s=s.replace("[","");  
+s=s.replace("]","");  
+s=s.replace(", ","\\");  
+//s=s.replace(" ","");  
+//int z=s.lastIndexOf("\"\\\"");  
+//s="\'"+s; s=s+"\'";  
+jtf.setText(s);  
+showFiles(s);  
+//java.util.StringTokenizer st=new java.util.StringTokenizer(s,",");  
+//jtf.setText(jtf.getText()+"="+s);  
+  
+}  
+////////////////////////////////  
+void showFiles(String filename)  
+{  
+File temp=new File(filename);  
+data=new String[][]{{"","","",""}};  
+remove(jspTable);  
+jtb=new JTable(data, colHeads);  
+jspTable=new JScrollPane(jtb);  
+setVisible(false);  
+add(jspTable,BorderLayout.CENTER);  
+setVisible(true);  
+  
+if(!temp.exists()) return;  
+if(!temp.isDirectory()) return;  
+  
+//System.out.println(filename);  
+File[] filelist=temp.listFiles();  
+int fileCounter=0;  
+data=new String[filelist.length][4];  
+for(int i=0; i<filelist.length; i++)  
+{  
+if(filelist[i].isDirectory())  
+    continue;  
+data[fileCounter][0]=new String(filelist[i].getName());  
+data[fileCounter][1]=new String(filelist[i].length()+"");  
+data[fileCounter][2]=new String(!filelist[i].canWrite()+"");  
+data[fileCounter][3]=new String(filelist[i].isHidden()+"");  
+fileCounter++;  
+}//for  
+  
+String dataTemp[][]=new String[fileCounter][4];  
+for(int k=0; k<fileCounter; k++)  
+    dataTemp[k]=data[k];  
+data=dataTemp;  
+  
+//System.out.println(data);  
+remove(jspTable);  
+jtb=new JTable(data, colHeads);  
+jspTable=new JScrollPane(jtb);  
+setVisible(false);  
+add(jspTable,BorderLayout.CENTER);  
+setVisible(true);  
+}  
+////////////////////////////////  
+///////////////////////////////  
+}  
+/***********************************/  
+class ExplorerTest extends JFrame  
+{  
+  
+ExplorerTest(String path)  
+{  
+super("Windows Exploder - Javatpoint");  
+add(new Explorer(path),"Center");  
+setDefaultCloseOperation(EXIT_ON_CLOSE);  
+setSize(400,400);  
+setVisible(true);  
+}  
+  
+public static void main(String[] args)  
+{  
+new ExplorerTest(".");  
+}  
+}  
+/***********************************/   
+
+
+
+Puzzle Game in Java:-
+>Puzzle Game in Java with Source Code: We can develop Puzzle Game in java with the help of AWT/Swing with event handling. Let's see the code of creating Puzzle Game in java.
+
+Puzzle Game using AWT:-
+
+import java.awt.*;  
+import java.awt.event.*;  
+import javax.swing.JOptionPane;  
+public class Puzzle extends Frame implements ActionListener{  
+Button b1,b2,b3,b4,b5,b6,b7,b8,b9;  
+Puzzle(){  
+    super("Puzzle - JavaTpoint");  
+    b1=new Button("1");  
+    b1.setBounds(50,100,40,40);  
+    b2=new Button("2");  
+    b2.setBounds(100,100,40,40);  
+    b3=new Button("3");  
+    b3.setBounds(150,100,40,40);  
+    b4=new Button("4");  
+    b4.setBounds(50,150,40,40);  
+    b5=new Button("5");  
+    b5.setBounds(100,150,40,40);  
+    b6=new Button("6");  
+    b6.setBounds(150,150,40,40);  
+    b7=new Button("7");  
+    b7.setBounds(50,200,40,40);  
+    b8=new Button("");  
+    b8.setBounds(100,200,40,40);  
+    b9=new Button("8");  
+    b9.setBounds(150,200,40,40);  
+      
+    b1.addActionListener(this);  
+    b2.addActionListener(this);  
+    b3.addActionListener(this);  
+    b4.addActionListener(this);  
+    b5.addActionListener(this);  
+    b6.addActionListener(this);  
+    b7.addActionListener(this);  
+    b8.addActionListener(this);  
+    b9.addActionListener(this);  
+      
+    add(b1);add(b2);add(b3);add(b4);add(b5);add(b6);add(b7);add(b8);add(b9);  
+    setSize(400,400);  
+    setLayout(null);  
+    setVisible(true);  
+}  
+public void actionPerformed(ActionEvent e){  
+    if(e.getSource()==b1){  
+        String label=b1.getLabel();  
+        if(b2.getLabel().equals("")){  
+            b2.setLabel(label);  
+            b1.setLabel("");  
+        }  
+        if(b4.getLabel().equals("")){  
+            b4.setLabel(label);  
+            b1.setLabel("");  
+        }  
+    }  
+    if(e.getSource()==b2){  
+        String label=b2.getLabel();  
+        if(b1.getLabel().equals("")){  
+            b1.setLabel(label);  
+            b2.setLabel("");  
+        }  
+        if(b3.getLabel().equals("")){  
+            b3.setLabel(label);  
+            b2.setLabel("");  
+        }  
+        if(b5.getLabel().equals("")){  
+            b5.setLabel(label);  
+            b2.setLabel("");  
+        }  
+    }  
+    if(e.getSource()==b3){  
+        String label=b3.getLabel();  
+        if(b2.getLabel().equals("")){  
+            b2.setLabel(label);  
+            b3.setLabel("");  
+        }  
+        if(b6.getLabel().equals("")){  
+            b6.setLabel(label);  
+            b3.setLabel("");  
+        }  
+    }  
+    if(e.getSource()==b4){  
+        String label=b4.getLabel();  
+        if(b1.getLabel().equals("")){  
+            b1.setLabel(label);  
+            b4.setLabel("");  
+        }  
+        if(b7.getLabel().equals("")){  
+            b7.setLabel(label);  
+            b4.setLabel("");  
+        }  
+        if(b5.getLabel().equals("")){  
+            b5.setLabel(label);  
+            b4.setLabel("");  
+        }  
+    }  
+    if(e.getSource()==b5){  
+        String label=b5.getLabel();  
+        if(b2.getLabel().equals("")){  
+            b2.setLabel(label);  
+            b5.setLabel("");  
+        }  
+        if(b6.getLabel().equals("")){  
+            b6.setLabel(label);  
+            b5.setLabel("");  
+        }  
+        if(b4.getLabel().equals("")){  
+            b4.setLabel(label);  
+            b5.setLabel("");  
+        }  
+        if(b8.getLabel().equals("")){  
+            b8.setLabel(label);  
+            b5.setLabel("");  
+        }  
+    }  
+    if(e.getSource()==b6){  
+        String label=b6.getLabel();  
+        if(b9.getLabel().equals("")){  
+            b9.setLabel(label);  
+            b6.setLabel("");  
+        }  
+        if(b3.getLabel().equals("")){  
+            b3.setLabel(label);  
+            b6.setLabel("");  
+        }  
+        if(b5.getLabel().equals("")){  
+            b5.setLabel(label);  
+            b6.setLabel("");  
+        }  
+    }  
+    if(e.getSource()==b7){  
+        String label=b7.getLabel();  
+        if(b4.getLabel().equals("")){  
+            b4.setLabel(label);  
+            b7.setLabel("");  
+        }  
+        if(b8.getLabel().equals("")){  
+            b8.setLabel(label);  
+            b7.setLabel("");  
+        }  
+    }  
+    if(e.getSource()==b8){  
+        String label=b8.getLabel();  
+        if(b9.getLabel().equals("")){  
+            b9.setLabel(label);  
+            b8.setLabel("");  
+        }  
+        if(b7.getLabel().equals("")){  
+            b7.setLabel(label);  
+            b8.setLabel("");  
+        }  
+        if(b5.getLabel().equals("")){  
+            b5.setLabel(label);  
+            b8.setLabel("");  
+        }  
+    }  
+    if(e.getSource()==b9){  
+        String label=b9.getLabel();  
+        if(b6.getLabel().equals("")){  
+            b6.setLabel(label);  
+            b9.setLabel("");  
+        }  
+        if(b8.getLabel().equals("")){  
+            b8.setLabel(label);  
+            b9.setLabel("");  
+        }  
+    }  
+      
+    //congrats code  
+    if(b1.getLabel().equals("1")&&b2.getLabel().equals("2")&&b3.getLabel()    
+            .equals("3")&&b4.getLabel().equals("4")&&b5.getLabel().equals("5")    
+            &&b6.getLabel().equals("6")&&b7.getLabel().equals("7")&&b8.getLabel()    
+            .equals("8")&&b9.getLabel().equals("")){     
+            JOptionPane.showMessageDialog(this,"Congratulations! You won.");    
+    }    
+}  
+public static void main(String[] args) {  
+    new Puzzle();  
+}  
+}  
+
+
+
+Puzzle Game using Swing:-
+
+Puzzle game in swing
+import java.awt.*;  
+import javax.swing.*;  
+import java.awt.event.*;  
+public class puzzle extends JFrame implements ActionListener{  
+JButton b1,b2,b3,b4,b5,b6,b7,b8,b9,next;  
+puzzle(){  
+super("Puzzle Game - JavaTpoint");  
+ b1=new JButton("1");  
+ b2=new JButton(" ");  
+ b3=new JButton("3");  
+ b4=new JButton("4");  
+ b5=new JButton("5");  
+ b6=new JButton("6");  
+ b7=new JButton("7");  
+ b8=new JButton("8");  
+ b9=new JButton("2");  
+ next=new JButton("next");  
+  
+b1.setBounds(10,30,50,40);  
+b2.setBounds(70,30,50,40);  
+b3.setBounds(130,30,50,40);  
+b4.setBounds(10,80,50,40);  
+b5.setBounds(70,80,50,40);  
+b6.setBounds(130,80,50,40);  
+b7.setBounds(10,130,50,40);  
+b8.setBounds(70,130,50,40);  
+b9.setBounds(130,130,50,40);  
+next.setBounds(70,200,100,40);  
+    
+add(b1);add(b2);add(b3);add(b4);add(b5);add(b6);add(b7);add(b8);add(b9); add(next);  
+b1.addActionListener(this);  
+b2.addActionListener(this);  
+b3.addActionListener(this);  
+b4.addActionListener(this);  
+b5.addActionListener(this);  
+b6.addActionListener(this);  
+b7.addActionListener(this);  
+b8.addActionListener(this);  
+b9.addActionListener(this);  
+next.addActionListener(this);  
+  
+next.setBackground(Color.black);  
+next.setForeground(Color.green);  
+setSize(250,300);  
+setLayout(null);  
+setVisible(true);  
+setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  
+}//end of constructor  
+  
+public void actionPerformed(ActionEvent e){  
+if(e.getSource()==next){  
+String s=b4.getLabel();  
+b4.setLabel(b9.getLabel());  
+b9.setLabel(s);  
+s=b1.getLabel();  
+b1.setLabel(b5.getLabel());  
+b5.setLabel(s);  
+s=b2.getLabel();  
+b2.setLabel(b7.getLabel());  
+b7.setLabel(s);  
+}  
+if(e.getSource()==b1){  
+String s=b1.getLabel();  
+if(b2.getLabel().equals(" ")){ b2.setLabel(s); b1.setLabel(" ");}  
+else if(b4.getLabel().equals(" ")){ b4.setLabel(s); b1.setLabel(" ");}  
+ }//end of if  
+  
+if(e.getSource()==b3){  
+String s=b3.getLabel();  
+if(b2.getLabel().equals(" ")){ b2.setLabel(s); b3.setLabel(" ");}  
+else if(b6.getLabel().equals(" ")){ b6.setLabel(s); b3.setLabel(" ");}  
+ }//end of if  
+  
+if(e.getSource()==b2){  
+String s=b2.getLabel();  
+if(b1.getLabel().equals(" ")){ b1.setLabel(s); b2.setLabel(" ");}  
+else if(b3.getLabel().equals(" ")){ b3.setLabel(s); b2.setLabel(" ");}  
+else if(b5.getLabel().equals(" ")){ b5.setLabel(s); b2.setLabel(" ");}  
+ }//end of if  
+  
+if(e.getSource()==b4){  
+String s=b4.getLabel();  
+if(b1.getLabel().equals(" ")){ b1.setLabel(s); b4.setLabel(" ");}  
+else if(b7.getLabel().equals(" ")){ b7.setLabel(s); b4.setLabel(" ");}  
+else if(b5.getLabel().equals(" ")){ b5.setLabel(s); b4.setLabel(" ");}  
+ }//end of if  
+  
+if(e.getSource()==b5){  
+String s=b5.getLabel();  
+if(b2.getLabel().equals(" ")){ b2.setLabel(s); b5.setLabel(" ");}  
+else if(b4.getLabel().equals(" ")){ b4.setLabel(s); b5.setLabel(" ");}  
+else if(b6.getLabel().equals(" ")){ b6.setLabel(s); b5.setLabel(" ");}  
+else if(b8.getLabel().equals(" ")){ b8.setLabel(s); b5.setLabel(" ");}  
+ }//end of if  
+  
+if(e.getSource()==b6){  
+  
+String s=b6.getLabel();  
+if(b9.getLabel().equals(" ")){ b9.setLabel(s); b6.setLabel(" ");}  
+else if(b3.getLabel().equals(" ")){ b3.setLabel(s); b6.setLabel(" ");}  
+else if(b5.getLabel().equals(" ")){ b5.setLabel(s); b6.setLabel(" ");}  
+  
+ }//end of if  
+  
+if(e.getSource()==b7){  
+String s=b7.getLabel();  
+if(b4.getLabel().equals(" ")){ b4.setLabel(s); b7.setLabel(" ");}  
+else if(b8.getLabel().equals(" ")){ b8.setLabel(s); b7.setLabel(" ");}  
+  
+ }//end of if  
+  
+if(e.getSource()==b8){  
+String s=b8.getLabel();  
+if(b7.getLabel().equals(" ")){ b7.setLabel(s); b8.setLabel(" ");}  
+else if(b9.getLabel().equals(" ")){ b9.setLabel(s); b8.setLabel(" ");}  
+else if(b5.getLabel().equals(" ")){ b5.setLabel(s); b8.setLabel(" ");}  
+  
+ }//end of if  
+  
+if(e.getSource()==b9){  
+String s=b9.getLabel();  
+if(b6.getLabel().equals(" ")){ b6.setLabel(s); b9.setLabel(" ");}  
+else if(b8.getLabel().equals(" ")){ b8.setLabel(s); b9.setLabel(" ");}  
+  
+if(b1.getLabel().equals("1")&&b2.getLabel().equals("2")&&b3.getLabel()  
+.equals("3")&&b4.getLabel().equals("4")&&b5.getLabel().equals("5")  
+&&b6.getLabel().equals("6")&&b7.getLabel().equals("7")&&b8.getLabel()  
+.equals("8")&&b9.getLabel().equals(" ")){   
+JOptionPane.showMessageDialog(puzzle.this,"!!!you won!!!");  
+}  
+ }//end of if  
+  
+}//end of actionPerformed  
+   
+  
+public static void main(String[] args){  
+new puzzle();  
+}//end of main  
+  
+}//end of class  
+
+
+

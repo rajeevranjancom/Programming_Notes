@@ -1,0 +1,1093 @@
+Abstract class in Java:-
+>A class that is declared with abstract keyword, is known as abstract class in java. It can have abstract and non-abstract methods (method with body).
+>Before learning java abstract class, let's understand the abstraction in java first.
+
+Abstraction in Java:-
+>Abstraction is a process of hiding the implementation details and showing only functionality to the user.
+>Another way, it shows only important things to the user and hides the internal details for example sending sms, you just type the text and send the message. You don't know the internal processing about the message delivery.
+
+Abstraction lets you focus on what the object does instead of how it does it.
+
+Ways to achieve Abstaction
+
+There are two ways to achieve abstraction in java
+
+Abstract class (0 to 100%)
+Interface (100%)
+
+ 
+Abstract class in Java:-
+>A class that is declared as abstract is known as abstract class. It needs to be extended and its method implemented. It cannot be instantiated.
+
+Example abstract class
+
+abstract class A{}  
+abstract method
+
+>A method that is declared as abstract and does not have implementation is known as abstract method.
+
+Example abstract method:-
+
+abstract void printStatus();//no body and abstract  
+Example of abstract class that has abstract method
+
+In this example, Bike the abstract class that contains only one abstract method run. It implementation is provided by the Honda class.
+
+abstract class Bike{  
+  abstract void run();  
+}  
+class Honda4 extends Bike{  
+void run(){System.out.println("running safely..");}  
+public static void main(String args[]){  
+ Bike obj = new Honda4();  
+ obj.run();  
+}  
+}  
+
+Test it Now
+running safely..
+Understanding the real scenario of abstract class
+
+>In this example, Shape is the abstract class, its implementation is provided by the Rectangle and Circle classes. Mostly, we don't know about the implementation class (i.e. hidden to the end user) and object of the implementation class is provided by the factory method.
+
+>A factory method is the method that returns the instance of the class. We will learn about the factory method later.
+
+>In this example, if you create the instance of Rectangle class, draw() method of Rectangle class will be invoked.
+
+File: TestAbstraction1.java
+
+abstract class Shape{  
+abstract void draw();  
+}  
+//In real scenario, implementation is provided by others i.e. unknown by end user  
+class Rectangle extends Shape{  
+void draw(){System.out.println("drawing rectangle");}  
+}  
+class Circle1 extends Shape{  
+void draw(){System.out.println("drawing circle");}  
+}  
+//In real scenario, method is called by programmer or user  
+class TestAbstraction1{  
+public static void main(String args[]){  
+Shape s=new Circle1();//In real scenario, object is provided through method e.g. getShape() method  
+s.draw();  
+}  
+}  
+
+Test it Now
+drawing circle
+Another example of abstract class in java
+
+File: TestBank.java
+
+abstract class Bank{    
+abstract int getRateOfInterest();    
+}    
+class SBI extends Bank{    
+int getRateOfInterest(){return 7;}    
+}    
+class PNB extends Bank{    
+int getRateOfInterest(){return 8;}    
+}    
+    
+class TestBank{    
+public static void main(String args[]){    
+Bank b;  
+b=new SBI();  
+System.out.println("Rate of Interest is: "+b.getRateOfInterest()+" %");    
+b=new PNB();  
+System.out.println("Rate of Interest is: "+b.getRateOfInterest()+" %");    
+}}    
+
+Test it Now
+Rate of Interest is: 7 %
+Rate of Interest is: 8 %
+Abstract class having constructor, data member, methods etc.
+
+An abstract class can have data member, abstract method, method body, constructor and even main() method.
+
+File: TestAbstraction2.java
+
+//example of abstract class that have method body  
+ abstract class Bike{  
+   Bike(){System.out.println("bike is created");}  
+   abstract void run();  
+   void changeGear(){System.out.println("gear changed");}  
+ }  
+  
+ class Honda extends Bike{  
+ void run(){System.out.println("running safely..");}  
+ }  
+ class TestAbstraction2{  
+ public static void main(String args[]){  
+  Bike obj = new Honda();  
+  obj.run();  
+  obj.changeGear();  
+ }  
+}  
+
+Test it Now
+       bike is created
+       running safely..
+       gear changed
+
+Rule: If there is any abstract method in a class, that class must be abstract.
+
+class Bike12{  
+abstract void run();  
+}  
+
+Test it Now
+compile time error
+
+Rule: If you are extending any abstract class that have abstract method, you must either provide the implementation of the method or make this class abstract.
+
+Another real scenario of abstract class:-
+>The abstract class can also be used to provide some implementation of the interface. In such case, the end user may not be forced to override all the methods of the interface.
+
+Note: If you are beginner to java, learn interface first and skip this example.
+
+interface A{  
+void a();  
+void b();  
+void c();  
+void d();  
+}  
+  
+abstract class B implements A{  
+public void c(){System.out.println("I am C");}  
+}  
+  
+class M extends B{  
+public void a(){System.out.println("I am a");}  
+public void b(){System.out.println("I am b");}  
+public void d(){System.out.println("I am d");}  
+}  
+  
+class Test5{  
+public static void main(String args[]){  
+A a=new M();  
+a.a();  
+a.b();  
+a.c();  
+a.d();  
+}}  
+
+Test it Now
+Output:I am a
+       I am b
+       I am c
+       I am d
+
+
+Interface in Java:-
+>An interface in java is a blueprint of a class. It has static constants and abstract methods.
+>The interface in java is a mechanism to achieve abstraction. There can be only abstract methods in the java interface not method body. It is used to achieve abstraction and multiple inheritance in Java.
+
+>Java Interface also represents IS-A relationship.
+
+>It cannot be instantiated just like abstract class.
+
+Why use Java interface:-
+There are mainly three reasons to use interface. They are given below.
+
+>It is used to achieve abstraction.
+>By interface, we can support the functionality of multiple inheritance.
+>It can be used to achieve loose coupling.
+
+>Java 8 Interface Improvement
+>Since Java 8, interface can have default and static methods which is discussed later.
+
+Internal addition by compiler:-
+>The java compiler adds public and abstract keywords before the interface method. More, it adds public, static and final keywords before data members.
+>In other words, Interface fields are public, static and final by default, and methods are public and abstract.
+
+interface in java:-
+>Understanding relationship between classes and interfaces
+>As shown in the figure given below, a class extends another class, an interface extends another interface but a class implements an interface.
+
+>relationship between class and interface
+
+Java Interface Example:-
+>In this example, Printable interface has only one method, its implementation is provided in the A class.
+
+interface printable{  
+void print();  
+}  
+class A6 implements printable{  
+public void print(){System.out.println("Hello");}  
+  
+public static void main(String args[]){  
+A6 obj = new A6();  
+obj.print();  
+ }  
+}  
+
+Test it Now
+Output:
+Hello
+
+Java Interface Example: Drawable:-
+>In this example, Drawable interface has only one method. Its implementation is provided by Rectangle and Circle classes. In real scenario, interface is defined by someone but implementation is provided by different implementation providers. And, it is used by someone else. The implementation part is hidden by the user which uses the interface.
+
+File: TestInterface1.java
+
+//Interface declaration: by first user  
+interface Drawable{  
+void draw();  
+}  
+//Implementation: by second user  
+class Rectangle implements Drawable{  
+public void draw(){System.out.println("drawing rectangle");}  
+}  
+class Circle implements Drawable{  
+public void draw(){System.out.println("drawing circle");}  
+}  
+//Using interface: by third user  
+class TestInterface1{  
+public static void main(String args[]){  
+Drawable d=new Circle();//In real scenario, object is provided by method e.g. getDrawable()  
+d.draw();  
+}}  
+
+Test it Now
+Output:
+drawing circle
+Java Interface Example: Bank
+
+File: TestInterface2.java
+
+interface Bank{  
+float rateOfInterest();  
+}  
+class SBI implements Bank{  
+public float rateOfInterest(){return 9.15f;}  
+}  
+class PNB implements Bank{  
+public float rateOfInterest(){return 9.7f;}  
+}  
+class TestInterface2{  
+public static void main(String[] args){  
+Bank b=new SBI();  
+System.out.println("ROI: "+b.rateOfInterest());  
+}}  
+
+Test it Now
+Output:
+ROI: 9.15
+
+Multiple inheritance in Java by interface:-
+>If a class implements multiple interfaces, or an interface extends multiple interfaces i.e. known as multiple inheritance.
+
+ multiple inheritance in java
+interface Printable{  
+void print();  
+}  
+interface Showable{  
+void show();  
+}  
+class A7 implements Printable,Showable{  
+public void print(){System.out.println("Hello");}  
+public void show(){System.out.println("Welcome");}  
+  
+public static void main(String args[]){  
+A7 obj = new A7();  
+obj.print();  
+obj.show();  
+ }  
+}  
+
+Test it Now
+Output:Hello
+       Welcome
+
+Q) Multiple inheritance is not supported through class in java but it is possible by interface, why?
+>As we have explained in the inheritance chapter, multiple inheritance is not supported in case of class because of ambiguity. But it is supported in case of interface because there is no ambiguity as implementation is provided by the implementation class. For example:
+
+interface Printable{  
+void print();  
+}  
+interface Showable{  
+void print();  
+}  
+  
+class TestTnterface3 implements Printable, Showable{  
+public void print(){System.out.println("Hello");}  
+public static void main(String args[]){  
+TestTnterface1 obj = new TestTnterface1();  
+obj.print();  
+ }  
+}  
+
+Test it Now
+Output:
+Hello
+
+>As you can see in the above example, Printable and Showable interface have same methods but its implementation is provided by class TestTnterface1, so there is no ambiguity.
+
+Interface inheritance:-
+>A class implements interface but one interface extends another interface .
+
+interface Printable{  
+void print();  
+}  
+interface Showable extends Printable{  
+void show();  
+}  
+class TestInterface4 implements Showable{  
+public void print(){System.out.println("Hello");}  
+public void show(){System.out.println("Welcome");}  
+  
+public static void main(String args[]){  
+TestInterface4 obj = new TestInterface4();  
+obj.print();  
+obj.show();  
+ }  
+}  
+
+Test it Now
+Output:
+Hello
+Welcome
+
+Java 8 Default Method in Interface
+Since Java 8, we can have method body in interface. But we need to make it default method. Let's see an example:
+
+File: TestInterfaceDefault.java
+
+interface Drawable{  
+void draw();  
+default void msg(){System.out.println("default method");}  
+}  
+class Rectangle implements Drawable{  
+public void draw(){System.out.println("drawing rectangle");}  
+}  
+class TestInterfaceDefault{  
+public static void main(String args[]){  
+Drawable d=new Rectangle();  
+d.draw();  
+d.msg();  
+}}  
+
+Test it Now
+
+Output:
+drawing rectangle
+default method
+
+Java 8 Static Method in Interface
+>Since Java 8, we can have static method in interface. Let's see an example:
+
+File: TestInterfaceStatic.java
+
+interface Drawable{  
+void draw();  
+static int cube(int x){return x*x*x;}  
+}  
+class Rectangle implements Drawable{  
+public void draw(){System.out.println("drawing rectangle");}  
+}  
+  
+class TestInterfaceStatic{  
+public static void main(String args[]){  
+Drawable d=new Rectangle();  
+d.draw();  
+System.out.println(Drawable.cube(3));  
+}}  
+
+Test it Now
+Output:
+drawing rectangle
+27
+
+Q) What is marker or tagged interface?
+>An interface that have no member is known as marker or tagged interface. For example: Serializable, Cloneable, Remote etc. They are used to provide some essential information to the JVM so that JVM may perform some useful operation.
+
+//How Serializable interface is written?  
+public interface Serializable{  
+}  
+Nested Interface in Java
+
+Note: An interface can have another interface i.e. known as nested interface. We will learn it in detail in the nested classes chapter. For example:
+
+interface printable{  
+ void print();  
+ interface MessagePrintable{  
+   void msg();  
+ }  
+}  
+
+Java Nested Interface:-
+>An interface i.e. declared within another interface or class is known as nested interface. The nested interfaces are used to group related interfaces so that they can be easy to maintain. The nested interface must be referred by the outer interface or class. It can't be accessed directly.
+
+Points to remember for nested interfaces:-
+>There are given some points that should be remembered by the java programmer.
+>Nested interface must be public if it is declared inside the interface but it can have any access modifier if declared within the class.
+>Nested interfaces are declared static implicitely.
+
+Syntax of nested interface which is declared within the interface
+
+interface interface_name{  
+ ...  
+ interface nested_interface_name{  
+  ...  
+ }  
+}   
+Syntax of nested interface which is declared within the class
+
+class class_name{  
+ ...  
+ interface nested_interface_name{  
+  ...  
+ }  
+}   
+
+ 
+Example of nested interface which is declared within the interface:-
+
+In this example, we are going to learn how to declare the nested interface and how we can access it.
+interface Showable{  
+  void show();  
+  interface Message{  
+   void msg();  
+  }  
+}  
+class TestNestedInterface1 implements Showable.Message{  
+ public void msg(){System.out.println("Hello nested interface");}  
+  
+ public static void main(String args[]){  
+  Showable.Message message=new TestNestedInterface1();//upcasting here  
+  message.msg();  
+ }  
+}  
+
+Test it Now
+download the example of nested interface
+Output:hello nested interface
+
+>As you can see in the above example, we are acessing the Message interface by its outer interface Showable because it cannot be accessed directly. It is just like almirah inside the room, we cannot access the almirah directly because we must enter the room first. In collection frameword, sun microsystem has provided a nested interface Entry. Entry is the subinterface of Map i.e. accessed by Map.Entry.
+
+>Internal code generated by the java compiler for nested interface Message
+
+>The java compiler internally creates public and static interface as displayed below:.
+
+public static interface Showable$Message  
+{  
+  public abstract void msg();  
+}  
+Example of nested interface which is declared within the class
+
+Let's see how can we define an interface inside the class and how can we access it.
+class A{  
+  interface Message{  
+   void msg();  
+  }  
+}  
+  
+class TestNestedInterface2 implements A.Message{  
+ public void msg(){System.out.println("Hello nested interface");}  
+  
+ public static void main(String args[]){  
+  A.Message message=new TestNestedInterface2();//upcasting here  
+  message.msg();  
+ }  
+}  
+
+Test it Now
+Output:hello nested interface
+
+Can we define a class inside the interface:-
+
+>Yes, If we define a class inside the interface, java compiler creates a static nested class. Let's see how can we define a class within the interface:
+
+interface M{  
+  class A{}  
+}  
+
+Multithreading in Java:-
+>Multithreading in java is a process of executing multiple threads simultaneously.
+>Thread is basically a lightweight sub-process, a smallest unit of processing. Multiprocessing and multithreading, both are used to achieve multitasking.
+>But we use multithreading than multiprocessing because threads share a common memory area. They don't allocate separate memory area so saves memory, and context-switching between the threads takes less time than process.
+
+>Java Multithreading is mostly used in games, animation etc.
+
+Advantages of Java Multithreading:-
+1) It doesn't block the user because threads are independent and you can perform multiple operations at same time.
+2) You can perform many operations together so it saves time.
+3) Threads are independent so it doesn't affect other threads if exception occur in a single thread.
+
+Multitasking:-
+>Multitasking is a process of executing multiple tasks simultaneously. We use multitasking to utilize the CPU. Multitasking can be achieved by two ways:
+>Process-based Multitasking(Multiprocessing)
+
+Thread-based Multitasking(Multithreading):-
+
+1) Process-based Multitasking (Multiprocessing)
+>Each process have its own address in memory i.e. each process allocates separate memory area.
+>Process is heavyweight.
+>Cost of communication between the process is high.
+>Switching from one process to another require some time for saving and loading registers, memory maps, updating lists etc.
+
+2) Thread-based Multitasking (Multithreading)
+
+>Threads share the same address space.
+>Thread is lightweight.
+>Cost of communication between the thread is low.
+
+Note: At least one process is required for each thread.
+
+
+Life cycle of a Thread (Thread States):-
+>A thread can be in one of the five states. According to sun, there is only 4 states in thread life cycle in java new, runnable, non-runnable and terminated. There is no running state.
+>But for better understanding the threads, we are explaining it in the 5 states.
+
+>The life cycle of the thread in java is controlled by JVM. The java thread states are as follows:
+New
+Runnable
+Running
+Non-Runnable (Blocked)
+Terminated
+
+
+1) New:-
+>The thread is in new state if you create an instance of Thread class but before the invocation of start() method.
+
+2) Runnable:-
+>The thread is in runnable state after invocation of start() method, but the thread scheduler has not selected it to be the running thread.
+
+3) Running:-
+>The thread is in running state if the thread scheduler has selected it.
+
+4) Non-Runnable (Blocked)
+>This is the state when the thread is still alive, but is currently not eligible to run.
+
+5) Terminated
+>A thread is in terminated or dead state when its run() method exits.
+
+
+How to create thread:-
+>There are two ways to create a thread:
+
+>By extending Thread class
+>By implementing Runnable interface.
+
+Thread class:-
+>Thread class provide constructors and methods to create and perform operations on a thread.Thread class extends Object class and implements Runnable interface.
+>Commonly used Constructors of Thread class:
+
+>Thread()
+>Thread(String name)
+>Thread(Runnable r)
+>Thread(Runnable r,String name)
+>Commonly used methods of Thread class:
+
+# public void run(): is used to perform action for a thread.
+# public void start(): starts the execution of the thread.JVM calls the run() method on the thread.
+# public void sleep(long miliseconds): Causes the currently executing thread to sleep (temporarily cease execution) for the specified number of milliseconds.
+# public void join(): waits for a thread to die.
+# public void join(long miliseconds): waits for a thread to die for the specified miliseconds.
+# public int getPriority(): returns the priority of the thread.
+# public int setPriority(int priority): changes the priority of the thread.
+# public String getName(): returns the name of the thread.
+# public void setName(String name): changes the name of the thread.
+# public Thread currentThread(): returns the reference of currently executing thread.
+# public int getId(): returns the id of the thread.
+# public Thread.State getState(): returns the state of the thread.
+# public boolean isAlive(): tests if the thread is alive.
+# public void yield(): causes the currently executing thread object to temporarily pause and allow other threads to execute.
+# public void suspend(): is used to suspend the thread(depricated).
+# public void resume(): is used to resume the suspended thread(depricated).
+# public void stop(): is used to stop the thread(depricated).
+# public boolean isDaemon(): tests if the thread is a daemon thread.
+# public void setDaemon(boolean b): marks the thread as daemon or user thread.
+# public void interrupt(): interrupts the thread.
+# public boolean isInterrupted(): tests if the thread has been interrupted.
+# public static boolean interrupted(): tests if the current thread has been interrupted.
+
+ 
+Runnable interface:-
+>The Runnable interface should be implemented by any class whose instances are intended to be executed by a thread. Runnable interface have only one method named run().
+public void run(): is used to perform action for a thread.
+
+Starting a thread:-
+>start() method of Thread class is used to start a newly created thread. It performs following tasks:
+>A new thread starts(with new callstack).
+>The thread moves from New state to the Runnable state.
+
+When the thread gets a chance to execute, its target run() method will run.
+
+1) Java Thread Example by extending Thread class
+
+class Multi extends Thread{  
+public void run(){  
+System.out.println("thread is running...");  
+}  
+public static void main(String args[]){  
+Multi t1=new Multi();  
+t1.start();  
+ }  
+}
+  
+Output:thread is running...
+
+2) Java Thread Example by implementing Runnable interface
+
+class Multi3 implements Runnable{  
+public void run(){  
+System.out.println("thread is running...");  
+}  
+  
+public static void main(String args[]){  
+Multi3 m1=new Multi3();  
+Thread t1 =new Thread(m1);  
+t1.start();  
+ }  
+}  
+Output:thread is running...
+If you are not extending the Thread class,your class object would not be treated as a thread object.So you need to explicitely create Thread class object.We are passing the object of your class that implements Runnable so that your class run() method may execute.
+
+
+
+Thread Scheduler in Java:-
+>Thread scheduler in java is the part of the JVM that decides which thread should run.
+>There is no guarantee that which runnable thread will be chosen to run by the thread scheduler.
+>Only one thread at a time can run in a single process.
+>The thread scheduler mainly uses preemptive or time slicing scheduling to schedule the threads.
+
+Difference between preemptive scheduling and time slicing:-
+>Under preemptive scheduling, the highest priority task executes until it enters the waiting or dead states or a higher priority task comes into existence. Under time slicing, a task >executes for a predefined slice of time and then reenters the pool of ready tasks. The scheduler then determines which task should execute next, based on priority and other factors.
+
+Sleep method in java:-
+>The sleep() method of Thread class is used to sleep a thread for the specified amount of time.
+
+Syntax of sleep() method in java
+
+The Thread class provides two methods for sleeping a thread:
+
+public static void sleep(long miliseconds)throws InterruptedException
+public static void sleep(long miliseconds, int nanos)throws InterruptedException
+Example of sleep method in java
+
+class TestSleepMethod1 extends Thread{  
+ public void run(){  
+  for(int i=1;i<5;i++){  
+    try{Thread.sleep(500);}catch(InterruptedException e){System.out.println(e);}  
+    System.out.println(i);  
+  }  
+ }  
+ public static void main(String args[]){  
+  TestSleepMethod1 t1=new TestSleepMethod1();  
+  TestSleepMethod1 t2=new TestSleepMethod1();  
+   
+  t1.start();  
+  t2.start();  
+ }  
+}  
+
+Output:
+       1
+       1
+       2
+       2
+       3
+       3
+       4
+       4
+
+>As you know well that at a time only one thread is executed. If you sleep a thread for the specified time,the thread shedular picks up another thread and so on.
+
+
+>Can we start a thread twice
+>No. After starting a thread, it can never be started again. If you does so, an IllegalThreadStateException is thrown. In such case, thread will run once but for second time, it will throw exception.
+
+Let's understand it by the example given below:
+
+public class TestThreadTwice1 extends Thread{  
+ public void run(){  
+   System.out.println("running...");  
+ }  
+ public static void main(String args[]){  
+  TestThreadTwice1 t1=new TestThreadTwice1();  
+  t1.start();  
+  t1.start();  
+ }  
+}  
+
+Test it Now
+       running
+       Exception in thread "main" java.lang.IllegalThreadStateException
+
+
+What if we call run() method directly instead start() method:-
+>Each thread starts in a separate call stack.
+>Invoking the run() method from main thread, the run() method goes onto the current call stack rather than at the beginning of a new call stack.
+
+class TestCallRun1 extends Thread{  
+ public void run(){  
+   System.out.println("running...");  
+ }  
+ public static void main(String args[]){  
+  TestCallRun1 t1=new TestCallRun1();  
+  t1.run();//fine, but does not start a separate call stack  
+ }  
+}  
+
+Test it Now
+Output:running...
+
+MainThreadStack Problem if you direct call run() method
+class TestCallRun2 extends Thread{  
+ public void run(){  
+  for(int i=1;i<5;i++){  
+    try{Thread.sleep(500);}catch(InterruptedException e){System.out.println(e);}  
+    System.out.println(i);  
+  }  
+ }  
+ public static void main(String args[]){  
+  TestCallRun2 t1=new TestCallRun2();  
+  TestCallRun2 t2=new TestCallRun2();  
+   
+  t1.run();  
+  t2.run();  
+ }  
+}  
+Test it Now
+Output:1
+       2
+       3
+       4
+       5
+       1
+       2
+       3
+       4
+       5
+ 
+>As you can see in the above program that there is no context-switching because here t1 and t2 will be treated as normal object not thread object.
+
+
+The join() method:-
+>The join() method waits for a thread to die. In other words, it causes the currently running threads to stop executing until the thread it joins with completes its task.
+
+Syntax:
+
+public void join()throws InterruptedException
+public void join(long milliseconds)throws InterruptedException
+Example of join() method
+class TestJoinMethod1 extends Thread{  
+ public void run(){  
+  for(int i=1;i<=5;i++){  
+   try{  
+    Thread.sleep(500);  
+   }catch(Exception e){System.out.println(e);}  
+  System.out.println(i);  
+  }  
+ }  
+public static void main(String args[]){  
+ TestJoinMethod1 t1=new TestJoinMethod1();  
+ TestJoinMethod1 t2=new TestJoinMethod1();  
+ TestJoinMethod1 t3=new TestJoinMethod1();  
+ t1.start();  
+ try{  
+  t1.join();  
+ }catch(Exception e){System.out.println(e);}  
+  
+ t2.start();  
+ t3.start();  
+ }  
+}  
+Test it Now
+Output:1
+       2
+       3
+       4
+       5
+       1
+       1
+       2
+       2
+       3
+       3
+       4
+       4
+       5
+       5
+
+ 
+>As you can see in the above example,when t1 completes its task then t2 and t3 starts executing.
+
+Example of join(long miliseconds) method
+
+class TestJoinMethod2 extends Thread{  
+ public void run(){  
+  for(int i=1;i<=5;i++){  
+   try{  
+    Thread.sleep(500);  
+   }catch(Exception e){System.out.println(e);}  
+  System.out.println(i);  
+  }  
+ }  
+public static void main(String args[]){  
+ TestJoinMethod2 t1=new TestJoinMethod2();  
+ TestJoinMethod2 t2=new TestJoinMethod2();  
+ TestJoinMethod2 t3=new TestJoinMethod2();  
+ t1.start();  
+ try{  
+  t1.join(1500);  
+ }catch(Exception e){System.out.println(e);}  
+  
+ t2.start();  
+ t3.start();  
+ }  
+}  
+
+Test it Now
+
+Output:1
+       2
+       3
+       1
+       4
+       1
+       2
+       5
+       2
+       3
+       3
+       4
+       4
+       5
+       5
+
+ 
+>In the above example,when t1 is completes its task for 1500 miliseconds(3 times) then t2 and t3 starts executing.
+getName(),setName(String) and getId() method:
+
+public String getName()
+public void setName(String name)
+public long getId()
+class TestJoinMethod3 extends Thread{  
+  public void run(){  
+   System.out.println("running...");  
+  }  
+ public static void main(String args[]){  
+  TestJoinMethod3 t1=new TestJoinMethod3();  
+  TestJoinMethod3 t2=new TestJoinMethod3();  
+  System.out.println("Name of t1:"+t1.getName());  
+  System.out.println("Name of t2:"+t2.getName());  
+  System.out.println("id of t1:"+t1.getId());  
+  
+  t1.start();  
+  t2.start();  
+  
+  t1.setName("Sonoo Jaiswal");  
+  System.out.println("After changing name of t1:"+t1.getName());  
+ }  
+}
+  
+Test it Now
+
+Output:Name of t1:Thread-0
+       Name of t2:Thread-1
+       id of t1:8
+       running...
+       After changling name of t1:Sonoo Jaiswal
+       running...
+     
+ 
+The currentThread() method:-
+>The currentThread() method returns a reference to the currently executing thread object.
+Syntax:
+
+public static Thread currentThread()
+Example of currentThread() method
+class TestJoinMethod4 extends Thread{  
+ public void run(){  
+  System.out.println(Thread.currentThread().getName());  
+ }  
+ }  
+ public static void main(String args[]){  
+  TestJoinMethod4 t1=new TestJoinMethod4();  
+  TestJoinMethod4 t2=new TestJoinMethod4();  
+  
+  t1.start();  
+  t2.start();  
+ }  
+}  
+
+Test it Now
+
+Output:Thread-0
+       Thread-1
+ 
+
+Naming Thread and Current Thread:-
+Naming Thread:-
+
+>The Thread class provides methods to change and get the name of a thread. By default, each thread has a name i.e. thread-0, thread-1 and so on. By we can change the name of the thread by using setName() method. The syntax of setName() and getName() methods are given below:
+
+public String getName(): is used to return the name of a thread.
+public void setName(String name): is used to change the name of a thread.
+Example of naming a thread
+
+class TestMultiNaming1 extends Thread{  
+  public void run(){  
+   System.out.println("running...");  
+  }  
+ public static void main(String args[]){  
+  TestMultiNaming1 t1=new TestMultiNaming1();  
+  TestMultiNaming1 t2=new TestMultiNaming1();  
+  System.out.println("Name of t1:"+t1.getName());  
+  System.out.println("Name of t2:"+t2.getName());  
+   
+  t1.start();  
+  t2.start();  
+  
+  t1.setName("Sonoo Jaiswal");  
+  System.out.println("After changing name of t1:"+t1.getName());  
+ }  
+}  
+Test it Now
+Output:Name of t1:Thread-0
+       Name of t2:Thread-1
+       id of t1:8
+       running...
+       After changeling name of t1:Sonoo Jaiswal
+       running...
+     
+ 
+Current Thread
+
+The currentThread() method returns a reference of currently executing thread.
+
+public static Thread currentThread()  
+Example of currentThread() method
+
+class TestMultiNaming2 extends Thread{  
+ public void run(){  
+  System.out.println(Thread.currentThread().getName());  
+ }  
+ public static void main(String args[]){  
+  TestMultiNaming2 t1=new TestMultiNaming2();  
+  TestMultiNaming2 t2=new TestMultiNaming2();  
+  
+  t1.start();  
+  t2.start();  
+ }  
+}  
+Test it Now
+Output:Thread-0
+       Thread-1
+
+Priority of a Thread (Thread Priority):-
+>Each thread have a priority. Priorities are represented by a number between 1 and 10. In most cases, thread schedular schedules the threads according to their priority (known as preemptive scheduling). But it is not guaranteed because it depends on JVM specification that which scheduling it chooses.
+
+3 constants defiend in Thread class:-
+
+public static int MIN_PRIORITY
+public static int NORM_PRIORITY
+public static int MAX_PRIORITY
+Default priority of a thread is 5 (NORM_PRIORITY). The value of MIN_PRIORITY is 1 and the value of MAX_PRIORITY is 10.
+Example of priority of a Thread:
+
+class TestMultiPriority1 extends Thread{  
+ public void run(){  
+   System.out.println("running thread name is:"+Thread.currentThread().getName());  
+   System.out.println("running thread priority is:"+Thread.currentThread().getPriority());  
+  
+  }  
+ public static void main(String args[]){  
+  TestMultiPriority1 m1=new TestMultiPriority1();  
+  TestMultiPriority1 m2=new TestMultiPriority1();  
+  m1.setPriority(Thread.MIN_PRIORITY);  
+  m2.setPriority(Thread.MAX_PRIORITY);  
+  m1.start();  
+  m2.start();  
+   
+ }  
+}     
+
+Test it Now
+
+Output:running thread name is:Thread-0
+       running thread priority is:10
+       running thread name is:Thread-1
+       running thread priority is:1
+       
+ 
+Daemon Thread in Java:-
+>Daemon thread in java is a service provider thread that provides services to the user thread. Its life depend on the mercy of user threads i.e. when all the user threads dies, JVM terminates this thread automatically.
+>There are many java daemon threads running automatically e.g. gc, finalizer etc.
+>You can see all the detail by typing the jconsole in the command prompt. The jconsole tool provides information about the loaded classes, memory usage, running threads etc.
+>Points to remember for Daemon Thread in Java
+>It provides services to user threads for background supporting tasks. It has no role in life than to serve user threads.
+
+>Its life depends on user threads.
+>It is a low priority thread.
+
+Why JVM terminates the daemon thread if there is no user thread?
+>The sole purpose of the daemon thread is that it provides services to user thread for background supporting task. If there is no user thread, why should JVM keep running this thread. That is why JVM terminates the daemon thread if there is no user thread.
+
+Methods for Java Daemon thread by Thread class:-
+
+The java.lang.Thread class provides two methods for java daemon thread:-
+
+No.	Method	Description
+1)	public void setDaemon(boolean status)	is used to mark the current thread as daemon thread or user thread.
+2)	public boolean isDaemon()	is used to check that current is daemon.
+Simple example of Daemon thread in java
+
+File: MyThread.java
+
+public class TestDaemonThread1 extends Thread{  
+ public void run(){  
+  if(Thread.currentThread().isDaemon()){//checking for daemon thread  
+   System.out.println("daemon thread work");  
+  }  
+  else{  
+  System.out.println("user thread work");  
+ }  
+ }  
+ public static void main(String[] args){  
+  TestDaemonThread1 t1=new TestDaemonThread1();//creating thread  
+  TestDaemonThread1 t2=new TestDaemonThread1();  
+  TestDaemonThread1 t3=new TestDaemonThread1();  
+  
+  t1.setDaemon(true);//now t1 is daemon thread  
+    
+  t1.start();//starting threads  
+  t2.start();  
+  t3.start();  
+ }  
+}
+  
+Test it Now
+
+Output
+daemon thread work
+user thread work
+user thread work
+
+Note: If you want to make a user thread as Daemon, it must not be started otherwise it will throw IllegalThreadStateException.
+
+File: MyThread.java
+
+class TestDaemonThread2 extends Thread{  
+ public void run(){  
+  System.out.println("Name: "+Thread.currentThread().getName());  
+  System.out.println("Daemon: "+Thread.currentThread().isDaemon());  
+ }  
+  
+ public static void main(String[] args){  
+  TestDaemonThread2 t1=new TestDaemonThread2();  
+  TestDaemonThread2 t2=new TestDaemonThread2();  
+  t1.start();  
+  t1.setDaemon(true);//will throw exception here  
+  t2.start();  
+ }  
+}  
+
+Test it Now
+Output:exception in thread main: java.lang.IllegalThreadStateException.
+
+

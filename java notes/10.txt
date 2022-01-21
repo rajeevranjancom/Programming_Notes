@@ -1,0 +1,419 @@
+Inter-thread communication in Java:-
+>Inter-thread communication or Co-operation is all about allowing synchronized threads to communicate with each other.
+>Cooperation (Inter-thread communication) is a mechanism in which a thread is paused running in its critical section and another thread is allowed to enter (or lock) in the same critical section to be executed.It is implemented by following methods of Object class:
+
+wait()
+notify()
+notifyAll()
+
+1) wait() method
+Causes current thread to release the lock and wait until either another thread invokes the notify() method or the notifyAll() method for this object, or a specified amount of time has elapsed.
+
+>The current thread must own this object's monitor, so it must be called from the synchronized method only otherwise it will throw exception.
+
+Method	Description
+public final void wait()throws InterruptedException	waits until object is notified.
+public final void wait(long timeout)throws InterruptedException	waits for the specified amount of time.
+
+2) notify() method:-
+>Wakes up a single thread that is waiting on this object's monitor. If any threads are waiting on this object, one of them is chosen to be awakened. The choice is arbitrary and occurs at the discretion of the implementation. Syntax:
+
+public final void notify()
+
+3) notifyAll() method:-
+>Wakes up all threads that are waiting on this object's monitor. Syntax:
+
+public final void notifyAll()
+
+Understanding the process of inter-thread communication:-
+
+inter thread communication in java:-
+The point to point explanation are:-
+
+>Threads enter to acquire lock.
+>Lock is acquired by on thread.
+>Now thread goes to waiting state if you call wait() method on the object. Otherwise it releases the lock and exits.
+>If you call notify() or notifyAll() method, thread moves to the notified state (runnable state).
+>Now thread is available to acquire lock.
+>After completion of the task, thread releases the lock and exits the monitor state of the object.
+
+Why wait(), notify() and notifyAll() methods are defined in Object class not Thread class?
+>It is because they are related to lock and object has a lock.
+
+Difference between wait and sleep:-
+
+Let's see the important differences between wait and sleep methods.
+
+wait()							sleep()
+wait() method releases the lock				sleep() method doesn't release the lock.
+is the method of Object class				is the method of Thread class
+is the non-static method					is the static method
+is the non-static method					is the static method
+should be notified by notify() or notifyAll() methods		after the specified amount of time, sleep is completed.
+
+Example of inter thread communication in java:-
+>Let's see the simple example of inter thread communication.
+
+class Customer{  
+int amount=10000;  
+  
+synchronized void withdraw(int amount){  
+System.out.println("going to withdraw...");  
+  
+if(this.amount<amount){  
+System.out.println("Less balance; waiting for deposit...");  
+try{wait();}catch(Exception e){}  
+}  
+this.amount-=amount;  
+System.out.println("withdraw completed...");  
+}  
+  
+synchronized void deposit(int amount){  
+System.out.println("going to deposit...");  
+this.amount+=amount;  
+System.out.println("deposit completed... ");  
+notify();  
+}  
+}  
+  
+class Test{  
+public static void main(String args[]){  
+final Customer c=new Customer();  
+new Thread(){  
+public void run(){c.withdraw(15000);}  
+}.start();  
+new Thread(){  
+public void run(){c.deposit(10000);}  
+}.start();  
+  
+}}  
+
+Output: going to withdraw...
+       Less balance; waiting for deposit...
+       going to deposit...
+       deposit completed...
+       withdraw completed
+
+
+Interrupting a Thread:-
+>If any thread is in sleeping or waiting state (i.e. sleep() or wait() is invoked), calling the interrupt() method on the thread, breaks out the sleeping or waiting state throwing InterruptedException. If the thread is not in the sleeping or waiting state, calling the interrupt() method performs normal behaviour and doesn't interrupt the thread but sets the interrupt flag to true. Let's first see the methods provided by the Thread class for thread interruption.
+
+The 3 methods provided by the Thread class for interrupting a thread:-
+
+public void interrupt()
+public static boolean interrupted()
+public boolean isInterrupted()
+Example of interrupting a thread that stops working
+
+>In this example, after interrupting the thread, we are propagating it, so it will stop working. If we don't want to stop the thread, we can handle it where sleep() or wait() method is invoked. 
+
+Let's first see the example where we are propagating the exception.
+class TestInterruptingThread1 extends Thread{  
+public void run(){  
+try{  
+Thread.sleep(1000);  
+System.out.println("task");  
+}catch(InterruptedException e){  
+throw new RuntimeException("Thread interrupted..."+e);  
+  }  
+}  
+  
+public static void main(String args[]){  
+TestInterruptingThread1 t1=new TestInterruptingThread1();  
+t1.start();  
+try{  
+t1.interrupt();  
+}catch(Exception e){System.out.println("Exception handled "+e);}  
+  
+}  
+}  
+
+download this example
+Output:Exception in thread-0  
+       java.lang.RuntimeException: Thread interrupted...
+       java.lang.InterruptedException: sleep interrupted
+       at A.run(A.java:7)
+
+Example of interrupting a thread that doesn't stop working
+
+>In this example, after interrupting the thread, we handle the exception, so it will break out the sleeping but will not stop working.
+
+class TestInterruptingThread2 extends Thread{  
+public void run(){  
+try{  
+Thread.sleep(1000);  
+System.out.println("task");  
+}catch(InterruptedException e){  
+System.out.println("Exception handled "+e);  
+}  
+System.out.println("thread is running...");  
+}  
+  
+public static void main(String args[]){  
+TestInterruptingThread2 t1=new TestInterruptingThread2();  
+t1.start();  
+  
+t1.interrupt();  
+  
+}  
+}
+
+download this example
+Output:Exception handled  
+       java.lang.InterruptedException: sleep interrupted
+       thread is running...
+Example of interrupting thread that behaves normally
+
+If thread is not in sleeping or waiting state, calling the interrupt() method sets the interrupted flag to true that can be used to stop the thread by the java programmer later.
+class TestInterruptingThread3 extends Thread{  
+  
+public void run(){  
+for(int i=1;i<=5;i++)  
+System.out.println(i);  
+}  
+  
+public static void main(String args[]){  
+TestInterruptingThread3 t1=new TestInterruptingThread3();  
+t1.start();  
+  
+t1.interrupt();  
+  
+}  
+}  
+Test it Now
+Output:1
+       2
+       3
+       4 
+       5
+What about isInterrupted and interrupted method?
+
+The isInterrupted() method returns the interrupted flag either true or false. The static interrupted() method returns the interrupted flag afterthat it sets the flag to false if it is true.
+public class TestInterruptingThread4 extends Thread{  
+  
+public void run(){  
+for(int i=1;i<=2;i++){  
+if(Thread.interrupted()){  
+System.out.println("code for interrupted thread");  
+}  
+else{  
+System.out.println("code for normal thread");  
+}  
+  
+}//end of for loop  
+}  
+  
+public static void main(String args[]){  
+  
+TestInterruptingThread4 t1=new TestInterruptingThread4();  
+TestInterruptingThread4 t2=new TestInterruptingThread4();  
+  
+t1.start();  
+t1.interrupt();  
+  
+t2.start();  
+  
+}  
+}  
+Test it Now
+Output:Code for interrupted thread
+       code for normal thread
+       code for normal thread
+       code for normal thread
+
+
+
+Reentrant Monitor in Java:-
+>According to Sun Microsystems, Java monitors are reentrant means java thread can reuse the same monitor for different synchronized methods if method is called from the method.
+
+Advantage of Reentrant Monitor:-
+>It eliminates the possibility of single thread deadlocking
+
+Let's understand the java reentrant monitor by the example given below:
+
+class Reentrant {  
+    public synchronized void m() {  
+    n();  
+    System.out.println("this is m() method");  
+    }  
+    public synchronized void n() {  
+    System.out.println("this is n() method");  
+    }  
+}
+  
+>In this class, m and n are the synchronized methods. The m() method internally calls the n() method.
+>Now let's call the m() method on a thread. In the class given below, we are creating thread using annonymous class.
+
+public class ReentrantExample{  
+public static void main(String args[]){  
+final ReentrantExample re=new ReentrantExample();  
+  
+Thread t1=new Thread(){  
+public void run(){  
+re.m();//calling method of Reentrant class  
+}  
+};  
+t1.start();  
+}}  
+Test it Now
+Output: this is n() method
+this is m() method
+ 
+
+
+
+Java I/O Tutorial
+
+Java I/O (Input and Output) is used to process the input and produce the output.
+
+Java uses the concept of stream to make I/O operation fast. The java.io package contains all the classes required for input and output operations.
+
+We can perform file handling in java by Java I/O API.
+
+Stream
+
+A stream is a sequence of data.In Java a stream is composed of bytes. It's called a stream because it is like a stream of water that continues to flow.
+
+In java, 3 streams are created for us automatically. All these streams are attached with console.
+
+1) System.out: standard output stream
+
+2) System.in: standard input stream
+
+3) System.err: standard error stream
+
+Let's see the code to print output and error message to the console.
+
+System.out.println("simple message");  
+System.err.println("error message");  
+Let's see the code to get input from console.
+
+int i=System.in.read();//returns ASCII code of 1st character  
+System.out.println((char)i);//will print the character 
+
+OutputStream class
+
+OutputStream class is an abstract class. It is the super class of all classes representing an output stream of bytes. An output stream accepts output bytes and sends them to some sink.
+
+Useful methods of OutputStream
+
+Method	Description
+1) public void write(int)throws IOException	is used to write a byte to the current output stream.
+2) public void write(byte[])throws IOException	is used to write an array of byte to the current output stream.
+3) public void flush()throws IOException	flushes the current output stream.
+4) public void close()throws IOException	is used to close the current output stream.
+OutputStream Hierarchy
+
+Java output stream hierarchy
+InputStream class
+
+InputStream class is an abstract class. It is the super class of all classes representing an input stream of bytes.
+
+Useful methods of InputStream
+
+Method							Description
+1) public abstract int read()throws IOException			reads the next byte of data from the input stream. It returns -1 at the end of file.
+2) public int available()throws IOException			returns an estimate of the number of bytes that can be read from the current input stream.
+3) public void close()throws IOException			is used to close the current input stream.
+InputStream Hierarchy
+
+
+Java FileOutputStream Example 1: write byte
+
+import java.io.FileOutputStream;  
+public class FileOutputStreamExample {  
+    public static void main(String args[]){    
+           try{    
+             FileOutputStream fout=new FileOutputStream("D:\\testout.txt");    
+             fout.write(65);    
+             fout.close();    
+             System.out.println("success...");    
+            }catch(Exception e){System.out.println(e);}    
+      }    
+}  
+Output:
+
+Success...
+The content of a text file testout.txt is set with the data A.
+
+testout.txt
+
+A
+Java FileOutputStream example 2: write string
+
+import java.io.FileOutputStream;  
+public class FileOutputStreamExample {  
+    public static void main(String args[]){    
+           try{    
+             FileOutputStream fout=new FileOutputStream("D:\\testout.txt");    
+             String s="Welcome to javaTpoint.";    
+             byte b[]=s.getBytes();//converting string into byte array    
+             fout.write(b);    
+             fout.close();    
+             System.out.println("success...");    
+            }catch(Exception e){System.out.println(e);}    
+      }    
+}  
+Output:
+
+Success...
+
+The content of a text file testout.txt is set with the data Welcome to javaTpoint.
+
+testout.txt
+
+Welcome to javaTpoint.
+
+
+Java BufferedOutputStream Class
+
+Java BufferedOutputStream class is used for buffering an output stream. It internally uses buffer to store data. It adds more efficiency than to write data directly into a stream. So, it makes the performance fast.
+
+For adding the buffer in an OutputStream, use the BufferedOutputStream class. Let's see the syntax for adding the buffer in an OutputStream:
+
+OutputStream os= new BufferedOutputStream(new FileOutputStream("D:\\IO Package\\testout.txt"));  
+Java BufferedOutputStream class declaration
+
+Let's see the declaration for Java.io.BufferedOutputStream class:
+
+public class BufferedOutputStream extends FilterOutputStream  
+Java BufferedOutputStream class constructors
+
+Constructor	Description
+BufferedOutputStream(OutputStream os)	It creates the new buffered output stream which is used for writing the data to the specified output stream.
+BufferedOutputStream(OutputStream os, int size)	It creates the new buffered output stream which is used for writing the data to the specified output stream with a specified buffer size.
+Java BufferedOutputStream class methods
+
+Method	Description
+void write(int b)	It writes the specified byte to the buffered output stream.
+void write(byte[] b, int off, int len)	It write the bytes from the specified byte-input stream into a specified byte array, starting with the given offset
+void flush()	It flushes the buffered output stream.
+
+ 
+Example of BufferedOutputStream class:-
+
+In this example, we are writing the textual information in the BufferedOutputStream object which is connected to the FileOutputStream object. The flush() flushes the data of one stream and send it into another. It is required if you have connected the one stream with another.
+
+package com.javatpoint;  
+import java.io.*;  
+public class BufferedOutputStreamExample{    
+public static void main(String args[])throws Exception{    
+     FileOutputStream fout=new FileOutputStream("D:\\testout.txt");    
+     BufferedOutputStream bout=new BufferedOutputStream(fout);    
+     String s="Welcome to javaTpoint.";    
+     byte b[]=s.getBytes();    
+     bout.write(b);    
+     bout.flush();    
+     bout.close();    
+     fout.close();    
+     System.out.println("success");    
+}    
+}  
+
+Output:
+Success
+testout.txt
+
+Welcome to javaTpoint.
+
+ 

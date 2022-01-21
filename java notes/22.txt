@@ -1,0 +1,357 @@
+Java GridBagLayout:-
+>The Java GridBagLayout class is used to align components vertically, horizontally or along their baseline.
+
+>The components may not be of same size. Each GridBagLayout object maintains a dynamic, rectangular grid of cells. Each component occupies one or more cells known as its display area. Each component associates an instance of GridBagConstraints. With the help of constraints object we arrange component's display area on the grid. The 
+>GridBagLayout manages each component's minimum and preferred sizes in order to determine component's size.
+
+
+Fields:-
+
+Modifier and Type	:				Field:				Description:
+double[]						columnWeights			It is used to hold the overrides to the column weights.
+int[]						columnWidths			It is used to hold the overrides to the column minimum width.
+protected Hashtable<Component,GridBagConstraints>	comptable			It is used to maintains the association between a component and its gridbag 										constraints.
+protected GridBagConstraints			defaultConstraints			It is used to hold a gridbag constraints instance containing the default values.
+protected GridBagLayoutInfo			layoutInfo			It is used to hold the layout information for the gridbag.
+protected static int					MAXGRIDSIZE			No longer in use just for backward compatibility
+protected static int					MINSIZE				It is smallest grid that can be laid out by the grid bag layout.
+protected static int					PREFERREDSIZE			It is preferred grid size that can be laid out by the grid bag layout.
+int[]						rowHeights			It is used to hold the overrides to the row minimum heights.
+double[]						rowWeights			It is used to hold the overrides to the row weights.
+
+
+Useful Methods
+
+Modifier and Type					Method							Description
+void						addLayoutComponent(Component comp, Object constraints)	It adds specified component to the layout, using the 													specified constraints object.
+void						addLayoutComponent(String name, Component comp)		It has no effect, since this layout manager does not 													use a per-component string.
+protected void					adjustForGravity(GridBagConstraints constraints, Rectangle r)	It adjusts the x, y, width, and height fields to the 													correct values depending on the constraint 													geometry and pads.
+protected void					AdjustForGravity(GridBagConstraints constraints, Rectangle r)	This method is for backwards compatibility only
+protected void					arrangeGrid(Container parent)				Lays out the grid.
+protected void					ArrangeGrid(Container parent)				This method is obsolete and supplied for backwards 													compatibility
+GridBagConstraints				getConstraints(Component comp)				It is for getting the constraints for the specified 													component.
+float						getLayoutAlignmentX(Container parent)			It returns the alignment along the x axis.
+float						getLayoutAlignmentY(Container parent)			returns the alignment along the y axis.
+int[][]						getLayoutDimensions()					It determines column widths and row heights for the 													layout grid.
+protected GridBagLayoutInfo			getLayoutInfo(Container parent, int sizeflag)			This method is obsolete and supplied for backwards 													compatibility.
+protected GridBagLayoutInfo			GetLayoutInfo(Container parent, int sizeflag)			This method is obsolete and supplied for backwards 													compatibility.
+Point						getLayoutOrigin()						It determines the origin of the layout area, in the 													graphics coordinate space of the target container.
+double[][]					getLayoutWeights()					It determines the weights of the layout grid's 													columns and rows.
+protected Dimension				getMinSize(Container parent, GridBagLayoutInfo info)		It figures out the minimum size of the master based 													on the information from getLayoutInfo.
+protected Dimension				GetMinSize(Container parent, GridBagLayoutInfo info)		This method is obsolete and supplied for backwards 													compatibility only
+
+
+
+Example:-
+
+import java.awt.Button;  
+import java.awt.GridBagConstraints;  
+import java.awt.GridBagLayout;  
+  
+import javax.swing.*;  
+public class GridBagLayoutExample extends JFrame{  
+    public static void main(String[] args) {  
+            GridBagLayoutExample a = new GridBagLayoutExample();  
+        }  
+        public GridBagLayoutExample() {  
+    GridBagLayoutgrid = new GridBagLayout();  
+            GridBagConstraints gbc = new GridBagConstraints();  
+            setLayout(grid);  
+            setTitle("GridBag Layout Example");  
+            GridBagLayout layout = new GridBagLayout();  
+    this.setLayout(layout);  
+    gbc.fill = GridBagConstraints.HORIZONTAL;  
+    gbc.gridx = 0;  
+    gbc.gridy = 0;  
+    this.add(new Button("Button One"), gbc);  
+    gbc.gridx = 1;  
+    gbc.gridy = 0;  
+    this.add(new Button("Button two"), gbc);  
+    gbc.fill = GridBagConstraints.HORIZONTAL;  
+    gbc.ipady = 20;  
+    gbc.gridx = 0;  
+    gbc.gridy = 1;  
+    this.add(new Button("Button Three"), gbc);  
+    gbc.gridx = 1;  
+    gbc.gridy = 1;  
+    this.add(new Button("Button Four"), gbc);  
+    gbc.gridx = 0;  
+    gbc.gridy = 2;  
+    gbc.fill = GridBagConstraints.HORIZONTAL;  
+    gbc.gridwidth = 2;  
+    this.add(new Button("Button Five"), gbc);  
+            setSize(300, 300);  
+            setPreferredSize(getSize());  
+            setVisible(true);  
+            setDefaultCloseOperation(EXIT_ON_CLOSE);  
+      
+        }  
+      
+}  
+
+
+
+Example 2:-
+
+public class GridBagLayoutDemo {  
+final static boolean shouldFill = true;  
+final static boolean shouldWeightX = true;  
+final static boolean RIGHT_TO_LEFT = false;  
+  
+public static void addComponentsToPane(Container pane) {  
+if (RIGHT_TO_LEFT) {  
+pane.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);  
+}  
+  
+JButton button;  
+pane.setLayout(new GridBagLayout());  
+GridBagConstraints c = new GridBagConstraints();  
+if (shouldFill) {  
+//natural height, maximum width  
+c.fill = GridBagConstraints.HORIZONTAL;  
+}  
+  
+button = new JButton("Button 1");  
+if (shouldWeightX) {  
+c.weightx = 0.5;  
+}  
+c.fill = GridBagConstraints.HORIZONTAL;  
+c.gridx = 0;  
+c.gridy = 0;  
+pane.add(button, c);  
+  
+button = new JButton("Button 2");  
+c.fill = GridBagConstraints.HORIZONTAL;  
+c.weightx = 0.5;  
+c.gridx = 1;  
+c.gridy = 0;  
+pane.add(button, c);  
+  
+button = new JButton("Button 3");  
+c.fill = GridBagConstraints.HORIZONTAL;  
+c.weightx = 0.5;  
+c.gridx = 2;  
+c.gridy = 0;  
+pane.add(button, c);  
+  
+button = new JButton("Long-Named Button 4");  
+c.fill = GridBagConstraints.HORIZONTAL;  
+c.ipady = 40;      //make this component tall  
+c.weightx = 0.0;  
+c.gridwidth = 3;  
+c.gridx = 0;  
+c.gridy = 1;  
+pane.add(button, c);  
+  
+button = new JButton("5");  
+c.fill = GridBagConstraints.HORIZONTAL;  
+c.ipady = 0;       //reset to default  
+c.weighty = 1.0;   //request any extra vertical space  
+c.anchor = GridBagConstraints.PAGE_END; //bottom of space  
+c.insets = new Insets(10,0,0,0);  //top padding  
+c.gridx = 1;       //aligned with button 2  
+c.gridwidth = 2;   //2 columns wide  
+c.gridy = 2;       //third row  
+pane.add(button, c);  
+}  
+  
+  
+private static void createAndShowGUI() {  
+//Create and set up the window.  
+JFrame frame = new JFrame("GridBagLayoutDemo");  
+frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  
+  
+//Set up the content pane.  
+addComponentsToPane(frame.getContentPane());  
+  
+//Display the window.  
+frame.pack();  
+frame.setVisible(true);  
+}  
+  
+public static void main(String[] args) {  
+javax.swing.SwingUtilities.invokeLater(new Runnable() {  
+public void run() {  
+createAndShowGUI();  
+}  
+});  
+}  
+}
+
+
+
+GroupLayout:-
+>GroupLayout groups its components and places them in a Container hierarchically. The grouping is done by instances of the Group class.
+>Group is an abstract class and two concrete classes which implement this Group class are SequentialGroup and ParallelGroup.
+
+>SequentialGroup positions its child sequentially one after another where as ParallelGroup aligns its child on top of each other.
+>The GroupLayout class provides methods such as createParallelGroup() and createSequentialGroup() to create groups.
+>GroupLayout treats each axis independently. That is, there is a group representing the horizontal axis, and a group representing the vertical axis. Each component must exists in both a horizontal and vertical group, otherwise an IllegalStateException is thrown during layout, or when the minimum, preferred or maximum size is requested.
+
+Nested Classes:-
+
+Modifier and Type				Class				Description
+static class				GroupLayout.Alignment		Enumeration of the possible ways ParallelGroup can align its children.
+class					GroupLayout.Group		Group provides the basis for the two types of operations supported by GroupLayout: laying out 								components one after another (SequentialGroup) or aligned (ParallelGroup).
+class					GroupLayout.ParallelGroup		It is a Group that aligns and sizes it's children.
+class					GroupLayout.SequentialGroup	It is a Group that positions and sizes its elements sequentially, one after another.
+
+Fields:-
+
+Modifier and Type				Field				Description
+static int					DEFAULT_SIZE			It indicates the size from the component or gap should be used for a particular range 									value.
+static int					PREFERRED_SIZE			It indicates the preferred size from the component or gap should be used for a particular 									range value.
+Constructors:-
+
+	GroupLayout(Container host):			It creates a GroupLayout for the specified Container.
+
+Useful Methods:-
+
+Modifier and Type				Field								Description
+void					addLayoutComponent(Component component, Object constraints)	It notify that a Component has been added to the 													parent container.
+void					addLayoutComponent(String name, Component component)		It notify that a Component has been added to the 													parent container.
+Examples 1:-
+
+public class GroupExample {  
+    public static void main(String[] args) {  
+        JFrame frame = new JFrame("GroupLayoutExample");  
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  
+        Container contentPanel = frame.getContentPane();  
+        GroupLayout groupLayout = new GroupLayout(contentPanel);  
+  
+        contentPanel.setLayout(groupLayout);  
+  
+        JLabel clickMe = new JLabel("Click Here");  
+        JButton button = new JButton("This Button");  
+  
+        groupLayout.setHorizontalGroup(  
+                    groupLayout.createSequentialGroup()  
+                                .addComponent(clickMe)  
+                                .addGap(10, 20, 100)  
+                                .addComponent(button));  
+        groupLayout.setVerticalGroup(  
+                     groupLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)  
+                                .addComponent(clickMe)  
+                                .addComponent(button));  
+        frame.pack();  
+        frame.setVisible(true);  
+    }  
+}  
+
+
+
+Example 2
+
+import java.awt.Container;  
+import javax.swing.GroupLayout;  
+import javax.swing.JButton;  
+import javax.swing.JFrame;  
+import static javax.swing.GroupLayout.Alignment.*;  
+public class GroupExample2 {  
+    public static void main(String[] args) {  
+        JFrame frame = new JFrame("GroupLayoutExample");  
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  
+        Container myPanel = frame.getContentPane();  
+  
+        GroupLayout groupLayout = new GroupLayout(myPanel);  
+        groupLayout.setAutoCreateGaps(true);  
+        groupLayout.setAutoCreateContainerGaps(true);  
+        myPanel.setLayout(groupLayout);  
+  
+        JButton b1 = new JButton("Button One");  
+        JButton b2 = new JButton("Button Two");  
+        JButton b3 = new JButton("Button Three");  
+  
+        groupLayout.setHorizontalGroup(groupLayout.createSequentialGroup()  
+                .addGroup(groupLayout.createParallelGroup(LEADING).addComponent(b1).addComponent(b3))  
+                .addGroup(groupLayout.createParallelGroup(TRAILING).addComponent(b2)));  
+  
+        groupLayout.setVerticalGroup(groupLayout.createSequentialGroup()  
+                .addGroup(groupLayout.createParallelGroup(BASELINE).addComponent(b1).addComponent(b2))  
+                .addGroup(groupLayout.createParallelGroup(BASELINE).addComponent(b3)));  
+  
+        frame.pack();  
+        frame.setVisible(true);  
+    }  
+}
+
+
+
+Java SpringLayout:-
+>A SpringLayout arranges the children of its associated container according to a set of constraints.Constraints are nothing but horizontal and vertical distance between two component edges. Every constrains are represented by a SpringLayout.Constraint object.
+
+>Each child of a SpringLayout container, as well as the container itself, has exactly one set of constraints associated with them.
+
+>Each edge position is dependent on the position of the other edge. If a constraint is added to create new edge than the previous binding is discarded. SpringLayout doesn't automatically set the location of the components it manages.
+
+
+Example
+
+import java.awt.Container;  
+import javax.swing.JFrame;  
+import javax.swing.JLabel;  
+import javax.swing.JTextField;  
+import javax.swing.SpringLayout;  
+public class MySpringDemo {  
+     private static void createAndShowGUI() {  
+            JFrame frame = new JFrame("MySpringDemp");  
+            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  
+  
+            Container contentPane = frame.getContentPane();  
+            SpringLayout layout = new SpringLayout();  
+            contentPane.setLayout(layout);  
+  
+            JLabel label = new JLabel("Label: ");  
+            JTextField textField = new JTextField("My Text Field", 15);  
+            contentPane.add(label);  
+            contentPane.add(textField);  
+       
+            layout.putConstraint(SpringLayout.WEST, label,6,SpringLayout.WEST, contentPane);  
+            layout.putConstraint(SpringLayout.NORTH, label,6,SpringLayout.NORTH, contentPane);  
+            layout.putConstraint(SpringLayout.WEST, textField,6,SpringLayout.EAST, label);  
+            layout.putConstraint(SpringLayout.NORTH, textField,6,SpringLayout.NORTH, contentPane);  
+            layout.putConstraint(SpringLayout.EAST, contentPane,6,SpringLayout.EAST, textField);  
+            layout.putConstraint(SpringLayout.SOUTH, contentPane,6,SpringLayout.SOUTH, textField);  
+  
+            frame.pack();  
+            frame.setVisible(true);  
+        }  
+        public static void main(String[] args) {  
+            javax.swing.SwingUtilities.invokeLater(new Runnable() {  
+                public void run() {  
+                    createAndShowGUI();  
+                }  
+            });  
+        }  
+    }  
+
+ScrollPaneLayout:-
+>The layout manager used by JScrollPane. JScrollPaneLayout is responsible for nine components: a viewport, two scrollbars, a row header, a column header, and four "corner" components.
+
+
+Example:
+
+import javax.swing.ImageIcon;  
+import javax.swing.JFrame;  
+import javax.swing.JLabel;  
+import javax.swing.JScrollPane;  
+public class ScrollPaneDemo extends JFrame  
+{  
+public ScrollPaneDemo() {  
+super("ScrollPane Demo");  
+ImageIcon img = new ImageIcon("child.png");  
+  
+JScrollPane png = new JScrollPane(new JLabel(img));  
+  
+getContentPane().add(png);  
+setSize(300,250);  
+setVisible(true);  
+}  
+  
+public static void main(String[] args) {  
+new ScrollPaneDemo();  
+}  
+}  
+
+
+    

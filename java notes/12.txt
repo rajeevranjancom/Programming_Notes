@@ -1,0 +1,604 @@
+Serialization in Java:-
+
+>It is mainly used in Hibernate, RMI, JPA, EJB and JMS technologies.
+>The reverse operation of serialization is called deserialization.
+
+Advantage of Java Serialization:-
+>It is mainly used to travel object's state on the network (known as marshaling).
+
+java serialization:-
+>java.io.Serializable interface
+>Serializable is a marker interface (has no data member and method). It is used to "mark" java classes so that objects of these classes may get certain capability. The Cloneable and Remote are also marker interfaces.
+>It must be implemented by the class whose object you want to persist.
+>The String class and all the wrapper classes implements java.io.Serializable interface by default.
+
+Let's see the example given below:
+
+import java.io.Serializable;  
+public class Student implements Serializable{  
+ int id;  
+ String name;  
+ public Student(int id, String name) {  
+  this.id = id;  
+  this.name = name;  
+ }  
+}
+  
+>In the above example, Student class implements Serializable interface. Now its objects can be converted into stream.
+
+ObjectOutputStream class:-
+>The ObjectOutputStream class is used to write primitive data types and Java objects to an OutputStream. Only objects that support the java.io.Serializable interface can be written to streams.
+
+Constructor:-
+
+1) public ObjectOutputStream(OutputStream out) throws IOException {}creates an ObjectOutputStream that writes to the specified OutputStream.
+Important Methods
+
+Method								Description
+1) public final void writeObject(Object obj) throws IOException {}		writes the specified object to the ObjectOutputStream.
+2) public void flush() throws IOException {}				flushes the current output stream.
+3) public void close() throws IOException {}				closes the current output stream.
+
+Example of Java Serialization:-
+
+>In this example, we are going to serialize the object of Student class. The writeObject() method of ObjectOutputStream class provides the functionality to serialize the object. 
+We are saving the state of the object in the file named f.txt.
+
+import java.io.*;  
+class Persist{  
+ public static void main(String args[])throws Exception{  
+  Student s1 =new Student(211,"ravi");  
+  
+  FileOutputStream fout=new FileOutputStream("f.txt");  
+  ObjectOutputStream out=new ObjectOutputStream(fout);  
+  
+  out.writeObject(s1);  
+  out.flush();  
+  System.out.println("success");  
+ }  
+}  
+
+success
+download this example of serialization
+
+Deserialization in java:-
+>Deserialization is the process of reconstructing the object from the serialized state.It is the reverse operation of serialization.
+
+ObjectInputStream class:-
+>An ObjectInputStream deserializes objects and primitive data written using an ObjectOutputStream.
+
+Constructor:-
+
+1) public ObjectInputStream(InputStream in) throws IOException {}	creates an ObjectInputStream that reads from the specified InputStream.
+
+Important Methods:-
+
+Method									Description
+1) public final Object readObject() throws IOException, ClassNotFoundException{}	reads an object from the input stream.
+2) public void close() throws IOException {}					closes ObjectInputStream.
+
+Example of Java Deserialization:-
+
+import java.io.*;  
+class Depersist{  
+ public static void main(String args[])throws Exception{  
+    
+  ObjectInputStream in=new ObjectInputStream(new FileInputStream("f.txt"));  
+  Student s=(Student)in.readObject();  
+  System.out.println(s.id+" "+s.name);  
+  
+  in.close();  
+ }  
+}  
+
+211 ravi
+
+download this example of deserialization
+Java Serialization with Inheritance (IS-A Relationship)
+>If a class implements serializable then all its sub classes will also be serializable. Let's see the example given below:
+
+import java.io.Serializable;  
+class Person implements Serializable{  
+ int id;  
+ String name;  
+ Person(int id, String name) {  
+  this.id = id;  
+  this.name = name;  
+ }  
+}  
+class Student extends Person{  
+ String course;  
+ int fee;  
+ public Student(int id, String name, String course, int fee) {  
+  super(id,name);  
+  this.course=course;  
+  this.fee=fee;  
+ }  
+}  
+>Now you can serialize the Student class object that extends the Person class which is Serializable.Parent class properties are inherited to subclasses so if parent class is Serializable, subclass would also be.
+
+Java Serialization with Aggregation (HAS-A Relationship):-
+>If a class has a reference of another class, all the references must be Serializable otherwise serialization process will not be performed. In such case, NotSerializableException is thrown at runtime.
+
+class Address{  
+ String addressLine,city,state;  
+ public Address(String addressLine, String city, String state) {  
+  this.addressLine=addressLine;  
+  this.city=city;  
+  this.state=state;  
+ }  
+}  
+import java.io.Serializable;  
+public class Student implements Serializable{  
+ int id;  
+ String name;  
+ Address address;//HAS-A  
+ public Student(int id, String name) {  
+  this.id = id;  
+  this.name = name;  
+ }  
+}
+  
+>Since Address is not Serializable, you can not serialize the instance of Student class.
+
+Note: All the objects within an object must be Serializable.
+
+Java Serialization with static data member:-
+>If there is any static data member in a class, it will not be serialized because static is the part of class not object.
+
+class Employee implements Serializable{  
+ int id;  
+ String name;  
+ static String company="SSS IT Pvt Ltd";//it won't be serialized  
+ public Student(int id, String name) {  
+  this.id = id;  
+  this.name = name;  
+ }  
+}  
+
+Java Serialization with array or collection:-
+
+Rule: In case of array or collection, all the objects of array or collection must be serializable. If any object is not serialiizable, serialization will be failed.
+
+Externalizable in java:-
+>The Externalizable interface provides the facility of writing the state of an object into a byte stream in compress format. It is not a marker interface.
+
+The Externalizable interface provides two methods:-
+
+1)public void writeExternal(ObjectOutput out) throws IOException
+2)public void readExternal(ObjectInput in) throws IOException
+
+Java Transient Keyword:-
+>If you don't want to serialize any data member of a class, you can mark it as transient.
+
+Java Transient Keyword:-
+>Java transient keyword is used in serialization. If you define any data member as transient, it will not be serialized.
+
+>Let's take an example, I have declared a class as Student, it has three data members id, name and age. If you serialize the object, all the values will be serialized but I don't want to serialize one value, e.g. age then we can declare the age data member as transient.
+
+Example of Java Transient Keyword:-
+>In this example, we have created the two classes Student and PersistExample. The age data member of the Student class is declared as transient, its value will not be serialized.
+>If you deserialize the object, you will get the default value for transient variable.
+
+Let's create a class with transient variable:-
+
+import java.io.Serializable;  
+public class Student implements Serializable{  
+ int id;  
+ String name;  
+ transient int age;//Now it will not be serialized  
+ public Student(int id, String name,int age) {  
+  this.id = id;  
+  this.name = name;  
+  this.age=age;  
+ }  
+}  
+
+Now write the code to serialize the object:-
+
+import java.io.*;  
+class PersistExample{  
+ public static void main(String args[])throws Exception{  
+  Student s1 =new Student(211,"ravi",22);//creating object  
+  //writing object into file  
+  FileOutputStream f=new FileOutputStream("f.txt");  
+  ObjectOutputStream out=new ObjectOutputStream(f);  
+  out.writeObject(s1);  
+  out.flush();  
+  
+  out.close();  
+  f.close();  
+  System.out.println("success");  
+ }  
+}  
+
+Output:
+success
+
+Now write the code for deserialization:-
+
+import java.io.*;  
+class DePersist{  
+ public static void main(String args[])throws Exception{  
+  ObjectInputStream in=new ObjectInputStream(new FileInputStream("f.txt"));  
+  Student s=(Student)in.readObject();  
+  System.out.println(s.id+" "+s.name+" "+s.age);  
+  in.close();  
+ }  
+}
+  
+211 ravi 0
+
+>As you can see, printing age of the student returns 0 because value of age was not serialized.
+
+Java Networking:-
+>Java Networking is a concept of connecting two or more computing devices together so that we can share resources.
+>Java socket programming provides facility to share data between different computing devices.
+
+Advantage of Java Networking:-
+>sharing resources
+>centralize software management
+
+
+Java Networking Terminology:-
+>The widely used java networking terminologies are given below:
+
+>IP Address
+>Protocol
+>Port Number
+>MAC Address
+>Connection-oriented and connection-less protocol
+Socket
+1) IP Address:-
+>IP address is a unique number assigned to a node of a network e.g. 192.168.0.1 . It is composed of octets that range from 0 to 255.
+>It is a logical address that can be changed.
+
+2) Protocol:-
+>A protocol is a set of rules basically that is followed for communication. For example:
+
+>TCP
+>FTP
+>Telnet
+>SMTP
+>POP etc.
+
+3) Port Number:-
+>The port number is used to uniquely identify different applications. It acts as a communication endpoint between applications.
+>The port number is associated with the IP address for communication between two applications.
+
+4) MAC Address:-
+>MAC (Media Access Control) Address is a unique identifier of NIC (Network Interface Controller). A network node can have multiple NIC but each with unique MAC.
+
+5) Connection-oriented and connection-less protocol:-
+>In connection-oriented protocol, acknowledgement is sent by the receiver. So it is reliable but slow. The example of connection-oriented protocol is TCP.
+>But, in connection-less protocol, acknowledgement is not sent by the receiver. So it is not reliable but fast. The example of connection-less protocol is UDP.
+
+6) Socket:-
+>A socket is an endpoint between two way communication.
+
+
+Java Socket Programming:-
+>Java Socket programming is used for communication between the applications running on different JRE.
+>Java Socket programming can be connection-oriented or connection-less.
+>Socket and ServerSocket classes are used for connection-oriented socket programming and DatagramSocket and DatagramPacket classes are used for connection-less socket programming.
+
+The client in socket programming must know two information:-
+
+>IP Address of Server, and
+>Port number.
+>Socket class
+
+>A socket is simply an endpoint for communications between the machines. The Socket class can be used to create a socket.
+
+Important methods:-
+
+Method						Description
+1) public InputStream getInputStream()		returns the InputStream attached with this socket.
+2) public OutputStream getOutputStream()		returns the OutputStream attached with this socket.
+3) public synchronized void close()			closes this socket
+
+ServerSocket class:-
+>The ServerSocket class can be used to create a server socket. This object is used to establish communication with the clients.
+
+Important methods:-
+
+Method					Description
+1) public Socket accept()			returns the socket and establish a connection between server and client.
+2) public synchronized void close()		closes the server socket.
+
+Example of Java Socket Programming:-
+>Let's see a simple of java socket programming in which client sends a text and server receives it.
+
+File: MyServer.java
+
+import java.io.*;  
+import java.net.*;  
+public class MyServer {  
+public static void main(String[] args){  
+try{  
+ServerSocket ss=new ServerSocket(6666);  
+Socket s=ss.accept();//establishes connection   
+DataInputStream dis=new DataInputStream(s.getInputStream());  
+String  str=(String)dis.readUTF();  
+System.out.println("message= "+str);  
+ss.close();  
+}catch(Exception e){System.out.println(e);}  
+}  
+}  
+
+File: MyClient.java
+
+import java.io.*;  
+import java.net.*;  
+public class MyClient {  
+public static void main(String[] args) {  
+try{      
+Socket s=new Socket("localhost",6666);  
+DataOutputStream dout=new DataOutputStream(s.getOutputStream());  
+dout.writeUTF("Hello Server");  
+dout.flush();  
+dout.close();  
+s.close();  
+}catch(Exception e){System.out.println(e);}  
+}  
+}  
+
+Example of Java Socket Programming (Read-Write both side):-
+>In this example, client will write first to the server then server will receive and print the text. Then server will write to the client and client will receive and print the text. The step goes on.
+
+File: MyServer.java
+
+import java.net.*;  
+import java.io.*;  
+class MyServer{  
+public static void main(String args[])throws Exception{  
+ServerSocket ss=new ServerSocket(3333);  
+Socket s=ss.accept();  
+DataInputStream din=new DataInputStream(s.getInputStream());  
+DataOutputStream dout=new DataOutputStream(s.getOutputStream());  
+BufferedReader br=new BufferedReader(new InputStreamReader(System.in));  
+  
+String str="",str2="";  
+while(!str.equals("stop")){  
+str=din.readUTF();  
+System.out.println("client says: "+str);  
+str2=br.readLine();  
+dout.writeUTF(str2);  
+dout.flush();  
+}  
+din.close();  
+s.close();  
+ss.close();  
+}}  
+
+File: MyClient.java
+
+import java.net.*;  
+import java.io.*;  
+class MyClient{  
+public static void main(String args[])throws Exception{  
+Socket s=new Socket("localhost",3333);  
+DataInputStream din=new DataInputStream(s.getInputStream());  
+DataOutputStream dout=new DataOutputStream(s.getOutputStream());  
+BufferedReader br=new BufferedReader(new InputStreamReader(System.in));  
+  
+String str="",str2="";  
+while(!str.equals("stop")){  
+str=br.readLine();  
+dout.writeUTF(str);  
+dout.flush();  
+str2=din.readUTF();  
+System.out.println("Server says: "+str2);  
+}  
+  
+dout.close();  
+s.close();  
+}}                         
+
+
+
+Java URL:-
+>The Java URL class represents an URL. URL is an acronym for Uniform Resource Locator. It points to a resource on the World Wide Web. For example:
+
+A URL contains many information:-
+>Protocol: In this case, http is the protocol.
+>Server name or IP Address: In this case, www.javatpoint.com is the server name.
+>Port Number: It is an optional attribute. If we write http//ww.javatpoint.com:80/sonoojaiswal/ , 80 is the port number. If port number is not mentioned in the URL, it returns -.
+>File Name or directory name: In this case, index.jsp is the file name.
+
+Commonly used methods of Java URL class:-
+>The java.net.URL class provides many methods. The important methods of URL class are given below.
+
+Method					Description
+public String getProtocol()			it returns the protocol of the URL.
+public String getHost()			it returns the host name of the URL.
+public String getPort()			it returns the Port Number of the URL.
+public String getFile()			it returns the file name of the URL.
+public URLConnection openConnection()	it returns the instance of URLConnection i.e. associated with this URL.
+
+Example of Java URL class:-
+
+//URLDemo.java  
+import java.io.*;  
+import java.net.*;  
+public class URLDemo{  
+public static void main(String[] args){  
+try{  
+URL url=new URL("http://www.javatpoint.com/java-tutorial");  
+  
+System.out.println("Protocol: "+url.getProtocol());  
+System.out.println("Host Name: "+url.getHost());  
+System.out.println("Port Number: "+url.getPort());  
+System.out.println("File Name: "+url.getFile());  
+  
+}catch(Exception e){System.out.println(e);}  
+}  
+}  
+
+Output:-
+
+       Protocol: http
+       Host Name: www.javatpoint.com
+       Port Number: -1
+       File Name: /java-tutorial
+
+
+Java URLConnection class:-
+>The Java URLConnection class represents a communication link between the URL and the application. This class can be used to read and write data to the specified resource referred by the URL.
+
+How to get the object of URLConnection class:-
+>The openConnection() method of URL class returns the object of URLConnection class. Syntax:
+
+>public URLConnection openConnection()throws IOException{}  
+>Displaying source code of a webpage by URLConnecton class
+
+>The URLConnection class provides many methods, we can display all the data of a webpage by using the getInputStream() method. The getInputStream() method returns all the data of the specified URL in the stream that can be read and displayed.
+
+Example of Java URLConnecton class:-
+
+import java.io.*;  
+import java.net.*;  
+public class URLConnectionExample {  
+public static void main(String[] args){  
+try{  
+URL url=new URL("http://www.javatpoint.com/java-tutorial");  
+URLConnection urlcon=url.openConnection();  
+InputStream stream=urlcon.getInputStream();  
+int i;  
+while((i=stream.read())!=-1){  
+System.out.print((char)i);  
+}  
+}catch(Exception e){System.out.println(e);}  
+}  
+}
+
+
+Java HttpURLConnection class:-
+>The Java HttpURLConnection class is http specific URLConnection. It works for HTTP protocol only.
+>By the help of HttpURLConnection class, you can information of any HTTP URL such as header information, status code, response code etc.
+>The java.net.HttpURLConnection is subclass of URLConnection class.
+
+How to get the object of HttpURLConnection class:-
+>The openConnection() method of URL class returns the object of URLConnection class. Syntax:
+
+>public URLConnection openConnection()throws IOException{}  
+>You can typecast it to HttpURLConnection type as given below.
+
+>URL url=new URL("http://www.javatpoint.com/java-tutorial");    
+>HttpURLConnection huc=(HttpURLConnection)url.openConnection();  
+
+Java HttpURLConnecton Example:-
+
+import java.io.*;    
+import java.net.*;    
+public class HttpURLConnectionDemo{    
+public static void main(String[] args){    
+try{    
+URL url=new URL("http://www.javatpoint.com/java-tutorial");    
+HttpURLConnection huc=(HttpURLConnection)url.openConnection();  
+for(int i=1;i<=8;i++){  
+System.out.println(huc.getHeaderFieldKey(i)+" = "+huc.getHeaderField(i));  
+}  
+huc.disconnect();   
+}catch(Exception e){System.out.println(e);}    
+}    
+}    
+
+Output:
+Date = Wed, 10 Dec 2014 19:31:14 GMT
+Set-Cookie = JSESSIONID=D70B87DBB832820CACA5998C90939D48; Path=/
+Content-Type = text/html
+Cache-Control = max-age=2592000
+Expires = Fri, 09 Jan 2015 19:31:14 GMT
+Vary = Accept-Encoding,User-Agent
+Connection = close
+Transfer-Encoding = chunked  
+
+
+Java InetAddress class:-
+>Java InetAddress class represents an IP address. The java.net.InetAddress class provides methods to get the IP of any host name for example www.javatpoint.com, www.google.com, www.facebook.com etc.
+
+>Commonly used methods of InetAddress class
+
+Method									Description
+public static InetAddress getByName(String host) throws UnknownHostException	it returns the instance of InetAddress containing LocalHost IP and name.
+public static InetAddress getLocalHost() throws UnknownHostException		it returns the instance of InetAdddress containing local host name and address.
+public String getHostName()							it returns the host name of the IP address.
+public String getHostAddress()						it returns the IP address in string format.
+
+Example of Java InetAddress class:-
+>Let's see a simple example of InetAddress class to get ip address of www.javatpoint.com website.
+
+import java.io.*;  
+import java.net.*;  
+public class InetDemo{  
+public static void main(String[] args){  
+try{  
+InetAddress ip=InetAddress.getByName("www.javatpoint.com");  
+  
+System.out.println("Host Name: "+ip.getHostName());  
+System.out.println("IP Address: "+ip.getHostAddress());  
+}catch(Exception e){System.out.println(e);}  
+}  
+}  
+
+
+Output:
+Host Name: www.javatpoint.com
+IP Address: 206.51.231.148
+
+
+
+Java DatagramSocket class:-
+>Java DatagramSocket class represents a connection-less socket for sending and receiving datagram packets.
+>A datagram is basically an information but there is no guarantee of its content, arrival or arrival time.
+
+Commonly used Constructors of DatagramSocket class:-
+
+DatagramSocket() 					throws SocketEeption: it creates a datagram socket and binds it with the available Port Number on the localhost 						machine.
+DatagramSocket(int port) 				throws SocketEeption: it creates a datagram socket and binds it with the given Port Number.
+DatagramSocket(int port, InetAddress address) 	throws SocketEeption: it creates a datagram socket and binds it with the specified port number and host address.
+
+Java DatagramPacket class:-
+>Java DatagramPacket is a message that can be sent or received. If you send multiple packet, it may arrive in any order. Additionally, packet delivery is not guaranteed.
+
+Commonly used Constructors of DatagramPacket class:-
+
+>DatagramPacket(byte[] barr, int length):				 it creates a datagram packet. This constructor is used to receive the packets.
+>DatagramPacket(byte[] barr, int length, InetAddress address, int port): 	it creates a datagram packet. This constructor is used to send the packets.
+
+Example of Sending DatagramPacket by DatagramSocket:-
+
+//DSender.java  
+import java.net.*;  
+public class DSender{  
+  public static void main(String[] args) throws Exception {  
+    DatagramSocket ds = new DatagramSocket();  
+    String str = "Welcome java";  
+    InetAddress ip = InetAddress.getByName("127.0.0.1");  
+     
+    DatagramPacket dp = new DatagramPacket(str.getBytes(), str.length(), ip, 3000);  
+    ds.send(dp);  
+    ds.close();  
+  }  
+}
+  
+Example of Receiving DatagramPacket by DatagramSocket:-
+
+//DReceiver.java  
+import java.net.*;  
+public class DReceiver{  
+  public static void main(String[] args) throws Exception {  
+    DatagramSocket ds = new DatagramSocket(3000);  
+    byte[] buf = new byte[1024];  
+    DatagramPacket dp = new DatagramPacket(buf, 1024);  
+    ds.receive(dp);  
+    String str = new String(dp.getData(), 0, dp.getLength());  
+    System.out.println(str);  
+    ds.close();  
+  }  
+}  
+
+
+
+

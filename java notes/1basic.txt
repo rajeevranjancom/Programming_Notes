@@ -1,0 +1,170 @@
+What is Java:-
+     >Java is a programming language and a platform.
+     >Java is a high level, robust, secured and object-oriented programming language.
+
+Platform: Any hardware or software environment in which a program runs, is known as a platform. Since Java has its own runtime environment (JRE) and API, it is called platform.
+
+Java Example:-
+	>Let's have a quick look at java programming example. A detailed description of hello java example is given in next page.
+
+class Simple{  
+    public static void main(String args[]){  
+     System.out.println("Hello Java");  
+    }  
+}  
+
+Where it is used?
+	>According to Sun, 3 billion devices run java. There are many devices where java is currently used. Some of them are as follows:
+	>Desktop Applications such as acrobat reader, media player, antivirus etc.
+	>Web Applications such as irctc.co.in, javatpoint.com etc.
+	>Enterprise Applications such as banking applications.
+	>Mobile
+	>Embedded System
+	>Smart Card
+	>Robotics
+	>Games etc.
+
+
+Types of Java Applications:-
+	>There are mainly 4 type of applications that can be created using java programming:
+
+1) Standalone Application:-
+	>It is also known as desktop application or window-based application. An application that we need to install on every machine such as media player, antivirus etc. AWT and Swing are used in java for creating standalone applications.
+
+2) Web Application:-
+	An application that runs on the server side and creates dynamic page, is called web application. Currently, servlet, jsp, struts, jsf etc. technologies are used for creating web applications in java.
+
+3) Enterprise Application:-
+	>An application that is distributed in nature, such as banking applications etc. It has the advantage of high level security, load balancing and clustering. In java, EJB is used for creating enterprise applications.
+
+4) Mobile Application:-
+	>An application that is created for mobile devices. Currently Android and Java ME are used for creating mobile applications.
+
+History of Java:-
+	>Java history is interesting to know. The history of java starts from Green Team. Java team members (also known as Green Team), initiated a revolutionary task to develop a language for digital devices such as set-top boxes, televisions etc.
+	>For the green team members, it was an advance concept at that time. But, it was suited for internet programming. Later, Java technology as incorporated by Netscape.
+	>Currently, Java is used in internet programming, mobile devices, games, e-business solutions etc. There are given the major points that describes the history of java.
+
+1) James Gosling, Mike Sheridan, and Patrick Naughton initiated the Java language project in June 1991. The small team of sun engineers called Green Team.
+
+2) Originally designed for small, embedded systems in electronic appliances like set-top boxes.
+
+3) Firstly, it was called "Greentalk" by James Gosling and file extension was .gt.
+
+4) After that, it was called Oak and was developed as a part of the Green project.
+
+Why sun choosed "Oak" name:-
+
+5) Why Oak? Oak is a symbol of strength and choosen as a national tree of many countries like U.S.A., France, Germany, Romania etc.
+
+6) In 1995, Oak was renamed as "Java" because it was already a trademark by Oak Technologies
+
+
+Why sun choosed "Java" name:-
+
+7) Why they choosed java name for java language? The team gathered to choose a new name. The suggested words were "dynamic", "revolutionary", "Silk", "jolt", "DNA" etc. They wanted something that reflected the essence of the technology: revolutionary, dynamic, lively, cool, unique, and easy to spell and fun to say.
+
+>>>According to James Gosling "Java was one of the top choices along with Silk". Since java was so unique, most of the team members preferred java.
+
+8) Java is an island of Indonesia where first coffee was produced (called java coffee).
+
+9) Notice that Java is just a name not an acronym.
+
+10) Originally developed by James Gosling at Sun Microsystems (which is now a subsidiary of Oracle Corporation) and released in 1995.
+
+11) In 1995, Time magazine called Java one of the Ten Best Products of 1995.
+
+12) JDK 1.0 released in(January 23, 1996).
+
+Java Version History:-
+	>There are many java versions that has been released. Current stable release of Java is Java SE 8.
+1)JDK Alpha and Beta (1995)
+2)JDK 1.0 (23rd Jan, 1996)
+3)JDK 1.1 (19th Feb, 1997)
+4)J2SE 1.2 (8th Dec, 1998)
+5)J2SE 1.3 (8th May, 2000)
+6)J2SE 1.4 (6th Feb, 2002)
+7)J2SE 5.0 (30th Sep, 2004)
+8)Java SE 6 (11th Dec, 2006)
+9)Java SE 7 (28th July, 2011)
+10)Java SE 8 (18th March, 2014)
+
+
+Features of Java:-
+	>There is given many features of java. They are also known as java buzzwords. The Java Features given below are simple and easy to understand.
+
+Java Features:-
+>Simple
+>Object-Oriented
+>Portable
+>Platform independent
+>Secured
+>Robust
+>Architecture neutral
+>Dynamic
+>Interpreted
+>High Performance
+>Multithreaded
+>Distributed
+>Simple
+
+According to Sun, Java language is simple because:-
+	>syntax is based on C++ (so easier for programmers to learn it after C++).
+      	>removed many confusing and/or rarely-used features e.g., explicit pointers, operator overloading etc.
+      	>No need to remove unreferenced objects because there is Automatic Garbage Collection in java.
+
+Object-oriented:-
+	>Object-oriented means we organize our software as a combination of different types of objects that incorporates both data and behaviour.
+	>Object-oriented programming(OOPs) is a methodology that simplify software development and maintenance by providing some rules.
+
+Basic concepts of OOPs are:
+>Object
+>Class
+>Inheritance
+>Polymorphism
+>Abstraction
+>Encapsulation
+
+Platform Independent:-
+	>java is platform independent
+	>A platform is the hardware or software environment in which a program runs.
+
+There are two types of platforms software-based and hardware-based. Java provides software-based platform:-
+	>The Java platform differs from most other platforms in the sense that it is a software-based platform that runs on the top of other hardware-based platforms. It has two components:
+1)Runtime Environment
+2)API(Application Programming Interface)
+
+	>Java code can be run on multiple platforms e.g. Windows, Linux, Sun Solaris, Mac/OS etc. Java code is compiled by the compiler and converted into bytecode. This bytecode is a platform-independent code because it can be run on multiple platforms i.e. Write Once and Run Anywhere(WORA).
+
+Secured:-
+	>Java is secured because:
+
+1)No explicit pointer
+2)Java Programs run inside virtual machine sandbox
+3)Classloader: adds security by separating the package for the classes of the local file system from those that are imported from network sources.
+4)Bytecode Verifier: checks the code fragments for illegal code that can violate access right to objects.
+5)Security Manager: determines what resources a class can access such as reading and writing to the local disk.
+
+>These security are provided by java language. Some security can also be provided by application developer through SSL, JAAS, Cryptography etc.
+
+Robust:-
+	>Robust simply means strong. Java uses strong memory management. There are lack of pointers that avoids security problem. There is automatic garbage collection in java. There is exception handling and type checking mechanism in java. All these points makes java robust.
+
+Architecture-neutral:-
+	>There is no implementation dependent features e.g. size of primitive types is fixed.
+
+	>In C programming, int data type occupies 2 bytes of memory for 32-bit architecture and 4 bytes of memory for 64-bit architecture. But in java, it occupies 4 bytes of memory for both 32 and 64 bit architectures.
+
+Portable:-
+	>We may carry the java bytecode to any platform.
+
+High-performance:-
+	>Java is faster than traditional interpretation since byte code is "close" to native code still somewhat slower than a compiled language (e.g., C++)
+Distributed
+
+	>We can create distributed applications in java. RMI and EJB are used for creating distributed applications. We may access files by calling the methods from any machine on the internet.
+
+Multi-threaded:-
+	>A thread is like a separate program, executing concurrently. We can write Java programs that deal with many tasks at once by defining multiple threads. The main advantage of multi-threading is that it doesn't occupy memory for each thread. It shares a common memory area. Threads are important for multi-media, Web applications etc.
+
+
