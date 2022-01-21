@@ -1,0 +1,21 @@
+Assembly program in C:-
+>We can write assembly program code inside c language program. In such case, all the assembly code must be placed inside asm{} block.
+
+Let's see a simple assembly program code to add two numbers in c program.
+
+#include<stdio.h>  
+void main() {  
+   int a = 10, b = 20, c;  
+   
+   asm {  
+      mov ax,a  
+      mov bx,b  
+      add ax,bx  
+      mov c,ax  
+   }  
+   
+   printf("c= %d",c);  
+}  
+
+Output:
+c= 30

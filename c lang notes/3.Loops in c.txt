@@ -1,0 +1,1154 @@
+C if else Statement:-
+>The if statement in C language is used to perform operation on the basis of condition. By using if-else statement, you can perform operation either condition is true or false.
+
+There are many ways to use if statement in C language:-
+>If statement
+>If-else statement
+>If else-if ladder
+>Nested if
+>If Statement
+
+The single if statement in C language is used to execute the code if condition is true. The syntax of if statement is given below:-
+
+if(expression){  
+//code to be executed  
+}  
+Flowchart of if statement in C
+
+if statement in c:-
+>Let's see a simple example of c language if statement.
+
+#include<stdio.h>  
+#include<conio.h>  
+void main(){  
+int number=0;  
+clrscr();  
+  
+printf("enter a number:");  
+scanf("%d",&number);  
+  
+if(number%2==0){  
+printf("%d is even number",number);  
+}  
+  
+getch();  
+}  
+Output
+enter a number:4
+4 is even number
+enter a number:5
+
+ 
+If-else Statement:-
+>The if-else statement in C language is used to execute the code if condition is true or false. The syntax of if-else statement is given below:
+
+if(expression){  
+//code to be executed if condition is true  
+}else{  
+//code to be executed if condition is false  
+}  
+Flowchart of if-else statement in C
+
+if-else statement in c:-
+>Let's see the simple example of even and odd number using if-else statement in C language.
+
+#include<stdio.h>  
+#include<conio.h>  
+void main(){  
+int number=0;  
+clrscr();  
+  
+printf("enter a number:");  
+scanf("%d",&number);  
+  
+if(number%2==0){  
+printf("%d is even number",number);  
+}  
+else{  
+printf("%d is odd number",number);  
+}  
+getch();  
+}  
+Output
+enter a number:4
+4 is even number
+enter a number:5
+5 is odd number
+
+If else-if ladder Statement:-
+>The if else-if statement is used to execute one code from multiple conditions. The syntax of if else-if statement is given below:
+
+if(condition1){  
+//code to be executed if condition1 is true  
+}else if(condition2){  
+//code to be executed if condition2 is true  
+}  
+else if(condition3){  
+//code to be executed if condition3 is true  
+}  
+...  
+else{  
+//code to be executed if all the conditions are false  
+}
+  
+Flowchart of else-if ladder statement in C
+
+if-else-if ladder statement in c:-
+
+The example of if-else-if statement in C language is given below.
+
+#include<stdio.h>  
+#include<conio.h>  
+void main(){  
+int number=0;  
+clrscr();  
+  
+printf("enter a number:");  
+scanf("%d",&number);  
+  
+if(number==10){  
+printf("number is equals to 10");  
+}  
+else if(number==50){  
+printf("number is equal to 50");  
+}  
+else if(number==100){  
+printf("number is equal to 100");  
+}  
+else{  
+printf("number is not equal to 10, 50 or 100");  
+}  
+getch();  
+}  
+
+Output
+enter a number:4
+number is not equal to 10, 50 or 100
+enter a number:50
+number is equal to 50
+
+C Switch Statement:-
+>The switch statement in C language is used to execute the code from multiple conditions. It is like if else-if ladder statement.
+
+The syntax of switch statement in c language is given below:
+
+switch(expression){    
+case value1:    
+ //code to be executed;    
+ break;  //optional  
+case value2:    
+ //code to be executed;    
+ break;  //optional  
+......    
+    
+default:     
+ code to be executed if all cases are not matched;    
+}    
+
+ 
+Rules for switch statement in C language:-
+1) The switch expression must be of integer or character type.
+2) The case value must be integer or character constant.
+3) The case value can be used only inside the switch statement.
+4) The break statement in switch case is not must. It is optional. If there is no break statement found in switch case, all the cases will be executed after matching the case value. It is known as fall through state of C switch statement.
+
+Let's try to understand it by the examples. We are assuming there are following variables.
+
+int x,y,z;  
+char a,b;  
+float f;  
+
+Valid Switch		Invalid Switch		Valid Case		Invalid Case
+switch(x)			switch(f)			case 3;			case 2.5;
+switch(x>y)		switch(x+2.5)		case 'a';			case x;
+switch(a+b-2)					case 1+2;			case x+2;
+switch(func(x,y))					case 'x'>'y';		case 1,2,3;
+
+Flowchart of switch statement in C:-
+>flow of switch statement in c
+
+Let's see a simple example of c language switch statement.
+
+#include<stdio.h>  
+#include<conio.h>  
+void main(){  
+int number=0;  
+clrscr();  
+  
+printf("enter a number:");  
+scanf("%d",&number);  
+  
+switch(number){  
+case 10:  
+printf("number is equals to 10");  
+break;  
+case 50:  
+printf("number is equal to 50");  
+break;  
+case 100:  
+printf("number is equal to 100");  
+break;  
+default:  
+printf("number is not equal to 10, 50 or 100");  
+}  
+getch();  
+}  
+
+Output
+enter a number:4
+number is not equal to 10, 50 or 100
+enter a number:50
+number is equal to 50
+C Switch statement is fall-through
+
+>In C language, switch statement is fall through, it means if you don't use break statement in switch case, all the case after matching case will be executed.
+
+Let's try to understand the fall through state of switch statement by the example given below.
+
+#include<stdio.h>  
+#include<conio.h>  
+void main(){  
+int number=0;  
+clrscr();  
+  
+printf("enter a number:");  
+scanf("%d",&number);  
+  
+switch(number){  
+case 10:  
+printf("number is equals to 10\n");  
+case 50:  
+printf("number is equal to 50\n");  
+case 100:  
+printf("number is equal to 100\n");  
+default:  
+printf("number is not equal to 10, 50 or 100");  
+}  
+getch();  
+}  
+
+Output
+enter a number:10
+number is equals to 10
+number is equals to 50
+number is equals to 100
+number is not equal to 10, 50 or 100
+enter a number:50
+number is equal to 50
+number is equals to 100
+number is not equal to 10, 50 or 100
+
+C Loops:-
+>The loops in C language are used to execute a block of code or a part of the program several times.
+
+In other words, it iterates a code or group of code many times.
+
+Why use loops in C language:-
+>Suppose that you have to print table of 2, then you need to write 10 lines of code.
+
+By using the loop statement, you can do it by 2 or 3 lines of code only.
+
+Advantage of loops in C:-
+1) It saves code.
+2) It helps to traverse the elements of array (which is covered in next pages).
+
+Types of C Loops:-
+>There are three types of loops in C language that is given below:
+
+do while
+while
+for
+do-while loop in C
+
+>It iterates the code until condition is false. Here, condition is given after the code. So at least once, code is executed whether condition is true or false.
+>It is better if you have to execute the code at least once.
+
+The syntax of do-while loop in c language is given below:-
+
+do{  
+//code to be executed  
+}while(condition);  
+Flowchart and Example of do-while loop
+
+while loop in C:-
+>Like do while, it iterates the code until condition is false. Here, condition is given before the code. So code may be executed 0 or more times.
+>It is better if number of iteration is not known by the user.
+
+The syntax of while loop in c language is given below:
+
+while(condition){  
+//code to be executed  
+}  
+Flowchart and Example of while loop
+
+for loop in C:-
+>Like while, it iterates the code until condition is false. Here, initialization, condition and increment/decrement is given before the code. So code may be executed 0 or more times.
+>It is good if number of iteration is known by the user.
+
+The syntax of for loop in c language is given below:
+
+for(initialization;condition;incr/decr){  
+//code to be executed  
+}  
+
+do while loop in C:-
+>To execute a part of program or code several times, we can use do-while loop of C language. The code given between the do and while block will be executed until condition is true.
+>In do while loop, statement is given before the condition, so statement or code will be executed at lease one time. In other words, we can say it is executed 1 or more times.
+>It is better if you have to execute the code at least once.
+
+do while loop syntax:-
+
+The syntax of C language do-while loop is given below:
+
+do{  
+//code to be executed  
+}while(condition);  
+Flowchart of do while loop
+
+flowchart of do while loop in c language
+
+ 
+do while example:-
+>There is given the simple program of c language do while loop where we are printing the table of 1.
+
+#include <stdio.h>    
+#include <conio.h>    
+void main(){    
+int i=1;  
+clrscr();    
+  
+do{  
+printf("%d \n",i);  
+i++;  
+}while(i<=10);  
+    
+getch();    
+}    
+
+Output
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+
+Program to print table for the given number using do while loop:-
+
+#include <stdio.h>    
+#include <conio.h>    
+void main(){    
+int i=1,number=0;  
+clrscr();    
+  
+printf("Enter a number: ");  
+scanf("%d",&number);  
+  
+do{  
+printf("%d \n",(number*i));  
+i++;  
+}while(i<=10);  
+    
+getch();    
+}    
+
+Output
+Enter a number: 5
+5
+10
+15
+20
+25
+30
+35
+40
+45
+50
+Enter a number: 10
+10
+20
+30
+40
+50
+60
+70
+80
+90
+100
+
+Infinitive do while loop:-
+>If you pass 1 as a expression in do while loop, it will run infinite number of times.
+
+do{  
+//statement  
+}while(1);  
+
+
+while loop in C:-
+>The while loop in C language is used to iterate the part of program or statements many times.
+>In while loop, condition is given before the statement. So it is different from the do while loop. It can execute the statements 0 or more times.
+
+When use while loop in C:-
+>The C language while loop should be used if number of iteration is uncertain or unknown.
+
+Syntax of while loop in C language:-
+>The syntax of while loop in c language is given below:
+
+while(condition){  
+//code to be executed  
+}  
+Flowchart of while loop in C
+
+flowchart of c while loop
+
+Example of while loop in C language:-
+>Let's see the simple program of while loop that prints table of 1.
+
+#include <stdio.h>      
+#include <conio.h>      
+void main(){      
+int i=1;    
+clrscr();      
+    
+while(i<=10){    
+printf("%d \n",i);    
+i++;    
+}   
+      
+getch();      
+}      
+
+Output
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+
+Program to print table for the given number using while loop in C:-
+
+#include <stdio.h>    
+#include <conio.h>    
+void main(){    
+int i=1,number=0;  
+clrscr();    
+  
+printf("Enter a number: ");  
+scanf("%d",&number);  
+  
+while(i<=10){  
+printf("%d \n",(number*i));  
+i++;  
+}  
+  
+getch();    
+}    
+
+Output
+Enter a number: 50
+50
+100
+150
+200
+250
+300
+350
+400
+450
+500
+Enter a number: 100
+100
+200
+300
+400
+500
+600
+700
+800
+900
+1000
+
+Infinitive while loop in C:-
+>If you pass 1 as a expression in while loop, it will run infinite number of times.
+
+while(1){  
+//statement  
+}  
+
+for loop in C:-
+>The for loop in C language is also used to iterate the statement or a part of the program several times, like while and do-while loop.
+>But, we can initialize and increment or decrement the variable also at the time of checking the condition in for loop.
+>Unlike do while loop, the condition or expression in for loop is given before the statement, so it may execute the statement 0 or more times.
+
+When use for loop in C:-
+>For loop is better if number of iteration is known by the programmer.
+
+Syntax of for loop in C
+
+The syntax of for loop in c language is given below:
+
+for(initialization;condition;incr/decr){  
+//code to be executed  
+}  
+
+Flowchart of for loop in C
+
+for loop in c language flowchart
+
+ Example of for loop in C language:-
+
+>Let's see the simple program of for loop that prints table of 1.
+
+#include <stdio.h>      
+#include <conio.h>      
+void main(){      
+int i=0;    
+clrscr();      
+    
+for(i=1;i<=10;i++){    
+printf("%d \n",i);    
+}   
+      
+getch();      
+}
+      
+Output
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+
+C Program : Print table for the given number using C for loop:-
+
+#include <stdio.h>    
+#include <conio.h>    
+void main(){    
+int i=1,number=0;  
+clrscr();    
+  
+printf("Enter a number: ");  
+scanf("%d",&number);  
+  
+for(i=1;i<=10;i++){    
+printf("%d \n",(number*i));  
+}  
+  
+getch();    
+}  
+  
+Output
+Enter a number: 2
+2
+4
+6
+8
+10
+12
+14
+16
+18
+20
+Enter a number: 1000
+1000
+2000
+3000
+4000
+5000
+6000
+7000
+8000
+9000
+10000
+
+Infinitive for loop in C:-
+>If you don't initialize any variable, check condition and increment or decrement variable in for loop, it is known as infinitive for loop.
+>In other words, if you place 2 semicolons in for loop, it is known as infinitive for loop.
+
+for(;;){  
+printf("infinitive for loop example by javatpoint");  
+}  
+If you run this program, you will see above statement infinite times.
+
+C break statement:-
+>The break statement in C language is used to break the execution of loop (while, do while and for) and switch case.
+>In case of inner loops, it terminates the control of inner loop only.
+
+There can be two usage of C break keyword:-
+
+1)With switch case
+2)With loop
+
+Syntax:
+
+jump-statement;  
+break;  
+
+The jump statement in c break syntax can be while loop, do while loop, for loop or switch case.
+
+Flowchart of break in c
+
+c language break statement flowchart:-
+
+ 
+Example of C break statement with switch case:-
+
+Example of C break statement with loop
+
+#include <stdio.h>    
+#include <conio.h>    
+void main(){    
+int i=1;//initializing a local variable  
+clrscr();    
+  
+//starting a loop from 1 to 10  
+for(i=1;i<=10;i++){    
+printf("%d \n",i);  
+if(i==5){//if value of i is equal to 5, it will break the loop  
+break;  
+}  
+}//end of for loop  
+  
+getch();    
+}    
+
+Output
+1
+2
+3
+4
+5
+
+>As you can see on console output, loop from 1 to 10 is not printed after i==5.
+>C break statement with inner loop
+
+In such case, it breaks only inner loop, but not outer loop.
+
+#include <stdio.h>    
+#include <conio.h>    
+void main(){    
+int i=1,j=1;//initializing a local variable  
+clrscr();    
+  
+for(i=1;i<=3;i++){    
+for(j=1;j<=3;j++){  
+printf("%d &d\n",i,j);  
+if(i==2 && j==2){  
+break;//will break loop of j only  
+}  
+}  
+}//end of for loop  
+  
+getch();    
+} 
+   
+Output
+1 1
+1 2
+1 3
+2 1
+2 2
+3 1
+3 2
+3 3
+
+>As you can see the output on console, 2 3 is not printed because there is break statement after printing i==2 and j==2. But 3 1, 3 2 and 3 3 is printed because break statement works for inner loop only.
+
+C continue statement:-
+>The continue statement in C language is used to continue the execution of loop (while, do while and for). It is used with if condition within the loop.
+>In case of inner loops, it continues the control of inner loop only.
+
+Syntax:
+
+jump-statement;  
+continue;  
+The jump statement can be while, do while and for loop.
+
+Example of continue statement in c:-
+
+#include <stdio.h>    
+#include <conio.h>    
+void main(){    
+int i=1;//initializing a local variable  
+clrscr();    
+  
+//starting a loop from 1 to 10  
+for(i=1;i<=10;i++){    
+if(i==5){//if value of i is equal to 5, it will continue the loop  
+continue;  
+}  
+printf("%d \n",i);  
+}//end of for loop  
+  
+getch();    
+}    
+
+Output
+1
+2
+3
+4
+6
+7
+8
+9
+10
+
+As you can see, 5 is not printed on the console because loop is continued at i==5.
+
+C continue statement with inner loop:-
+>In such case, C continue statement continues only inner loop, but not outer loop.
+
+#include <stdio.h>    
+#include <conio.h>    
+void main(){    
+int i=1,j=1;//initializing a local variable  
+clrscr();    
+  
+for(i=1;i<=3;i++){    
+for(j=1;j<=3;j++){  
+if(i==2 && j==2){  
+continue;//will continue loop of j only  
+}  
+printf("%d &d\n",i,j);  
+}  
+}//end of for loop  
+  
+getch();    
+}    
+
+Output
+1 1
+1 2
+1 3
+2 1
+2 3
+3 1
+3 2
+3 3
+
+As you can see, 2 2 is not printed on the console because inner loop is continued at i==2 and j==2.
+
+C goto statement:-
+>The goto statement is known as jump statement in C language. It is used to unconditionally jump to other label. It transfers control to other parts of the program.
+>It is rarely used today because it makes program less readable and complex.
+
+Syntax:
+
+goto label;  
+goto example
+
+Let's see a simple example to use goto statement in C language.
+
+#include <stdio.h>  
+#include <conio.h>  
+void main() {  
+  int age;  
+  clrscr();  
+   ineligible:  
+   printf("You are not eligible to vote!\n");  
+  
+   printf("Enter you age:\n");  
+   scanf("%d", &age);  
+   if(age<18)  
+        goto ineligible;  
+   else  
+        printf("You are eligible to vote!\n");  
+  
+   getch();  
+} 
+ 
+Output:
+You are not eligible to vote!
+Enter you age:
+11
+You are not eligible to vote!
+Enter you age:
+44
+You are eligible to vote!
+
+Type Casting in C:-
+>Type casting allows us to convert one data type into other. In C language, we use cast operator for type casting which is denoted by (type).
+
+Syntax:
+
+(type)value;      
+Note: It is always recommended to convert lower value to higher for avoiding data loss.
+
+Without Type Casting:-
+
+int f= 9/4;  
+printf("f : %d\n", f );//Output: 2  
+With Type Casting:
+
+float f=(float) 9/4;  
+printf("f : %f\n", f );//Output: 2.250000  
+
+ 
+Type Casting example:-
+
+Let's see a simple example to cast int value into float.
+
+#include <stdio.h>      
+#include <conio.h>    
+void main(){      
+clrscr();      
+  
+float f= (float)9/4;  
+printf("f : %f\n", f );  
+  
+getch();      
+}      
+
+Output:
+f : 2.250000
+
+
+functions in C:-
+>The function in C language is also known as procedure or subroutine in other programming languages.
+>To perform any task, we can create function. A function can be called many times. It provides modularity and code reusability.
+
+Advantage of functions in C:-
+>There are many advantages of functions.
+
+1) Code Reusability
+>By creating functions in C, you can call it many times. So we don't need to write the same code again and again.
+2) Code optimization
+>It makes the code optimized, we don't need to write much code.
+
+>Suppose, you have to check 3 numbers (781, 883 and 531) whether it is prime number or not. Without using function, you need to write the prime number logic 3 times. So, there is repetition of code.
+>But if you use functions, you need to write the logic only once and you can reuse it several times.
+
+Types of Functions:-
+>There are two types of functions in C programming:
+
+>Library Functions:
+		are the functions which are declared in the C header files such as scanf(), printf(), gets(), puts(), ceil(), floor() etc.
+User-defined functions:
+		 are the functions which are created by the C programmer, so that he/she can use it many times. It reduces complexity of a big program and optimizes the code.
+
+C Function:-
+
+Declaration of a function
+>The syntax of creating function in c language is given below:
+
+return_type function_name(data_type parameter...){  
+//code to be executed  
+}  
+
+Return Value:-
+>A C function may or may not return a value from the function. If you don't have to return any value from the function, use void for the return type.
+
+>Let's see a simple example of C function that doesn't return any value from the function.
+
+Example without return value:-
+
+void hello(){  
+printf("hello c");  
+}
+  
+>If you want to return any value from the function, you need to use any data type such as int, long, char etc. The return type depends on the value to be returned from the function.
+
+Let's see a simple example of C function that returns int value from the function.
+
+Example with return value:
+
+int get(){  
+return 10;  
+}  
+
+>In the above example, we have to return 10 as a value, so the return type is int. If you want to return floating-point value (e.g. 10.2, 3.1, 54.5 etc), you need to use float as the return type of the method.
+
+float get(){  
+return 10.2;  
+}
+  
+>Now, you need to call the function, to get the value of the function.
+
+Parameters in C Function:-
+>A c function may have 0 or more parameters. You can have any type of parameter in C program such as int, float, char etc. The parameters are also known as formal arguments.
+
+Example of a function that has 0 parameter:
+
+void hello(){  
+printf("hello c");  
+}
+  
+Example of a function that has 1 parameter:
+
+int cube(int n){  
+return n*n*n;  
+}  
+
+Example of a function that has 2 parameters:
+
+int add(int a, int b){  
+return a+b;  
+}  
+
+Calling a function in C:-
+>If a function returns any value, you need to call function to get the value returned from the function. The syntax of calling a function in c programming is given below:
+
+variable=function_name(arguments...);  
+
+1) variable: The variable is not mandatory. If function return type is void, you must not provide the variable because void functions doesn't return any value.
+2) function_name: The function_name is name of the function to be called.
+3) arguments: You need to provide arguments while calling the C function. It is also known as actual arguments.
+
+Example to call a function:
+
+>hello();//calls function that doesn't return a value  
+>int value=get();//calls function that returns value  
+>int value2=add(10,20);//calls parameterized function by passing 2 values  
+
+Example of C function with no return statement
+
+Let's see the simple program of C function that doesn't return any value from the function.
+
+#include <stdio.h>      
+#include <conio.h>    
+//defining function    
+void hello(){  
+printf("hello c programming");  
+}  
+void main(){      
+clrscr();      
+  
+hello();//calling a function  
+hello();  
+hello();  
+  
+getch();      
+}      
+
+Output
+hello c programming
+hello c programming
+hello c programming
+
+Example of C function with return statement:-
+
+Let's see the simple program of function in c language.
+
+#include <stdio.h>      
+#include <conio.h>    
+//defining function    
+int cube(int n){  
+return n*n*n;  
+}  
+void main(){      
+int result1=0,result2=0;    
+clrscr();      
+  
+result1=cube(2);//calling function  
+result2=cube(3);    
+      
+printf("%d \n",result1);  
+printf("%d \n",result2);  
+  
+getch();      
+}      
+Output
+
+8
+27
+
+Call by value and call by reference in C:-
+>There are two ways to pass value or data to function in C language: call by value and call by reference. Original value is not modified in call by value but it is modified in call by reference.
+
+call by value and call by reference in c:-
+
+Let's understand call by value and call by reference in c language one by one.
+
+Call by value in C
+
+>In call by value, original value is not modified.
+
+>In call by value, value being passed to the function is locally stored by the function parameter in stack memory location. If you change the value of function parameter, it is changed for the current function only. It will not change the value of variable inside the caller method such as main().
+
+Let's try to understand the concept of call by value in c language by the example given below:
+
+#include <stdio.h>  
+#include <conio.h>  
+void change(int num) {  
+    printf("Before adding value inside function num=%d \n",num);  
+    num=num+100;  
+    printf("After adding value inside function num=%d \n", num);  
+}  
+  
+int main() {  
+    int x=100;  
+    clrscr();  
+  
+    printf("Before function call x=%d \n", x);  
+    change(x);//passing value in function  
+    printf("After function call x=%d \n", x);  
+  
+    getch();  
+    return 0;  
+}
+  
+Output
+Before function call x=100
+Before adding value inside function num=100
+After adding value inside function num=200
+After function call x=100
+
+ 
+Call by reference in C:-
+>In call by reference, original value is modified because we pass reference (address).
+>Here, address of the value is passed in the function, so actual and formal arguments shares the same address space. Hence, value changed inside the function, is reflected inside as well as outside the function.
+
+Note: To understand the call by reference, you must have the basic knowledge of pointers.
+
+Let's try to understand the concept of call by reference in c language by the example given below:
+
+#include <stdio.h>  
+#include <conio.h>  
+void change(int *num) {  
+    printf("Before adding value inside function num=%d \n",*num);  
+    (*num) += 100;  
+    printf("After adding value inside function num=%d \n", *num);  
+}  
+  
+int main() {  
+    int x=100;  
+    clrscr();  
+  
+    printf("Before function call x=%d \n", x);  
+    change(&x);//passing reference in function  
+    printf("After function call x=%d \n", x);  
+  
+    getch();  
+    return 0;  
+}  
+
+Output
+Before function call x=100
+Before adding value inside function num=100
+After adding value inside function num=200
+After function call x=200
+
+
+Difference between call by value and call by reference in c:-
+
+No.	Call by value							Call by reference
+1	A copy of value is passed to the function				An address of value is passed to the function
+2	Changes made inside the function is not reflected on other functions	Changes made inside the function is reflected outside the function also
+3	Actual and formal arguments will be created in different memory location	Actual and formal arguments will be created in same memory location
+
+
+Recursion in C:-
+>When function is called within the same function, it is known as recursion in C. The function which calls the same function, is known as recursive function.
+>A function that calls itself, and doesn't perform any task after function call, is know as tail recursion. In tail recursion, we generally call the same function with return statement. 
+An example of tail recursion is given below.
+
+Let's see a simple example of recursion.
+
+recursionfunction(){  
+recursionfunction();//calling self function  
+}  
+
+ 
+Example of tail recursion in C:-
+Let's see an example to print factorial number using tail recursion in C language.
+
+#include<stdio.h>  
+#include<conio.h>  
+int factorial (int n)  
+{  
+    if ( n < 0)  
+        return -1; /*Wrong value*/  
+    if (n == 0)  
+        return 1; /*Terminating condition*/  
+    return (n * factorial (n -1));  
+}  
+  
+void main(){  
+int fact=0;  
+clrscr();  
+fact=factorial(5);  
+printf("\n factorial of 5 is %d",fact);  
+  
+getch();  
+}  
+
+Output
+factorial of 5 is 120
+
+Storage Classes in C:-
+>Storage classes are used to define scope and life time of a variable. There are four storage classes in C programming.
+
+1)auto
+2)extern
+30static
+4)register
+
+Storage Classes		Storage Place		Default Value		Scope		Life-time
+auto			RAM			Garbage Value		Local		Within function
+extern			RAM			Zero	Global		Till the end of main program, May be declared anywhere in the program
+static			RAM			Zero	Local		Till the end of main program, Retains value between multiple functions call
+register			Register			Garbage Value		Local		Within function
+
+1) auto:-
+>The auto keyword is applied to all local variables automatically. It is the default storage class that is why it is known as automatic variable.
+
+#include <stdio.h>  
+void main(){  
+int a=10;  
+auto int b=10;//same like above  
+printf("%d %d",a,b);  
+}  
+
+Output:
+10 10
+
+2) register:-
+>The register variable allocates memory in register than RAM. Its size is same of register size. It has a faster access than other variables.
+>It is recommended to use register variable only for quick access such as in counter.
+
+Note: We can't get the address of register variable.
+
+register int counter=0;  
+
+3) static:-
+>The static variable is initialized only once and exists till the end of the program. It retains its value between multiple functions call.
+>The static variable has the default value 0 which is provided by compiler.
+
+#include <stdio.h>  
+void func() {  
+   static int i=0;//static variable  
+   int j=0;//local variable  
+   i++;  
+   j++;  
+   printf("i= %d and j= %d\n", i, j);  
+}  
+void main() {  
+  func();  
+  func();  
+  func();  
+}  
+Output:
+
+i= 1 and j= 1
+i= 2 and j= 1
+i= 3 and j= 1
+
+4) extern:-
+>The extern variable is visible to all the programs. It is used if two or more files are sharing same variable or function.
+
+extern int counter=0;  

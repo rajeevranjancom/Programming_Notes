@@ -1,0 +1,577 @@
+C rewind() function:-
+>The rewind() function sets the file pointer at the beginning of the stream. It is useful if you have to use stream many times.
+
+Syntax:
+
+void rewind(FILE *stream)  
+Example:
+
+File: file.txt
+
+this is a simple text  
+File: rewind.c
+
+#include<stdio.h>  
+#include<conio.h>  
+void main(){  
+FILE *fp;  
+char c;  
+clrscr();  
+fp=fopen("file.txt","r");  
+  
+while((c=fgetc(fp))!=EOF){  
+printf("%c",c);  
+}  
+  
+rewind(fp);//moves the file pointer at beginning of the file  
+  
+while((c=fgetc(fp))!=EOF){  
+printf("%c",c);  
+}  
+  
+fclose(fp);    
+getch();    
+}    
+
+Output:
+this is a simple textthis is a simple text
+As you can see, rewind() function moves the file pointer at beginning of the file that is why "this is simple text" is printed 2 times. If you don't call rewind() function, "this is simple text" will be printed only once.
+
+C ftell() function:-
+>The ftell() function returns the current file position of the specified stream. We can use ftell() function to get the total size of a file after moving file pointer at the end of file. We can use SEEK_END constant to move the file pointer at the end of file.
+
+Syntax:
+
+long int ftell(FILE *stream)  
+Example:
+
+File: ftell.c
+
+#include <stdio.h>  
+#include <conio.h>  
+void main (){  
+   FILE *fp;  
+   int length;  
+   clrscr();  
+   fp = fopen("file.txt", "r");  
+   fseek(fp, 0, SEEK_END);  
+  
+   length = ftell(fp);  
+  
+   fclose(fp);  
+   printf("Size of file: %d bytes", length);  
+   getch();  
+} 
+ 
+Output:
+Size of file: 21 bytes
+
+C Preprocessor Directives:-
+>The C preprocessor is a micro processor that is used by compiler to transform your code before compilation. It is called micro preprocessor because it allows us to add macros.
+
+Note: Proprocessor direcives are executed before compilation.
+
+C preprocessor:-
+>All preprocessor directives starts with hash # symbol.
+
+Let's see a list of preprocessor directives.
+
+#include
+#define
+#undef
+#ifdef
+#ifndef
+#if
+#else
+#elif
+#endif
+#error
+#pragma
+
+ 
+What is Macro:-
+A  C macro is a segment of code which is replaced by the value of macro. Macro is defined by #define directive. There are two types of macros:
+
+1)Object-like Macros
+2)Function-like Macros
+
+Object-like Macros:-
+>The object-like macro is an identifier that is replaced by value. It is widely used to represent numeric constants. For example:
+
+#define PI 3.14  
+Here, PI is the macro name which will be replaced by the value 3.14.
+
+Function-like Macros:-
+>The function-like macro looks like function call. For example:
+
+#define MIN(a,b) ((a)<(b)?(a):(b))    
+Here, MIN is the macro name.
+
+>Visit #define to see the full example of object-like and function-like macros.
+
+
+ 
+C Predefined Macros:-
+>ANSI C defines many predefined macros that can be used in c program.
+
+No.	Macro	Description
+1	_DATE_	represents current date in "MMM DD YYYY" format.
+2	_TIME_	represents current time in "HH:MM:SS" format.
+3	_FILE_	represents current file name.
+4	_LINE_	represents current line number.
+5	_STDC_	It is defined as 1 when compiler complies with the ANSI standard.
+
+C predefined macros example:-
+
+File: simple.c
+
+#include <stdio.h>  
+main() {  
+   printf("File :%s\n", __FILE__ );  
+   printf("Date :%s\n", __DATE__ );  
+   printf("Time :%s\n", __TIME__ );  
+   printf("Line :%d\n", __LINE__ );  
+   printf("STDC :%d\n", __STDC__ );  
+}  
+
+Output:
+File :simple.c
+Date :Dec 6 2015
+Time :12:28:46
+Line :6
+STDC :1
+
+C #include:-
+>The #include preprocessor directive is used to paste code of given file into current file. It is used include system-defined and user-defined header files. If included file is not found, compiler renders error.
+>By the use of #include directive, we provide information to the preprocessor where to look for the header files. There are two variants to use #include directive.
+
+#include <filename>
+#include "filename"
+
+>The #include <filename> tells the compiler to look for the directory where system header files are held. In UNIX, it is \usr\include directory.
+>The #include "filename" tells the compiler to look in the current directory from where program is running.
+
+#include directive example:-
+>Let's see a simple example of #include directive. In this program, we are including stdio.h file because printf() function is defined in this file.
+
+#include <stdio.h>  
+main() {  
+   printf("Hello C");  
+}  
+Output:
+
+Hello C
+
+#include notes:
+>Note 1: In #include directive, comments are not recognized. So in case of #include <a//b>, a//b is treated as filename.
+>Note 2: In #include directive, backslash is considered as normal text not escape sequence. So in case of #include <a\nb>, a\nb is treated as filename.
+>Note 3: You can use only comment after filename otherwise it will give error.
+
+C #define:-
+>The #define preprocessor directive is used to define constant or micro substitution. It can use any basic data type.
+
+Syntax:
+
+#define token value  
+Let's see an example of #define to define a constant.
+
+#include <stdio.h>  
+#define PI 3.14  
+main() {  
+   printf("%f",PI);  
+}  
+
+Output:
+3.140000
+
+ >Let's see an example of #define to create a macro.
+
+#include <stdio.h>  
+#define MIN(a,b) ((a)<(b)?(a):(b))  
+void main() {  
+   printf("Minimum between 10 and 20 is: %d\n", MIN(10,20));    
+} 
+ 
+Output:
+Minimum between 10 and 20 is: 10
+
+C #undef:-
+>The #undef preprocessor directive is used to undefine the constant or macro defined by #define.
+
+Syntax:
+
+#undef token  
+Let's see a simple example to define and undefine a constant.
+
+#include <stdio.h>  
+#define PI 3.14  
+#undef PI  
+main() {  
+   printf("%f",PI);  
+}  
+
+Output:
+Compile Time Error: 'PI' undeclared
+
+>The #undef directive is used to define the preprocessor constant to a limited scope so that you can declare constant again.
+>Let's see an example where we are defining and undefining number variable. But before being undefined, it was used by square variable.
+
+#include <stdio.h>  
+#define number 15  
+int square=number*number;  
+#undef number  
+main() {  
+   printf("%d",square);  
+}  
+
+Output:
+225
+
+C #ifdef:-
+>The #ifdef preprocessor directive checks if macro is defined by #define. If yes, it executes the code otherwise #else code is executed, if present.
+
+Syntax:
+
+#ifdef MACRO  
+//code  
+#endif  
+Syntax with #else:
+
+#ifdef MACRO  
+//successful code  
+#else  
+//else code  
+#endif  
+
+C #ifdef example:-
+>Let's see a simple example to use #ifdef preprocessor directive.
+
+#include <stdio.h>  
+#include <conio.h>  
+#define NOINPUT  
+void main() {  
+int a=0;  
+#ifdef NOINPUT  
+a=2;  
+#else  
+printf("Enter a:");  
+scanf("%d", &a);  
+#endif         
+printf("Value of a: %d\n", a);  
+getch();  
+}  
+
+Output:
+Value of a: 2
+
+>But, if you don't define NOINPUT, it will ask user to enter a number.
+
+#include <stdio.h>  
+#include <conio.h>  
+void main() {  
+int a=0;  
+#ifdef NOINPUT  
+a=2;  
+#else  
+printf("Enter a:");  
+scanf("%d", &a);  
+#endif         
+  
+printf("Value of a: %d\n", a);  
+getch();  
+}  
+
+Output:
+Enter a:5
+Value of a: 5
+
+C #ifndef:-
+>The #ifndef preprocessor directive checks if macro is not defined by #define. If yes, it executes the code otherwise #else code is executed, if present.
+
+Syntax:
+
+#ifndef MACRO  
+//code  
+#endif  
+Syntax with #else:
+
+#ifndef MACRO  
+//successful code  
+#else  
+//else code  
+#endif  
+
+C #ifndef example:-
+
+Let's see a simple example to use #ifndef preprocessor directive.
+
+#include <stdio.h>  
+#include <conio.h>  
+#define INPUT  
+void main() {  
+int a=0;  
+#ifndef INPUT  
+a=2;  
+#else  
+printf("Enter a:");  
+scanf("%d", &a);  
+#endif         
+printf("Value of a: %d\n", a);  
+getch();  
+} 
+ 
+Output:
+Enter a:5
+Value of a: 5
+
+But, if you don't define INPUT, it will execute the code of #ifndef.>
+
+#include <stdio.h>  
+#include <conio.h>  
+void main() {  
+int a=0;  
+#ifndef INPUT  
+a=2;  
+#else  
+printf("Enter a:");  
+scanf("%d", &a);  
+#endif         
+printf("Value of a: %d\n", a);  
+getch();  
+} 
+ 
+Output:
+Value of a: 2
+
+C #if:-
+>The #if preprocessor directive evaluates the expression or condition. If condition is true, it executes the code otherwise #elseif or #else or #endif code is executed.
+
+Syntax:
+
+#if expression  
+//code  
+#endif  
+Syntax with #else:
+
+#if expression  
+//if code  
+#else  
+//else code  
+#endif  
+Syntax with #elif and #else:
+
+#if expression  
+//if code  
+#elif expression  
+//elif code  
+#else  
+//else code  
+#endif  
+C #if example
+
+>Let's see a simple example to use #if preprocessor directive.
+
+#include <stdio.h>  
+#include <conio.h>  
+#define NUMBER 0  
+void main() {  
+#if (NUMBER==0)  
+printf("Value of Number is: %d",NUMBER);  
+#endif         
+getch();  
+}
+  
+Output:
+Value of Number is: 0
+
+>Let's see another example to understand the #if directive clearly.
+
+#include <stdio.h>    
+#include <conio.h>    
+#define NUMBER 1  
+void main() {  
+clrscr();  
+#if (NUMBER==0)  
+printf("1 Value of Number is: %d",NUMBER);  
+#endif  
+  
+#if (NUMBER==1)  
+printf("2 Value of Number is: %d",NUMBER);  
+#endif  
+getch();  
+}  
+
+Output:
+2 Value of Number is: 1
+
+C #else:-
+>The #else preprocessor directive evaluates the expression or condition if condition of #if is false. It can be used with #if, #elif, #ifdef and #ifndef directives.
+
+Syntax:
+
+#if expression  
+//if code  
+#else  
+//else code  
+#endif  
+Syntax with #elif:
+
+#if expression  
+//if code  
+#elif expression  
+//elif code  
+#else  
+//else code  
+#endif
+  
+C #else example:-
+>Let's see a simple example to use #else preprocessor directive.
+
+#include <stdio.h>  
+#include <conio.h>  
+#define NUMBER 1  
+void main() {  
+#if NUMBER==0  
+printf("Value of Number is: %d",NUMBER);  
+#else  
+print("Value of Number is non-zero");  
+#endif         
+getch();  
+}  
+
+Output:
+Value of Number is non-zero
+
+C #error:-
+>The #error preprocessor directive indicates error. The compiler gives fatal error if #error directive is found and skips further compilation process.
+
+C #error example:-
+
+Let's see a simple example to use #error preprocessor directive.
+
+#include<stdio.h>  
+#ifndef __MATH_H  
+#error First include then compile  
+#else  
+void main(){  
+    float a;  
+    a=sqrt(7);  
+    printf("%f",a);  
+}  
+#endif  
+
+Output:
+Compile Time Error: First include then compile
+But, if you include math.h, it does not gives error.
+
+#include<stdio.h>  
+#include<math.h>  
+#ifndef __MATH_H  
+#error First include then compile  
+#else  
+void main(){  
+    float a;  
+    a=sqrt(7);  
+    printf("%f",a);  
+}  
+#endif  
+Output:
+
+2.645751
+
+C #pragma:-
+>The #pragma preprocessor directive is used to provide additional information to the compiler. The #pragma directive is used by the compiler to offer machine or operating-system feature.
+
+Syntax:
+
+#pragma token:-  
+>Different compilers can provide different usage of #pragma directive.
+>The turbo C++ compiler supports following #pragma directives.
+
+#pragma argsused  
+#pragma exit  
+#pragma hdrfile  
+#pragma hdrstop  
+#pragma inline  
+#pragma option  
+#pragma saveregs  
+#pragma startup  
+#pragma warn
+  
+Let's see a simple example to use #pragma preprocessor directive.
+
+#include<stdio.h>  
+#include<conio.h>  
+  
+void func() ;  
+  
+#pragma startup func  
+#pragma exit func  
+  
+void main(){  
+printf("\nI am in main");  
+getch();  
+}  
+  
+void func(){  
+printf("\nI am in func");  
+getch();  
+}  
+
+Output:
+I am in func
+I am in main
+I am in func
+
+Command Line Arguments in C:-
+>The arguments passed from command line are called command line arguments. These arguments are handled by main() function.
+>To support command line argument, you need to change the structure of main() function as given below.
+>int main(int argc, char *argv[] )  
+>Here, argc counts the number of arguments. It counts the file name as the first argument.
+>The argv[] contains the total number of arguments. The first argument is the file name always.
+
+Example:-
+
+Let's see the example of command line arguments where we are passing one argument with file name.
+
+#include <stdio.h>  
+void main(int argc, char *argv[] )  {  
+  
+   printf("Program name is: %s\n", argv[0]);  
+   
+   if(argc < 2){  
+      printf("No argument passed through command line.\n");  
+   }  
+   else{  
+      printf("First argument is: %s\n", argv[1]);  
+   }  
+}  
+Run this program as follows in Linux:
+
+./program hello  
+Run this program as follows in Windows from command line:
+
+program.exe hello  
+
+Output:
+Program name is: program
+First argument is: hello
+
+ 
+If you pass many arguments, it will print only one.
+
+./program hello c how r u  
+Output:
+
+Program name is: program
+First argument is: hello
+But if you pass many arguments within double quote, all arguments will be treated as a single argument only.
+
+./program "hello c how r u"  
+Output:
+
+Program name is: program
+First argument is: hello c how r u
+You can write your program to print all the arguments. In this program, we are printing only argv[1], that is why it is printing only one argument.
+
+

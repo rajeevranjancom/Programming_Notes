@@ -1,0 +1,590 @@
+Structure in C:-
+>Structure in c language is a user defined datatype that allows you to hold different type of elements.
+>Each element of a structure is called a member.
+>It works like a template in C++ and class in Java. You can have different type of elements in it.
+>It is widely used to store student information, employee information, product information, book information etc.
+
+Defining structure:-
+>The struct keyword is used to define structure. Let's see the syntax to define structure in c.
+
+struct structure_name   
+{  
+    data_type member1;  
+    data_type member2;  
+    .  
+    .  
+    data_type memeberN;  
+};  
+
+>Let's see the example to define structure for employee in c.
+
+struct employee  
+{   int id;  
+    char name[50];  
+    float salary;  
+};  
+
+>Here, struct is the keyword, employee is the tag name of structure; id, name and salary are the members or fields of the structure. Let's understand it by the diagram given below:
+
+c structure:-
+
+>Declaring structure variable
+
+>We can declare variable for the structure, so that we can access the member of structure easily. There are two ways to declare structure variable:
+
+By struct keyword within main() function
+By declaring variable at the time of defining structure.
+
+1st way:
+>Let's see the example to declare structure variable by struct keyword. It should be declared within the main function.
+
+struct employee  
+{   int id;  
+    char name[50];  
+    float salary;  
+};  
+
+Now write given code inside the main() function.
+
+struct employee e1, e2;  
+
+2nd way:
+>Let's see another way to declare variable at the time of defining structure.
+
+struct employee  
+{   int id;  
+    char name[50];  
+    float salary;  
+}e1,e2;  
+
+Which approach is good:-
+>But if no. of variable are not fixed, use 1st approach. It provides you flexibility to declare the structure variable many times.
+>If no. of variables are fixed, use 2nd approach. It saves your code to declare variable in main() fuction.
+
+Accessing members of structure:-
+There are two ways to access structure members:-
+
+By . (member or dot operator)
+By -> (structure pointer operator)
+Let's see the code to access the id member of p1 variable by . (member) operator.
+
+p1.id  
+C Structure example
+
+Let's see a simple example of structure in C language.
+
+#include <stdio.h>  
+#include <string.h>  
+struct employee    
+{   int id;    
+    char name[50];    
+}e1;  //declaring e1 variable for structure  
+int main( )  
+{  
+   //store first employee information  
+   e1.id=101;  
+   strcpy(e1.name, "Sonoo Jaiswal");//copying string into char array  
+   //printing first employee information  
+   printf( "employee 1 id : %d\n", e1.id);  
+   printf( "employee 1 name : %s\n", e1.name);  
+   return 0;  
+}  
+
+Output:
+employee 1 id : 101
+employee 1 name : Sonoo Jaiswal
+Let's see another example of structure in C language to store many employees information.
+
+#include <stdio.h>  
+#include <string.h>  
+struct employee    
+{   int id;    
+    char name[50];    
+    float salary;    
+}e1,e2;  //declaring e1 and e2 variables for structure  
+int main( )  
+{  
+   //store first employee information  
+   e1.id=101;  
+   strcpy(e1.name, "Sonoo Jaiswal");//copying string into char array  
+   e1.salary=56000;  
+  
+  //store second employee information  
+   e2.id=102;  
+   strcpy(e2.name, "James Bond");  
+   e2.salary=126000;  
+   
+   //printing first employee information  
+   printf( "employee 1 id : %d\n", e1.id);  
+   printf( "employee 1 name : %s\n", e1.name);  
+   printf( "employee 1 salary : %f\n", e1.salary);  
+  
+   //printing second employee information  
+   printf( "employee 2 id : %d\n", e2.id);  
+   printf( "employee 2 name : %s\n", e2.name);  
+   printf( "employee 2 salary : %f\n", e2.salary);  
+  
+   return 0;  
+}  
+
+Output:
+employee 1 id : 101
+employee 1 name : Sonoo Jaiswal
+employee 1 salary : 56000.000000
+employee 2 id : 102
+employee 2 name : James Bond
+employee 2 salary : 126000.000000
+
+Array of Structures in C:-
+>There can be array of structures in C programming to store many information of different data types. The array of structures is also known as collection of structures.
+>Let's see an example of structure with array that stores information of 5 students and prints it.
+
+#include<stdio.h>  
+#include<conio.h>  
+#include<string.h>  
+struct student{  
+int rollno;  
+char name[10];  
+};  
+void main(){  
+int i;  
+struct student st[5];  
+clrscr();  
+printf("Enter Records of 5 students");  
+  
+for(i=0;i<5;i++){  
+printf("\nEnter Rollno:");  
+scanf("%d",&st[i].rollno);  
+printf("\nEnter Name:");  
+scanf("%s",&st[i].name);  
+}  
+  
+printf("\nStudent Information List:");  
+for(i=0;i<5;i++){  
+printf("\nRollno:%d, Name:%s",st[i].rollno,st[i].name);  
+}  
+  
+getch();  
+} 
+ 
+Output:
+Enter Records of 5 students
+Enter Rollno:1
+Enter Name:Sonoo
+Enter Rollno:2
+Enter Name:Ratan
+Enter Rollno:3
+Enter Name:Vimal
+Enter Rollno:4
+Enter Name:James
+Enter Rollno:5
+Enter Name:Sarfraz
+
+Student Information List:
+Rollno:1, Name:Sonoo
+Rollno:2, Name:Ratan
+Rollno:3, Name:Vimal
+Rollno:4, Name:James
+Rollno:5, Name:Sarfraz
+
+Nested Structure in C:-
+>Nested structure in c language can have another structure as a member. There are two ways to define nested structure in c language:
+
+1)By separate structure
+2)By Embedded structure
+
+1) Separate structure:-
+>We can create 2 structures, but dependent structure should be used inside the main structure as a member. Let's see the code of nested structure.
+
+struct Date  
+{  
+   int dd;  
+   int mm;  
+   int yyyy;   
+};  
+struct Employee  
+{     
+   int id;  
+   char name[20];  
+   struct Date doj;  
+}emp1;  
+
+>As you can see, doj (date of joining) is the variable of type Date. Here doj is used as a member in Employee structure. In this way, we can use Date structure in many structures.
+
+2) Embedded structure:-
+>We can define structure within the structure also. It requires less code than previous way. But it can't be used in many structures.
+
+struct Employee  
+{     
+   int id;  
+   char name[20];  
+   struct Date  
+    {  
+      int dd;  
+      int mm;  
+      int yyyy;   
+    }doj;  
+}emp1;
+  
+Accessing Nested Structure:-
+>We can access the member of nested structure by Outer_Structure.Nested_Structure.member as given below:
+
+e1.doj.dd  
+e1.doj.mm  
+e1.doj.yyyy  
+C Nested Structure example
+
+Let's see a simple example of nested structure in C language.
+
+#include <stdio.h>  
+#include <string.h>  
+struct Employee  
+{     
+   int id;  
+   char name[20];  
+   struct Date  
+    {  
+      int dd;  
+      int mm;  
+      int yyyy;   
+    }doj;  
+}e1;  
+int main( )  
+{  
+   //storing employee information  
+   e1.id=101;  
+   strcpy(e1.name, "Sonoo Jaiswal");//copying string into char array  
+   e1.doj.dd=10;  
+   e1.doj.mm=11;  
+   e1.doj.yyyy=2014;  
+  
+   //printing first employee information  
+   printf( "employee id : %d\n", e1.id);  
+   printf( "employee name : %s\n", e1.name);  
+   printf( "employee date of joining (dd/mm/yyyy) : %d/%d/%d\n", e1.doj.dd,e1.doj.mm,e1.doj.yyyy);  
+   return 0;  
+}  
+
+Output:
+employee id : 101
+employee name : Sonoo Jaiswal
+employee date of joining (dd/mm/yyyy) : 10/11/2014
+
+C Union:-
+>Like structure, Union in c language is a user defined datatype that is used to hold different type of elements.
+>But it doesn't occupy sum of all members size. It occupies the memory of largest member only. It shares memory of largest member.
+
+difference between structure and union:-
+
+Advantage of union over structure:-
+>It occupies less memory because it occupies the memory of largest member only.
+
+Disadvantage of union over structure:-
+>It can store data in one member only.
+
+Defining union:-
+>The union keyword is used to define union. Let's see the syntax to define union in c.
+
+union union_name   
+{  
+    data_type member1;  
+    data_type member2;  
+    .  
+    .  
+    data_type memeberN;  
+};  
+Let's see the example to define union for employee in c.
+
+union employee  
+{   int id;  
+    char name[50];  
+    float salary;  
+};  
+
+ 
+C Union example:-
+>Let's see a simple example of union in C language.
+
+#include <stdio.h>  
+#include <string.h>  
+union employee    
+{   int id;    
+    char name[50];    
+}e1;  //declaring e1 variable for union  
+int main( )  
+{  
+   //store first employee information  
+   e1.id=101;  
+   strcpy(e1.name, "Sonoo Jaiswal");//copying string into char array  
+   //printing first employee information  
+   printf( "employee 1 id : %d\n", e1.id);  
+   printf( "employee 1 name : %s\n", e1.name);  
+   return 0;  
+}  
+
+Output:
+employee 1 id : 1869508435
+employee 1 name : Sonoo Jaiswal
+As you can see, id gets garbage value because name has large memory size. So only name will have actual value
+
+File Handling in C:-
+>File Handling in c language is used to open, read, write, search or close file. It is used for permanent storage.
+
+Advantage of File:-
+>It will contain the data even after program exit. Normally we use variable or array to store data, but data is lost after program exit. Variables and arrays are non-permanent storage medium whereas file is permanent storage medium.
+
+Functions for file handling:-
+>There are many functions in C library to open, read, write, search and close file. A list of file functions are given below:
+
+No.	Function		Description
+1	fopen()		opens new or existing file
+2	fprintf()		write data into file
+3	fscanf()		reads data from file
+4	fputc()		writes a character into file
+5	fgetc()		reads a character from file
+6	fclose()		closes the file
+7	fseek()		sets the file pointer to given position
+8	fputw()		writes an integer to file
+9	fgetw()		reads an integer from file
+10	ftell()		returns current position
+11	rewind()		sets the file pointer to the beginning of the file.
+
+
+Opening File: fopen():-
+>The fopen() function is used to open a file. The syntax of fopen() function is given below:
+>FILE *fopen( const char * filename, const char * mode );  
+>You can use one of the following modes in the fopen() function.
+
+Mode	Description
+r	opens a text file in read mode
+w	opens a text file in write mode
+a	opens a text file in append mode
+r+	opens a text file in read and write mode
+w+	opens a text file in read and write mode
+a+	opens a text file in read and write mode
+rb	opens a binary file in read mode
+wb	opens a binary file in write mode
+ab	opens a binary file in append mode
+rb+	opens a binary file in read and write mode
+wb+	opens a binary file in read and write mode
+ab+	opens a binary file in read and write mode
+
+Closing File: fclose():-
+>The fclose() function is used to close a file. The syntax of fclose() function is given below:
+
+int fclose( FILE *fp );
+
+C fprintf() and fscanf()
+
+C fprintf() and fscanf() example
+
+C fprintf() and fscanf()
+
+Writing File : fprintf() function:-
+>The fprintf() function is used to write set of characters into file. It sends formatted output to a stream.
+
+Syntax:
+
+int fprintf(FILE *stream, const char *format [, argument, ...])  
+
+Example:
+
+#include <stdio.h>  
+main(){  
+   FILE *fp;  
+   fp = fopen("file.txt", "w");//opening file  
+   fprintf(fp, "Hello file by fprintf...\n");//writing data into file  
+   fclose(fp);//closing file  
+}  
+Reading File : fscanf() function
+
+>The fscanf() function is used to read set of characters from file. It reads a word from the file and returns EOF at the end of file.
+
+Syntax:
+
+int fscanf(FILE *stream, const char *format [, argument, ...])  
+Example:
+
+#include <stdio.h>  
+main(){  
+   FILE *fp;  
+   char buff[255];//creating char array to store data of file  
+   fp = fopen("file.txt", "r");  
+   while(fscanf(fp, "%s", buff)!=EOF){  
+   printf("%s ", buff );  
+   }  
+   fclose(fp);  
+}  
+
+Output:
+Hello file by fprintf...
+C File Example: Storing employee information
+
+>Let's see a file handling example to store employee information as entered by user from console. We are going to store id, name and salary of the employee.
+
+>#include <stdio.h>  
+void main()  
+{  
+    FILE *fptr;  
+    int id;  
+    char name[30];  
+    float salary;  
+    fptr = fopen("emp.txt", "w+");/*  open for writing */  
+    if (fptr == NULL)  
+    {  
+        printf("File does not exists \n");  
+        return;  
+    }  
+    printf("Enter the id\n");  
+    scanf("%d", &id);  
+    fprintf(fptr, "Id= %d\n", id);  
+    printf("Enter the name \n");  
+    scanf("%s", name);  
+    fprintf(fptr, "Name= %s\n", name);  
+    printf("Enter the salary\n");  
+    scanf("%f", &salary);  
+    fprintf(fptr, "Salary= %.2f\n", salary);  
+    fclose(fptr);  
+}  
+
+Output:
+Enter the id 
+1
+Enter the name 
+sonoo
+Enter the salary
+120000 
+Now open file from current directory. For windows operating system, go to TC\bin directory, you will see emp.txt file. It will have following information.
+
+emp.txt
+
+Id= 1
+Name= sonoo
+Salary= 120000 
+
+C fputc() and fgetc():-
+>Writing File : fputc() function
+>The fputc() function is used to write a single character into file. It outputs a character to a stream.
+
+Syntax:
+
+int fputc(int c, FILE *stream)  
+Example:
+
+#include <stdio.h>  
+main(){  
+   FILE *fp;  
+   fp = fopen("file1.txt", "w");//opening file  
+   fputc('a',fp);//writing single character into file  
+   fclose(fp);//closing file  
+}  
+file1.txt
+
+a
+Reading File : fgetc() function:-
+>The fgetc() function returns a single character from the file. It gets a character from the stream. It returns EOF at the end of file.
+
+Syntax:
+
+int fgetc(FILE *stream)  
+Example:
+
+#include<stdio.h>  
+#include<conio.h>  
+void main(){  
+FILE *fp;  
+char c;  
+clrscr();  
+fp=fopen("myfile.txt","r");  
+  
+while((c=fgetc(fp))!=EOF){  
+printf("%c",c);  
+}  
+fclose(fp);  
+getch();  
+}  
+
+myfile.txt
+
+>this is simple text message
+
+C fputs() and fgets():-
+>The fputs() and fgets() in C programming are used to write and read string from stream. Let's see examples of writing and reading file using fgets() and fgets() functions.
+
+Writing File : fputs() function:-
+>The fputs() function writes a line of characters into file. It outputs string to a stream.
+
+Syntax:
+
+int fputs(const char *s, FILE *stream)  
+Example:
+
+#include<stdio.h>  
+#include<conio.h>  
+void main(){  
+FILE *fp;  
+clrscr();  
+  
+fp=fopen("myfile2.txt","w");  
+fputs("hello c programming",fp);  
+  
+fclose(fp);  
+getch();  
+}
+
+C fseek() function:-
+>The fseek() function is used to set the file pointer to the specified offset. It is used to write data into file at desired location.
+
+Syntax:
+
+int fseek(FILE *stream, long int offset, int whence)  
+There are 3 constants used in the fseek() function for whence: SEEK_SET, SEEK_CUR and SEEK_END.
+
+Example:
+
+#include <stdio.h>  
+void main(){  
+   FILE *fp;  
+  
+   fp = fopen("myfile.txt","w+");  
+   fputs("This is javatpoint", fp);  
+    
+   fseek( fp, 7, SEEK_SET );  
+   fputs("sonoo jaiswal", fp);  
+   fclose(fp);  
+}  
+myfile.txt
+
+This is sonoo jaiswal
+
+  
+myfile2.txt
+
+hello c programming
+Reading File : fgets() function
+
+The fgets() function reads a line of characters from file. It gets string from a stream.
+
+Syntax:
+
+char* fgets(char *s, int n, FILE *stream)  
+Example:
+
+#include<stdio.h>  
+#include<conio.h>  
+void main(){  
+FILE *fp;  
+char text[300];  
+clrscr();  
+  
+fp=fopen("myfile2.txt","r");  
+printf("%s",fgets(text,200,fp));  
+  
+fclose(fp);  
+getch();  
+} 
+ 
+Output:
+hello c programming
+
+

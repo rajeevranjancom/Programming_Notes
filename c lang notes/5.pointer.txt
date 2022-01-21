@@ -1,0 +1,389 @@
+C Pointers:-
+>The pointer in C language is a variable, it is also known as locator or indicator that points to an address of a value.
+
+Advantage of pointer:-
+1) Pointer reduces the code and improves the performance, it is used to retrieving strings, trees etc. and used with arrays, structures and functions.
+2) We can return multiple values from function using pointer.
+3) It makes you able to access any memory location in the computer's memory.
+
+Usage of pointer:-
+>There are many usage of pointers in c language.
+1) Dynamic memory allocation
+
+>In c language, we can dynamically allocate memory using malloc() and calloc() functions where pointer is used.
+
+2) Arrays, Functions and Structures
+>Pointers in c language are widely used in arrays, functions and structures. It reduces the code and improves the performance.
+
+Symbols used in pointer:-
+
+Symbol			Name					Description
+& (ampersand sign)	address of operator	determines the address of a variable.
+* (asterisk sign)		indirection operator		accesses the value at the address.
+
+ Address Of Operator:-
+>The address of operator '&' returns the address of a variable. But, we need to use %u to display the address of a variable.
+
+#include <stdio.h>      
+#include <conio.h>    
+void main(){      
+int number=50;    
+clrscr();      
+printf("value of number is %d, address of number is %u",number,&number);  
+getch();      
+}      
+
+Output
+value of number is 50, address of number is fff4
+
+Declaring a pointer:-
+>The pointer in c language can be declared using * (asterisk symbol).
+
+int *a;//pointer to int  
+char *c;//pointer to char  
+Pointer example
+
+An example of using pointers printing the address and value is given below.
+
+pointer example:-
+>As you can see in the above figure, pointer variable stores the address of number variable i.e. fff4. The value of number variable is 50. But the address of pointer variable p is aaa3.
+
+By the help of * (indirection operator), we can print the value of pointer variable p.
+
+Let's see the pointer example as explained for above figure.
+
+#include <stdio.h>      
+#include <conio.h>    
+void main(){      
+int number=50;  
+int *p;    
+clrscr();  
+p=&number;//stores the address of number variable  
+      
+printf("Address of number variable is %x \n",&number);  
+printf("Address of p variable is %x \n",p);  
+printf("Value of p variable is %d \n",*p);  
+  
+getch();      
+}      
+
+Output
+Address of number variable is fff4
+Address of p variable is fff4
+Value of p variable is 50
+
+NULL Pointer:-
+>A pointer that is not assigned any value but NULL is known as NULL pointer. If you don't have any address to be specified in the pointer at the time of declaration, you can assign NULL value. It will a better approach.
+
+int *p=NULL;
+In most the libraries, the value of pointer is 0 (zero).
+
+Pointer Program to swap 2 numbers without using 3rd variable
+
+#include<stdio.h>  
+#include<conio.h>  
+void main(){  
+int a=10,b=20,*p1=&a,*p2=&b;  
+clrscr();  
+  
+printf("Before swap: *p1=%d *p2=%d",*p1,*p2);  
+*p1=*p1+*p2;  
+*p2=*p1-*p2;  
+*p1=*p1-*p2;  
+printf("\nAfter swap: *p1=%d *p2=%d",*p1,*p2);  
+  
+getch();  
+}  
+
+Output
+Before swap: *p1=10 *p2=20
+After swap: *p1=20 *p2=10
+
+
+C Pointer to Pointer:-
+>In C pointer to pointer concept, a pointer refers to the address of another pointer.
+>In c language, a pointer can point to the address of another pointer which points to the address of a value. Let's understand it by the diagram given below:
+
+pointer to pointer in c:-
+Let's see the syntax of pointer to pointer.
+
+int **p2;  
+
+C pointer to pointer example
+>Let's see an example where one pointer points to the address of another pointer.
+
+C pointer to pointer example
+As you can see in the above figure, p2 contains the address of p (fff2) and p contains the address of number variable (fff4).
+
+#include <stdio.h>        
+#include <conio.h>      
+void main(){        
+int number=50;    
+int *p;//pointer to int  
+int **p2;//pointer to pointer      
+clrscr();    
+p=&number;//stores the address of number variable    
+p2=&p;  
+        
+printf("Address of number variable is %x \n",&number);    
+printf("Address of p variable is %x \n",p);    
+printf("Value of *p variable is %d \n",*p);    
+printf("Address of p2 variable is %x \n",p2);    
+printf("Value of **p2 variable is %d \n",**p);    
+    
+getch();        
+}        
+
+Output
+Address of number variable is fff4
+Address of p variable is fff4
+Value of *p variable is 50
+Address of p2 variable is fff2
+Value of **p variable is 50
+
+
+Pointer Arithmetic in C:-
+>In C pointer holds address of a value, so there can be arithmetic operations on the pointer variable. Following arithmetic operations are possible on pointer in C language:
+
+Increment
+Decrement
+Addition
+Subtraction
+Comparison
+Incrementing Pointer in C
+
+>Incrementing a pointer is used in array because it is contiguous memory location. Moreover, we know the value of next location.
+>Increment operation depends on the data type of the pointer variable. The formula of incrementing pointer is given below:
+
+new_address= current_address + i * size_of(data type)  
+32 bit
+
+For 32 bit int variable, it will increment to 2 byte.
+
+64 bit
+
+For 64 bit int variable, it will increment to 4 byte.
+
+Let's see the example of incrementing pointer variable on 64 bit OS.
+
+#include <stdio.h>          
+void main(){          
+int number=50;      
+int *p;//pointer to int    
+p=&number;//stores the address of number variable      
+          
+printf("Address of p variable is %u \n",p);      
+p=p+1;     
+printf("After increment: Address of p variable is %u \n",p);      
+}
+    
+Output
+Address of p variable is 3214864300 
+After increment: Address of p variable is 3214864304 
+
+ 
+Decrementing Pointer in C:-
+>Like increment, we can decrement a pointer variable. The formula of decrementing pointer is given below:
+
+new_address= current_address - i * size_of(data type)  
+32 bit
+
+For 32 bit int variable, it will decrement to 2 byte.
+
+64 bit
+
+For 64 bit int variable, it will decrement to 4 byte.
+
+Let's see the example of decrementing pointer variable on 64 bit OS.
+
+#include <stdio.h>          
+void main(){          
+int number=50;      
+int *p;//pointer to int    
+p=&number;//stores the address of number variable      
+          
+printf("Address of p variable is %u \n",p);      
+p=p-1;     
+printf("After decrement: Address of p variable is %u \n",p);      
+} 
+   
+Output
+Address of p variable is 3214864300 
+After decrement: Address of p variable is 3214864296 
+C Pointer Addition
+
+.We can add a value to the pointer variable. The formula of adding value to pointer is given below:
+
+new_address= current_address + (number * size_of(data type))  
+32 bit
+
+For 32 bit int variable, it will add 2 * number.
+
+64 bit
+
+For 64 bit int variable, it will add 4 * number.
+
+Let's see the example of adding value to pointer variable on 64 bit OS.
+
+#include <stdio.h>          
+void main(){          
+int number=50;      
+int *p;//pointer to int    
+p=&number;//stores the address of number variable      
+          
+printf("Address of p variable is %u \n",p);      
+p=p+3;   //adding 3 to pointer variable  
+printf("After adding 3: Address of p variable is %u \n",p);      
+}    
+
+Output
+Address of p variable is 3214864300 
+After adding 3: Address of p variable is 3214864312
+As you can see, address of p is 3214864300. But after adding 3 with p variable, it is 3214864312 i.e. 4*3=12 increment. Since we are using 64 bit OS, it increments 12. But if we were using 32 bit OS, it were incrementing to 6 only i.e. 2*3=6. As integer value occupies 2 byte memory in 32 bit OS.
+
+C Pointer Subtraction:-
+>Like pointer addition, we can subtract a value from the pointer variable. The formula of subtracting value from pointer variable is given below:
+
+new_address= current_address - (number * size_of(data type))  
+32 bit
+
+For 32 bit int variable, it will subtract 2 * number.
+
+64 bit
+
+For 64 bit int variable, it will subtract 4 * number.
+
+Let's see the example of subtracting value from pointer variable on 64 bit OS.
+
+#include <stdio.h>          
+void main(){          
+int number=50;      
+int *p;//pointer to int    
+p=&number;//stores the address of number variable      
+          
+printf("Address of p variable is %u \n",p);      
+p=p-3; //subtracting 3 from pointer variable  
+printf("After subtracting 3: Address of p variable is %u \n",p);      
+}    
+
+Output
+Address of p variable is 3214864300 
+After subtracting 3: Address of p variable is 3214864288
+You can see after subtracting 3 from pointer variable, it is 12 (4*3) less than the previous address value.
+
+
+Dynamic memory allocation in C:-
+>The concept of dynamic memory allocation in c language enables the C programmer to allocate memory at runtime. Dynamic memory allocation in c language is possible by 4 functions of stdlib.h header file.
+
+malloc()
+calloc()
+realloc()
+free()
+Before learning above functions, let's understand the difference between static memory allocation and dynamic memory allocation.
+
+static memory allocation:-				dynamic memory allocation:-
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>			                
+
+memory is allocated at compile time.			memory is allocated at run time.
+memory can't be increased while executing program	memory can be increased while executing program.
+used in array					used in linked list.
+
+
+Now let's have a quick look at the methods used for dynamic memory allocation.
+
+malloc()		allocates single block of requested memory.
+calloc()		allocates multiple block of requested memory.
+realloc()		reallocates the memory occupied by malloc() or calloc() functions.
+free()		frees the dynamically allocated memory
+
+malloc() function in C:-
+>The malloc() function allocates single block of requested memory.
+>It doesn't initialize memory at execution time, so it has garbage value initially.
+>It returns NULL if memory is not sufficient.
+
+The syntax of malloc() function is given below:
+
+ptr=(cast-type*)malloc(byte-size)  
+Let's see the example of malloc() function.
+
+#include <stdio.h>  
+#include <stdlib.h>  
+void main(){  
+    int n,i,*ptr,sum=0;  
+    printf("Enter number of elements: ");  
+    scanf("%d",&n);  
+    ptr=(int*)malloc(n*sizeof(int));  //memory allocated using calloc  
+    if(ptr==NULL)                       
+    {  
+        printf("Sorry! unable to allocate memory");  
+        exit(0);  
+    }  
+    printf("Enter elements of array: ");  
+    for(i=0;i<n;++i)  
+    {  
+        scanf("%d",ptr+i);  
+        sum+=*(ptr+i);  
+    }  
+    printf("Sum=%d",sum);  
+    free(ptr);  
+}  
+
+Output:
+Enter elements of array: 3
+Enter elements of array: 10
+10
+10
+Sum=30
+
+calloc() function in c:-
+>The calloc() function allocates multiple block of requested memory.
+>It initially initialize all bytes to zero.
+>It returns NULL if memory is not sufficient.
+
+The syntax of calloc() function is given below:
+
+ptr=(cast-type*)calloc(number, byte-size)  
+Let's see the example of calloc() function.
+
+#include <stdio.h>  
+#include <stdlib.h>  
+void main(){  
+    int n,i,*ptr,sum=0;  
+    printf("Enter number of elements: ");  
+    scanf("%d",&n);  
+    ptr=(int*)calloc(n,sizeof(int));  //memory allocated using calloc  
+    if(ptr==NULL)                       
+    {  
+        printf("Sorry! unable to allocate memory");  
+        exit(0);  
+    }  
+    printf("Enter elements of array: ");  
+    for(i=0;i<n;++i)  
+    {  
+        scanf("%d",ptr+i);  
+        sum+=*(ptr+i);  
+    }  
+    printf("Sum=%d",sum);  
+    free(ptr);  
+}  
+
+Output:
+Enter elements of array: 3
+Enter elements of array: 10
+10
+10
+Sum=30
+
+realloc() function in C:-
+>If memory is not sufficient for malloc() or calloc(), you can reallocate the memory by realloc() function. In short, it changes the memory size.
+
+Let's see the syntax of realloc() function.
+
+ptr=realloc(ptr, new-size)  
+free() function in C
+>The memory occupied by malloc() or calloc() functions must be released by calling free() function. Otherwise, it will consume memory until program exit.
+
+Let's see the syntax of free() function.
+
+free(ptr)  
+

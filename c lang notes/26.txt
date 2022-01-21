@@ -1,0 +1,415 @@
+C Programming Interview Questions:-
+>A list of top 50 frequently asked C programming interview questions and answers are given below.
+
+1) What is C language?
+>C is a mid level and procedural programming language. More details...
+
+2) Why C is known as a mother language?
+>C is known as a mother language because most of the compilers, kernals and JVMs are written in C language. More details...
+
+3) Why C is called a mid level programming language?
+>It supports the feature of both low-level and high level languages that is why it is known as a mid level programming language. More details...
+
+4) Who is the founder of C language?
+>Dennis Ritchie. More details...
+
+5) When C langauge was developed?
+>C language was developed in 1972 at bell laboratories of AT&T. More details...
+
+
+ 6) What are the features of C language?
+>The main features of C language are given below:
+
+>Simple
+>Portable
+>Mid Level
+>Structured
+>Fast Speed
+>Memory Management
+>Extensible
+
+7) What is the use of printf() and scanf() functions?
+>The printf() function is used for output and scanf() function is used for input.
+
+8) What is the difference between local variable and global variable in C?
+>Local variable: A variable which is declared inside function or block is known as local variable.
+>Global variable: A variable which is declared outside function or block is known as global variable.
+
+int value=50;//global variable  
+void function1(){  
+int x=20;//local variable  
+}  
+
+9) What is the use of static variable in C?
+>A variable which is declared as static is known as static variable. The static variable retains its value between multiple function calls.
+
+void function1(){  
+int x=10;//local variable  
+static int y=10;//static variable  
+x=x+1;  
+y=y+1;  
+printf("%d\n",x);//will always print 11  
+printf("%d\n",y);//will always increment value, it will print 11, 12, 13 and so on  
+}  
+
+10) What is the use of function in C?
+>A function in C language provides modularity. It can be called many times. It saves code and we can reuse the same code many times. More details...
+
+11) What is the difference between call by value and call by reference in C?
+>We can pass value to function by one of the two ways: call by value or call by reference. In case of call by value, a copy of value is passed to the function, so original value is not modified. But in case of call by reference, an address of value of passed to the function, so original value is modified. More details...
+
+12) What is recursion in C?
+>Calling the same function, inside function is known as recursion. For example:
+
+void function1(){  
+function1();//calling same function  
+}  
+
+13) What is array in C?
+>Array is a group of similar types of elements. It has contiguous memory location. It makes the code optimized, easy to traverse and easy to sort. More details...
+
+14) What is pointer in C?
+>A pointer is a variable that refers to the address of a value. It makes the code optimized and makes the performance fast. More details...
+
+15) What are the usage of pointer in C?
+>Accessing array elements
+>Dynamic memory allocation
+>Call by Reference
+>Data Structures like tree, graph, linked list etc.
+
+16) What is NULL pointer in C?
+>A pointer that doesn't refer to any address of a value but NULL, is known as NULL pointer. For example:
+
+int *p=NULL;  
+More details...
+
+17) What is far pointer in C?
+>A pointer which can access all the 16 segments (whole residence memory) of RAM is known as far pointer.
+
+18) What is dangling pointer in C?
+>If a pointer is pointing any memory location but meanwhile another pointer deletes the memory occupied by first pointer while first pointer still points to that memory location, first pointer will be known as dangling pointer. This problem is known as dangling pointer problem.
+
+19) What is pointer to pointer in C?
+>In case of pointer to pointer concept, one pointer refers to the address of another pointer. More details...
+
+20) What is static memory allocation?
+>In case of static memory allocation, memory is allocated at compile time and memory can't be increased while executing the program. It is used in array. More details...
+
+21) What is dynamic memory allocation?
+>In case of dynamic memory allocation, memory is allocated at run time and memory can be increased while executing the program. It is used in linked list. More details...
+
+22) What functions are used for dynamic memory allocation in C language?
+>malloc()
+>calloc()
+>realloc()
+>free()
+
+23) What is the difference between malloc() and calloc()?
+>malloc(): The malloc() function allocates single block of requested memory. It has garbage value initially.
+>calloc(): The calloc() function allocates multiple block of requested memory. It initially initializes all bytes to zero.
+
+24) What is structure?
+>Structure is a user-defined data type that allows to store multiple types of data in a single unit. It occupies the sum of memory of all members. More details...
+
+25) What is union?
+>Like Structure, union is a user-defined data type that allows to store multiple types of data in a single unit. But it doesn't occupies the sum of memory of all members. It occupies the memory of largest member only. More details...
+
+26) What is auto keyword in C?
+>In C, every local variable of a function is known as automatic (auto) variable. Let's explain with an example:
+
+void f()  
+{  
+int i ;  
+auto int j;  
+}  
+Here, both 'i' and 'j' variables are automatic variables.
+
+
+Note: A global variable can't be an automatic variable.
+
+
+27) What is the purpose of sprintf() function?
+>It is used to print the formatted output into char array.
+
+28) Can we compile a program without main() function?
+>Yes, we can compile but it can't be executed.
+>But, if we use #define, we can compile and run C program without using main() function. For example:
+
+#include<stdio.h>    
+#define start main    
+void start() {    
+   printf("Hello");    
+}    
+
+29) What is token?
+>Token is an identifier. It can be constant, keyword, string literal etc.
+
+30) What is command line argument?
+>The argument passed to the main() function while executing the program is known as command line argument. For example:
+
+main(int count, char *args[]){  
+//code to  be executed  
+}  
+
+31) What is the acronym for ANSI?
+>American National Standard Institute.
+
+32) What is the difference between getch() and getche()?
+>The getch() function reads a single character from keyboard. It doesn't uses any buffer, so entered data is not displayed on the output screen.
+>The getche() function reads a single character from keyword but data is displayed on the output screen. Press Alt+f5 to see the entered character.
+
+33) What is new line escape sequence?
+>The new line escape sequence is represented by "\n". It inserts a new line on the output screen.
+
+34) Who is the main contributor in designing the C language after Dennis Ritchie?
+>Brain Kernighan.
+
+35) What is the difference between near, far and huge pointers?
+>A virtual address is composed of selector and offset.
+>A near pointer doesn't have explicit selector whereas far and huge pointers have explicit selector. When you perform pointer arithmetic on far pointer, selector is not modified but in case of huge pointer it can be modified.
+>These are the non-standard keywords and implementation specific. These are irrelevant in modern platform.
+
+36) What is the maximum length of an identifier?
+>It is 32 characters ideally but implementation specific.
+
+37) What is typecasting?
+>Converting one data type into another is known as typecasting. For example:
+
+float f=3.4;  
+int a=(int)f;//typecasting  
+
+38) What are the functions to open and close file in C language?
+>The fopen() function is used to open file whereas fclose() is used to close file.
+
+39) Can we access array using pointer in C language?
+>Yes, by holding the base address of array into pointer, we can access the array using pointer.
+
+40) What is infinite loop?
+>A loop running continuously for indefinite number of times is called infinite loop.
+
+Infinite For Loop:
+
+for(;;){  
+//code to be executed  
+}  
+Infinite While Loop:
+
+while(1){  
+//code to be executed  
+}  
+Infinite Do-While Loop:
+
+do{  
+//code to be executed  
+}while(1);  
+
+41) Write a program to print "hello world" without using semicolon?
+>There are various ways to do so. Let's see a program to print "hello world" using if.
+
+#include<stdio.h>    
+void main(){    
+   if(printf("hello world")){}    
+}    
+
+42) Write a program to swap two numbers without using third variable?
+
+#include<stdio.h>    
+#include<conio.h>    
+main()    
+{    
+int a=10, b=20;      
+clrscr();      
+printf("Before swap a=%d b=%d",a,b);      
+    
+a=a+b;//a=30 (10+20)    
+b=a-b;//b=10 (30-20)    
+a=a-b;//a=20 (30-10)    
+    
+printf("\nAfter swap a=%d b=%d",a,b);    
+getch();    
+}    
+
+43) Write a program to print fibonacci series without using recursion?
+
+#include<stdio.h>    
+#include<conio.h>    
+void main()    
+{    
+ int n1=0,n2=1,n3,i,number;    
+ clrscr();    
+ printf("Enter the number of elements:");    
+ scanf("%d",&number);    
+ printf("\n%d %d",n1,n2);//printing 0 and 1    
+    
+ for(i=2;i<number;++i)//loop starts from 2 because 0 and 1 are already printed    
+ {    
+  n3=n1+n2;    
+  printf(" %d",n3);    
+  n1=n2;    
+  n2=n3;    
+ }    
+getch();    
+}    
+
+44) Write a program to print fibonacci series using recursion?
+
+#include<stdio.h>    
+#include<conio.h>    
+void printFibonacci(int n){    
+    static int n1=0,n2=1,n3;    
+    if(n>0){    
+         n3 = n1 + n2;    
+         n1 = n2;    
+         n2 = n3;    
+         printf("%d ",n3);    
+         printFibonacci(n-1);    
+    }    
+}    
+void main(){    
+    int n;    
+    clrscr();    
+    printf("Enter the number of elements: ");    
+    scanf("%d",&n);    
+    
+    printf("Fibonacci Series: ");    
+    printf("%d %d ",0,1);    
+    printFibonacci(n-2);//n-2 because 2 numbers are already printed    
+    
+    getch();    
+}    
+
+45) Write a program to check prime number in C Programming?
+
+#include<stdio.h>    
+#include<conio.h>    
+void main()    
+{    
+int n,i,m=0,flag=0;    
+clrscr();    
+printf("Enter the number to check prime:");    
+scanf("%d",&n);    
+m=n/2;    
+for(i=2;i<=m;i++)    
+{    
+if(n%i==0)    
+{    
+printf("Number is not prime");    
+flag=1;    
+break;    
+}    
+}    
+if(flag==0)    
+printf("Number is prime");    
+getch();    
+}     
+
+46) Write a program to check palindrome number in C Programming?
+
+#include<stdio.h>    
+#include<conio.h>    
+main()    
+{    
+int n,r,sum=0,temp;    
+clrscr();    
+printf("enter the number=");    
+scanf("%d",&n);    
+temp=n;    
+while(n>0)    
+{    
+r=n%10;    
+sum=(sum*10)+r;    
+n=n/10;    
+}    
+if(temp==sum)    
+printf("palindrome number ");    
+else    
+printf("not palindrome");    
+getch();    
+}    
+
+47) Write a program to print factorial of given number without using recursion?
+
+#include<stdio.h>    
+#include<conio.h>    
+void main(){    
+  int i,fact=1,number;    
+  clrscr();    
+  printf("Enter a number: ");    
+  scanf("%d",&number);    
+    
+  for(i=1;i<=number;i++){    
+      fact=fact*i;    
+  }    
+  printf("Factorial of %d is: %d",number,fact);    
+  getch();    
+}    
+
+48) Write a program to print factorial of given number using recursion?
+
+#include<stdio.h>    
+#include<conio.h>    
+    
+long factorial(int n)    
+{    
+  if (n == 0)    
+    return 1;    
+  else    
+    return(n * factorial(n-1));    
+}    
+     
+void main()    
+{    
+  int number;    
+  long fact;    
+  clrscr();    
+  printf("Enter a number: ");    
+  scanf("%d", &number);     
+     
+  fact = factorial(number);    
+  printf("Factorial of %d is %ld\n", number, fact);    
+  getch();    
+}    
+
+49) Write a program to check armstrong number in C?
+
+#include<stdio.h>    
+#include<conio.h>    
+main()    
+{    
+int n,r,sum=0,temp;    
+clrscr();    
+printf("enter the number=");    
+scanf("%d",&n);    
+temp=n;    
+while(n>0)    
+{    
+r=n%10;    
+sum=sum+(r*r*r);    
+n=n/10;    
+}    
+if(temp==sum)    
+printf("armstrong  number ");    
+else    
+printf("not armstrong number");    
+getch();    
+}    
+More details...
+50) Write a program to reverse a given number in C?
+
+#include<stdio.h>    
+#include<conio.h>    
+main()    
+{    
+int n, reverse=0, rem;    
+clrscr();    
+printf("Enter a number: ");    
+  scanf("%d", &n);    
+  while(n!=0)    
+  {    
+     rem=n%10;    
+     reverse=reverse*10+rem;    
+     n/=10;    
+  }    
+  printf("Reversed Number: %d",reverse);    
+getch();    
+}    

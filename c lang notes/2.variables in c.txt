@@ -1,0 +1,331 @@
+Variables in C:-
+>A variable is a name of memory location. It is used to store data. Its value can be changed and it can be reused many times.
+>It is a way to represent memory location through symbol so that it can be easily identified.
+
+Let's see the syntax to declare a variable:-
+
+type variable_list;  
+
+The example of declaring variable is given below:-
+
+>int a;  
+>float b;  
+>char c;  
+
+Here, a, b, c are variables and int,float,char are data types.
+
+We can also provide values while declaring the variables as given below:-
+>int a=10,b=20;//declaring 2 variable of integer type  
+>float f=20.8;  
+>char c='A';  
+
+Rules for defining variables:-
+>A variable can have alphabets, digits and underscore.
+>A variable name can start with alphabet and underscore only. It can't start with digit.
+>No white space is allowed within variable name.
+>A variable name must not be any reserved word or keyword e.g. int, float etc.
+
+Valid variable names:-
+
+int a;  
+int _ab;  
+int a30;  
+Inalid variable names:
+
+int 2;  
+int a b;  
+int long;  
+Types of Variables in C
+
+There are many types of variables in c:-
+
+1)local variable
+2)global variable
+3)static variable
+40automatic variable
+5)external variable
+6)Local Variable
+
+Local variable:-
+>A variable that is declared inside the function or block is called local variable.
+>It must be declared at the start of the block.
+
+void function1(){  
+int x=10;//local variable  
+}  
+>You must have to initialize the local variable before it is used.
+
+Global Variable:-
+>A variable that is declared outside the function or block is called global variable. Any function can change the value of the global variable. It is available to all the functions.
+>It must be declared at the start of the block.
+
+int value=20;//global variable  
+void function1(){  
+int x=10;//local variable  
+}  
+
+Static Variable:-
+>A variable that is declared with static keyword is called static variable.
+>It retains its value between multiple function calls.
+
+void function1(){  
+int x=10;//local variable  
+static int y=10;//static variable  
+x=x+1;  
+y=y+1;  
+printf("%d,%d",x,y);  
+}  
+
+>If you call this function many times, local variable will print the same value for each function call e.g, 11,11,11 and so on. But static variable will print the incremented value in each function call e.g. 11, 12, 13 and so on.
+
+Automatic Variable:-
+>All variables in C that is declared inside the block, are automatic variables by default. By we can explicitly declare automatic variable using auto keyword.
+
+void main(){  
+int x=10;//local variable (also automatic)  
+auto int y=20;//automatic variable  
+}
+  
+External Variable:-
+>We can share a variable in multiple C source files by using external variable. To declare a external variable, you need to use extern keyword.
+
+myfile.h
+extern int x=10;//external variable (also global)  
+program1.c
+#include "myfile.h"  
+#include <stdio.h>  
+void printValue(){  
+    printf("Global variable: %d", global_variable);  
+}  
+
+Data Types in C:-
+>A data type specifies the type of data that a variable can store such as integer, floating, character etc.
+
+C Data Types:-
+There are 4 types of data types in C language.
+
+Types			Data Types
+Basic Data Type		int, char, float, double
+Derived Data Type		array, pointer, structure, union
+Enumeration Data Type	enum
+Void Data Type		void
+
+ 
+Basic Data Types:-
+>The basic data types are integer-based and floating-point based. C language supports both signed and unsigned literals.
+>The memory size of basic data types may change according to 32 or 64 bit operating system.
+
+Let's see the basic data types. Its size is given according to 32 bit architectur:-
+
+Data Types	Memory Size	Range
+char		1 byte		-128 to 127
+signed char	1 byte		-128 to 127
+unsigned char	1 byte		0 to 255
+short		2 byte		-32,768 to 32,767
+signed short	2 byte		-32,768 to 32,767
+unsigned short	2 byte		0 to 65,535
+int		2 byte		-32,768 to 32,767
+signed int	2 byte		-32,768 to 32,767
+unsigned int	2 byte		0 to 65,535
+short int		2 byte		-32,768 to 32,767
+signed short int	2 byte		-32,768 to 32,767
+unsigned short int	2 byte		0 to 65,535
+long int		4 byte		-2,147,483,648 to 2,147,483,647
+signed long int	4 byte		-2,147,483,648 to 2,147,483,647
+unsigned long int	4 byte		0 to 4,294,967,295
+float		4 byte	
+double		8 byte	
+long double	10 byte
+
+Keywords in C:-
+>A keyword is a reserved word. You cannot use it as a variable name, constant name etc. There are only 32 reserved words (keywords) in C language.
+
+>A list of 32 keywords in c language is given below:-
+
+auto		break		case		char		const		continue	  	 default	   	do
+double		else		enum		extern		float		for	    	 goto		if
+int		long		register		return		short		signed	    	 sizeof		static
+struct		switch		typedef		union		unsigned		void	    	 volatile		while
+
+C Operators:-
+>An operator is simply a symbol that is used to perform operations. There can be many types of operations like arithmetic, logical, bitwise etc.
+>There are following types of operators to perform different types of operations in C language.
+
+1)Arithmetic Operators
+2)Relational Operators
+3)Shift Operators
+4)Logical Operators
+5)Bitwise Operators
+6)Ternary or Conditional Operators
+7)Assignment Operator
+8)Misc Operator
+
+ Precedence of Operators in C:-
+>The precedence of operator species that which operator will be evaluated first and next. The associativity specifies the operators direction to be evaluated, it may be left to right or right to left.
+
+Let's understand the precedence by the example given below:-
+>int value=10+20*10;  
+>The value variable will contain 210 because * (multiplicative operator) is evaluated before + (additive operator).
+
+The precedence and associativity of C operators is given below:-
+
+Category		Operator				Associativity
+Postfix		() [] -> . ++ - -			Left to right
+Unary		+ - ! ~ ++ - - (type)* & sizeof		Right to left
+Multiplicative	* / %				Left to right
+Additive		+ -				Left to right
+Shift		<< >>				Left to right
+Relational	< <= > >=				Left to right
+Equality		== !=				Left to right
+Bitwise AND	&				Left to right
+Bitwise XOR	^				Left to right
+Bitwise OR	|				Left to right
+Logical AND	&&				Left to right
+Logical OR	||				Left to right
+Conditional	?:				Right to left
+Assignment	= += -= *= /= %=>>= <<= &= ^= |=	Right to left
+Comma		,				Left to right
+
+Comments in C:-
+>Comments in C language are used to provide information about lines of code. It is widely used for documenting code. There are 2 types of comments in C language.
+
+>Single Line Comments
+>Multi Line Comments
+
+Single Line Comments:-
+>Single line comments are represented by double slash \\. Let's see an example of single line comment in C.
+
+#include <stdio.h>      
+#include <conio.h>    
+void main(){      
+clrscr();      
+//printing information  
+printf("Hello C");  
+getch();      
+}      
+
+Output:
+Hello C
+
+>Even you can place comment after statement. For example:
+printf("Hello C");//printing information  
+
+ 
+Mult Line Comments:-
+>Multi line comments are represented by slash asterisk \* ... *\. It can occupy many lines of code but it can't be nested. Syntax:
+
+/*  
+code 
+to be commented 
+*/  
+
+Let's see an example of multi line comment in C.
+
+#include <stdio.h>      
+#include <conio.h>    
+void main(){      
+clrscr();      
+/*printing 
+information*/  
+printf("Hello C");  
+getch();      
+}      
+
+Output:
+Hello C
+
+Escape Sequence in C:-
+>An escape sequence in C language is a sequence of characters that doesn't represent itself when used inside string literal or character.
+>It is composed of two or more characters starting with backslash \. For example: \n represents new line.
+
+List of Escape Sequences in C:-
+
+Escape Sequence	Meaning
+\a		Alarm or Beep
+\b		Backspace
+\f		Form Feed
+\n		New Line
+\r		Carriage Return
+\t		Tab (Horizontal)
+\v		Vertical Tab
+\\		Backslash
+\'		Single Quote
+\"		Double Quote
+\?		Question Mark
+\nnn		octal number
+\xhh		hexadecimal number
+\0		Null
+
+Escape Sequence Example:-
+
+#include <stdio.h>      
+#include <conio.h>    
+void main(){      
+int number=50;    
+clrscr();      
+printf("You\nare\nlearning\n\'c\' language\n\"Do you know C language\"");  
+getch();      
+}      
+
+Output:
+You
+are
+learning
+'c' language
+"Do you know C language"
+
+Constants in C:-
+>A constant is a value or variable that can't be changed in the program, for example: 10, 20, 'a', 3.4, "c programming" etc.
+>There are different types of constants in C programming.
+
+List of Constants in C:-
+
+Constant				Example
+Decimal Constant			10, 20, 450 etc.
+Real or Floating-point Constant	10.3, 20.2, 450.6 etc.
+Octal Constant			021, 033, 046 etc.
+Hexadecimal Constant		0x2a, 0x7b, 0xaa etc.
+Character Constant		'a', 'b', 'x' etc.
+String Constant			"c", "c program", "c in javatpoint" etc.
+
+2 ways to define constant in C:-
+>There are two ways to define constant in C programming.
+1)const keyword
+2)define preprocessor
+
+1) C const keyword:-
+>The const keyword is used to define constant in C programming.
+
+>const float PI=3.14;  
+>Now, the value of PI variable can't be changed.
+
+#include <stdio.h>      
+#include <conio.h>    
+void main(){      
+const float PI=3.14;  
+clrscr();      
+printf("The value of PI is: %f",PI);  
+getch();      
+}      
+Output:
+The value of PI is: 3.140000
+
+>If you try to change the the value of PI, it will render compile time error.
+
+#include <stdio.h>      
+#include <conio.h>    
+void main(){      
+const float PI=3.14;  
+clrscr();      
+PI=4.5;  
+printf("The value of PI is: %f",PI);  
+getch();      
+}      
+
+Output:
+Compile Time Error: Cannot modify a const object
+
+2) C #define preprocessor:-
+>The #define preprocessor is also used to define constant. We will learn about #define preprocessor directive later.
+
+

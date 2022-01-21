@@ -1,0 +1,314 @@
+C Programs:-
+>C programs are frequently asked in the interview. These programs can be asked from basics, array, string, pointer, linked list, file handling etc. Let's see the list of c programs.
+
+1) Fibonacci Series:-
+
+>>Write a c program to print fibonacci series without using recursion and using recursion.
+Input: 10
+Output: 0 1 1 2 3 5 8 13 21 34
+
+2) Prime number:-
+>Write a c program to check prime number.
+Input: 44
+Output: not prime number
+Input: 7
+
+Output: prime number
+
+3) Palindrome number:-
+>Write a c program to check palindrome number.
+Input: 329
+Output: not palindrome number
+Input: 12321
+
+Output: palindrome number
+
+4) Factorial:-
+>Write a c program to print factorial of a number.
+Input: 5
+Output: 120
+Input: 6
+Output: 720
+
+5) Armstrong number:-
+>Write a c program to check armstrong number.
+Input: 153
+Output: armstrong
+Input: 22
+Output: not armstrong
+
+6) Sum of Digits:-
+>Write a c program to print sum of digits.
+input: 234
+Output: 9
+Input: 12345
+Output: 15
+
+7) Reverse Number:-
+>Write a c program to reverse given number.
+Input: 123
+Output: 321
+
+8) Swap two numbers without using third variable:-
+>Write a c program to swap two numbers without using third variable.
+Input: a=10 b=20
+Output: a=20 b=10
+
+9) Print "hello" without using semicolon:-
+>Write a c program to print "hello" without using semicolon
+
+10) Assembly Program in C:-
+Write a c program to add two numbers using assembly code.
+
+11) C Program without main() function:-
+
+Write a c program to print "Hello" without using main() function.
+
+12) Matrix Multiplication:-
+
+Write a c program to print multiplication of 2 matrices.
+
+Input:
+
+first matrix elements:
+1 1 1
+2 2 2
+3 3 3
+second matrix elements
+1 1 1
+2 2 2
+3 3 3
+
+Output:
+multiplication of the matrix:
+6 6 6
+12 12 12
+18 18 18
+
+13) Decimal to Binary:-
+>Write a c program to convert decimal number to binary.
+Input: 5
+Output: 101
+Input: 20
+Output: 10100
+
+14) Alphabet Triangle:-
+>Write a c program to print alphabet triangle.
+Output:
+
+     A
+    ABA
+   ABCBA
+  ABCDCBA
+ ABCDEDCBA
+
+15) Number Triangle:-
+>Write a c program to print number triangle.
+Input: 7
+Output:
+
+enter the range= 6
+      1
+     121
+    12321
+   1234321
+  123454321
+ 12345654321
+16) Fibonacci Triangle
+
+Write a c program to generate fibonacci triangle:-
+Input: 5
+
+Output:
+
+1
+1	1	
+1	1	2	
+1	1	2	3	
+1	1	2	3	5		
+17) Number in Characters
+
+Write a c program to convert number in characters:-
+Input: 5
+Output: five
+Input: 203
+
+C Programs
+
+C programs are frequently asked in the interview. These programs can be asked from basics, array, string, pointer, linked list, file handling etc. Let's see the list of c programs.
+
+1) Fibonacci Series
+
+Write a c program to print fibonacci series without using recursion and using recursion.
+
+Input: 10
+
+Output: 0 1 1 2 3 5 8 13 21 34
+
+2) Prime number
+
+Write a c program to check prime number.
+
+Input: 44
+
+Output: not prime number
+
+Input: 7
+
+Output: prime number
+
+3) Palindrome number
+
+Write a c program to check palindrome number.
+
+Input: 329
+
+Output: not palindrome number
+
+Input: 12321
+
+Output: palindrome number
+
+4) Factorial
+
+Write a c program to print factorial of a number.
+
+Input: 5
+
+Output: 120
+
+Input: 6
+
+Output: 720
+
+5) Armstrong number
+
+Write a c program to check armstrong number.
+
+Input: 153
+
+Output: armstrong
+
+Input: 22
+
+Output: not armstrong
+
+6) Sum of Digits
+
+Write a c program to print sum of digits.
+
+Input: 234
+
+Output: 9
+
+Input: 12345
+
+Output: 15
+
+7) Reverse Number
+
+Write a c program to reverse given number.
+
+Input: 123
+
+Output: 321
+
+8) Swap two numbers without using third variable
+
+Write a c program to swap two numbers without using third variable.
+
+Input: a=10 b=20
+
+Output: a=20 b=10
+
+9) Print "hello" without using semicolon
+
+Write a c program to print "hello" without using semicolon
+
+10) Assembly Program in C
+
+Write a c program to add two numbers using assembly code.
+
+11) C Program without main() function
+
+Write a c program to print "Hello" without using main() function.
+
+12) Matrix Multiplication
+
+Write a c program to print multiplication of 2 matrices.
+
+Input:
+
+first matrix elements:
+1 1 1
+2 2 2
+3 3 3
+second matrix elements
+1 1 1
+2 2 2
+3 3 3
+Output:
+
+multiplication of the matrix:
+6 6 6
+12 12 12
+18 18 18
+13) Decimal to Binary
+
+Write a c program to convert decimal number to binary.
+
+Input: 5
+
+Output: 101
+
+Input: 20
+
+Output: 10100
+
+14) Alphabet Triangle
+
+Write a c program to print alphabet triangle.
+
+Output:
+       A
+    ABA
+   ABCBA
+  ABCDCBA
+ ABCDEDCBA
+
+15) Number Triangle:-
+>Write a c program to print number triangle.
+Input: 7
+Output:
+
+enter the range= 6
+      1
+     121
+    12321
+   1234321
+  123454321
+ 12345654321
+
+16) Fibonacci Triangle:-
+>Write a c program to generate fibonacci triangle.
+Input: 5
+Output:
+
+1
+1	1	
+1	1	2	
+1	1	2	3	
+1	1	2	3	5
+		
+17) Number in Characters:-
+>Write a c program to convert number in characters.
+Input: 5
+Output: five
+Input: 203
+Output: two zero three
+
+
+
+
+
+

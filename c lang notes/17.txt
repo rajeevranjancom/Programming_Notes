@@ -1,0 +1,40 @@
+C Program to print "hello" without semicolon:-
+>We can print "hello" or "hello world" or anything else in C without using semicolon. There are various ways to do so:
+
+Using if
+Using switch
+Using loop etc.
+
+Program 1: Using if statement
+
+Let's see a simple c example to print "hello world" using if statement and without using semicolon.
+
+#include<stdio.h>  
+void main(){  
+   if(printf("hello world")){}  
+}  
+Output:
+
+hello world
+Program 2: Using switch statement
+
+Let's see a simple c example to print "hello world" using switch statement and without using semicolon.
+
+#include<stdio.h>  
+void main(){  
+   switch(printf("hello world")){}  
+}  
+
+Output:
+hello world
+Program 3: Using while loop
+
+Let's see a simple c example to print "hello world" using while loop and without using semicolon.
+
+#include<stdio.h>  
+void main(){  
+   while(!printf("hello world")){}  
+}  
+
+Output:
+hello world
